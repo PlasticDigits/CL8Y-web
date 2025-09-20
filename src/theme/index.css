@@ -1,0 +1,52 @@
+:root {
+  --color-gold: #d4af37;
+  --color-black: #0c0c0c;
+  --color-midnight: #1a1f2b;
+  --color-charcoal: #2e323c;
+  --color-aqua: #22d3ee;
+  --color-magenta: #e11d74;
+  --color-ember: #ffb347;
+  --color-text: #ededed;
+
+  /* Spacing scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 24px;
+
+  --shadow-depth: 0 8px 30px rgba(0, 0, 0, 0.4);
+  --shadow-glow-gold: 0 0 0 2px #d4af37 inset, 0 8px 30px rgba(212, 175, 55, 0.22);
+  --focus-aqua: 0 0 0 3px rgba(34, 211, 238, 0.45);
+
+  /* Motion tokens */
+  --motion-duration-fast: 120ms;
+  --motion-duration-base: 220ms;
+  --motion-duration-slow: 360ms;
+  --motion-duration-epic: 600ms;
+  --motion-ease-standard: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --motion-ease-linear: linear;
+
+  /* Gradient recipes */
+  --gradient-gold: linear-gradient(135deg, #ffd700 0%, #d4af37 45%, #a9812f 100%);
+  --gradient-aqua: linear-gradient(135deg, #22d3ee 0%, #67e8f9 100%);
+  --gradient-ember: linear-gradient(135deg, #ffb347 0%, #ff8c42 100%);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+    scroll-behavior: auto !important;
+  }
+}
