@@ -90,8 +90,8 @@ export default function Hero() {
             <div className="mt-1 text-3xl">
               <AnimatedNumber
                 value={priceUsd ?? 0}
-                maximumFractionDigits={4}
-                minimumFractionDigits={4}
+                maximumFractionDigits={6}
+                minimumFractionDigits={6}
                 prefix="$"
                 title="CL8Y price in USD"
                 durationMs={1500}

@@ -137,7 +137,7 @@ export function useCl8yPrice(pollMs: number = 15_000): UseCl8yPriceResult {
 
         if (!Number.isFinite(cl8yBal) || !Number.isFinite(czusdBal) || cl8yBal <= 0) return null;
         const raw = czusdBal / cl8yBal; // price of 1 CL8Y in CZUSD
-        const rounded = Math.round(raw * 10_000) / 10_000; // 4 decimals
+        const rounded = Math.round(raw * 100_000_000) / 100_000_000; // 8 decimals
 
         if (import.meta.env.DEV) {
           const elapsed = Date.now() - startedAt;
@@ -216,12 +216,12 @@ export function useCl8yPrice(pollMs: number = 15_000): UseCl8yPriceResult {
     const id = setInterval(() => {
       const base = baseRef.current;
       if (base == null) return;
-      const deltaPct = (Math.random() * 0.5 - 0.25) / 100; // ±0.25%
+      const deltaPct = (Math.random() * 0.0005 - 0.00025) / 100; // ±0.25%
       const nextRaw = Math.max(0, base * (1 + deltaPct));
-      const next = Math.round(nextRaw * 10_000) / 10_000; // clamp jitter to 4dp
+      const next = Math.round(nextRaw * 100_000_000) / 100_000_000; // clamp jitter to 8dp
       setDirection(next >= (priceUsd ?? next) ? "up" : "down");
       setPriceUsd(next);
-    }, 500);
+    }, 2500);
     return () => clearInterval(id);
   }, [priceUsd]);
 
