@@ -3,19 +3,37 @@ import { Card, CardContent } from "../../components/ui/Card";
 import { Sparkles, Cpu, Orbit } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
-function SparkleOverlay({ count = 14 }: { count?: number }) {
+function SparkleOverlay({ count = 16 }: { count?: number }) {
   const prefersReducedMotion = useReducedMotion();
-  const sparkleDescriptors = Array.from({ length: count }).map((_, index) => {
-    const baseLeftPercent = (index * 97) % 100; // pseudo-random distribution
-    const baseTopPercent = (index * 61) % 100;
-    const size = 2 + ((index * 7) % 6); // 2px - 7px
-    const goldBias = index % 3 === 0;
-    return { left: `${baseLeftPercent}%`, top: `${baseTopPercent}%`, size, goldBias, index } as const;
-  });
+
+  // Bias twinkles: cyan cluster in the upper-right sky, warm embers near the fire (lower-right)
+  const cyanCount = Math.ceil(count * 0.6);
+  const emberCount = count - cyanCount;
+
+  const prng = (seed: number, min: number, max: number) => min + (((seed * 37) % 100) / 100) * (max - min);
+
+  const descriptors = [
+    // Cyan stars — upper-right
+    ...Array.from({ length: cyanCount }).map((_, i) => {
+      const left = prng(i + 1, 62, 95);
+      const top = prng(i + 11, 6, 38);
+      const size = i % 5 === 0 ? 5 : prng(i + 3, 2, 4);
+      return { kind: "cyan" as const, left: `${left}%`, top: `${top}%`, size, index: i };
+    }),
+    // Warm embers — lower-right near the bowl fire
+    ...Array.from({ length: emberCount }).map((_, j) => {
+      const idx = cyanCount + j;
+      const left = prng(idx + 5, 68, 92);
+      const top = prng(idx + 17, 68, 88);
+      const size = prng(idx + 7, 2, 3.2);
+      return { kind: "ember" as const, left: `${left}%`, top: `${top}%`, size, index: idx };
+    }),
+  ];
+
   if (prefersReducedMotion) {
     return (
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        {sparkleDescriptors.slice(0, 6).map((s) => (
+        {descriptors.slice(0, 8).map((s) => (
           <span
             key={s.index}
             className="absolute rounded-full"
@@ -24,19 +42,23 @@ function SparkleOverlay({ count = 14 }: { count?: number }) {
               top: s.top,
               width: s.size,
               height: s.size,
-              background: s.goldBias ? "rgba(212,175,55,0.7)" : "rgba(34,211,238,0.7)",
-              boxShadow: s.goldBias
-                ? "0 0 12px rgba(212,175,55,0.45)"
-                : "0 0 12px rgba(34,211,238,0.45)",
+              mixBlendMode: "screen",
+              background:
+                s.kind === "ember" ? "rgba(255,140,66,0.75)" : "rgba(34,211,238,0.8)",
+              boxShadow:
+                s.kind === "ember"
+                  ? "0 0 14px rgba(255,140,66,0.45)"
+                  : "0 0 16px rgba(34,211,238,0.45)",
             }}
           />
         ))}
       </div>
     );
   }
+
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden>
-      {sparkleDescriptors.map((s) => (
+      {descriptors.map((s, i) => (
         <motion.span
           key={s.index}
           className="absolute rounded-full"
@@ -45,14 +67,21 @@ function SparkleOverlay({ count = 14 }: { count?: number }) {
             top: s.top,
             width: s.size,
             height: s.size,
-            background: s.goldBias ? "rgba(212,175,55,0.9)" : "rgba(34,211,238,0.9)",
-            boxShadow: s.goldBias
-              ? "0 0 14px rgba(212,175,55,0.55)"
-              : "0 0 14px rgba(34,211,238,0.55)",
+            mixBlendMode: "screen",
+            background:
+              s.kind === "ember" ? "rgba(255,140,66,0.9)" : "rgba(34,211,238,0.9)",
+            boxShadow:
+              s.kind === "ember"
+                ? "0 0 18px rgba(255,140,66,0.55)"
+                : "0 0 18px rgba(34,211,238,0.5)",
           }}
           initial={{ opacity: 0, scale: 0.6 }}
-          animate={{ opacity: [0, 1, 0], scale: [0.6, 1, 0.6], y: [0, -8, 0] }}
-          transition={{ duration: 2.2 + s.index * 0.12, delay: s.index * 0.18, repeat: Infinity, ease: "easeInOut" }}
+          animate={{
+            opacity: [0, 1, 0],
+            scale: [0.6, s.kind === "ember" ? 0.95 : 1.05, 0.6],
+            y: s.kind === "ember" ? [0, -3, 0] : [0, -6, 0],
+          }}
+          transition={{ duration: 2 + i * 0.1, delay: i * 0.16, repeat: Infinity, ease: "easeInOut" }}
         />
       ))}
     </div>

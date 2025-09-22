@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { Card, CardContent, CardHeader } from "../components/ui/Card";
 import HeroImageCard from "../components/visuals/HeroImageCard";
 import { Button } from "../components/ui/Button";
@@ -16,6 +16,9 @@ const Institutional = lazy(() => import("../features/institutional/Institutional
 
 export default function Home() {
   const prefersReducedMotion = useReducedMotion();
+  const { scrollY } = useScroll();
+  const parallaxSpeedRatio = prefersReducedMotion ? 0 : 0.4;
+  const bgY = useTransform(scrollY, (v) => v * parallaxSpeedRatio);
   const tidaldex = linksByCategory.trading.find((l) => l.id === "tidaldex-bsc");
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
   const twitter = linksByCategory.social.find((l) => l.id === "twitter");
@@ -33,9 +36,17 @@ export default function Home() {
     <div
       id="main"
       role="main"
-      className="flex flex-col gap-24 bg-[radial-gradient(800px_400px_at_50%_-10%,rgba(212,175,55,0.08),transparent),radial-gradient(600px_300px_at_80%_20%,rgba(34,211,238,0.06),transparent)]"
+      className="relative flex flex-col gap-24 bg-[radial-gradient(800px_400px_at_50%_-10%,rgba(212,175,55,0.08),transparent),radial-gradient(600px_300px_at_80%_20%,rgba(34,211,238,0.06),transparent)] overflow-hidden"
       tabIndex={-1}
     >
+      {/* Subtle CL8Y logo background with parallax */}
+      <motion.img
+        src="/images/logo/CLAY-VECTOR-LARGE.svg"
+        alt=""
+        aria-hidden
+        className="pointer-events-none select-none absolute -left-[10vw] top-[-12vh] md:top-[-18vh] w-[1000px] md:w-[1600px] max-w-none opacity-[0.025]"
+        style={{ y: bgY }}
+      />
       <Suspense fallback={<div className="p-6 text-text">Loading…</div>}>
         <section id="hero">
           <motion.div variants={container} initial="hidden" animate="show">
