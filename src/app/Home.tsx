@@ -20,7 +20,7 @@ export default function Home() {
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
   const twitter = linksByCategory.social.find((l) => l.id === "twitter");
   const bscContract = linksByCategory.contracts.find((l) => l.id === "bsc-contract");
-  const whitepaperV2Href = "/pdfs/CL8Y_WHITEPAPER_V2.pdf";
+  const whitepaperV2Href = "/cl8y_whitepaper";
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08 } },

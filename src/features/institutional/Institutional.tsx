@@ -4,7 +4,7 @@ import { Button } from "../../components/ui/Button";
 import { linksByCategory } from "../../data/links";
 
 export default function Institutional() {
-  const whitepaperPrimary = "/pdfs/CL8Y_WHITEPAPER_V2.pdf";
+  const whitepaperPrimary = "/cl8y_whitepaper";
   const whitepaperLegacy = "/pdfs/CL8Y-Whitepaper.pdf";
   const localAuditPdf = "/pdfs/audit.pdf";
   const apiListingUrl = (import.meta as any).env?.VITE_CL8Y_API_LISTING_URL ?? "https://api-listing.cl8y.com";
