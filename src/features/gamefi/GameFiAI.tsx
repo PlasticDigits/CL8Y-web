@@ -3,37 +3,50 @@ import { Card, CardContent } from "../../components/ui/Card";
 import { Sparkles, Cpu, Orbit } from "lucide-react";
 import { motion, useReducedMotion } from "framer-motion";
 
-function SparkleOverlay({ count = 16 }: { count?: number }) {
+function SparkleOverlay({ count = 22 }: { count?: number }) {
   const prefersReducedMotion = useReducedMotion();
 
-  // Bias twinkles: cyan cluster in the upper-right sky, warm embers near the fire (lower-right)
-  const cyanCount = Math.ceil(count * 0.6);
-  const emberCount = count - cyanCount;
+  // Bias twinkles: fireflies (green↔red) in the upper-right sky, warm embers + sparks near the fire (lower-right)
+  const fireflyCount = Math.ceil(count * 0.55);
+  const emberCount = Math.ceil(count * 0.3);
+  const sparkCount = Math.max(6, Math.floor(count * 0.15));
 
   const prng = (seed: number, min: number, max: number) => min + (((seed * 37) % 100) / 100) * (max - min);
 
-  const descriptors = [
-    // Cyan stars — upper-right
-    ...Array.from({ length: cyanCount }).map((_, i) => {
-      const left = prng(i + 1, 62, 95);
-      const top = prng(i + 11, 6, 38);
-      const size = i % 5 === 0 ? 5 : prng(i + 3, 2, 4);
-      return { kind: "cyan" as const, left: `${left}%`, top: `${top}%`, size, index: i };
-    }),
-    // Warm embers — lower-right near the bowl fire
-    ...Array.from({ length: emberCount }).map((_, j) => {
-      const idx = cyanCount + j;
-      const left = prng(idx + 5, 68, 92);
-      const top = prng(idx + 17, 68, 88);
-      const size = prng(idx + 7, 2, 3.2);
-      return { kind: "ember" as const, left: `${left}%`, top: `${top}%`, size, index: idx };
-    }),
-  ];
+  // Fireflies — green/red alternation to feel organic
+  const fireflies = Array.from({ length: fireflyCount }).map((_, i) => {
+    const left = prng(i + 1, 60, 95);
+    const top = prng(i + 11, 6, 40);
+    const size = i % 6 === 0 ? 5 : prng(i + 3, 2, 3.6);
+    const isGreenFirst = i % 2 === 0;
+    return { left: `${left}%`, top: `${top}%`, size, isGreenFirst, index: i } as const;
+  });
+
+  // Warm embers — lower-right near the bowl fire
+  const embers = Array.from({ length: emberCount }).map((_, j) => {
+    const idx = fireflyCount + j;
+    const left = prng(idx + 5, 68, 92);
+    const top = prng(idx + 17, 68, 90);
+    const size = prng(idx + 7, 2, 3.2);
+    return { left: `${left}%`, top: `${top}%`, size, index: idx } as const;
+  });
+
+  // Sparks — small vertical streaks rising from the fire bowl
+  const sparks = Array.from({ length: sparkCount }).map((_, k) => {
+    const idx = fireflyCount + emberCount + k;
+    const left = prng(idx + 13, 72, 90);
+    const bottom = prng(idx + 19, 6, 16); // start near bottom edge
+    const height = prng(idx + 23, 8, 16);
+    const tilt = prng(idx + 29, -12, 12);
+    const delay = (k % 5) * 0.22 + prng(idx + 31, 0, 0.18);
+    const duration = prng(idx + 37, 1.4, 2.2);
+    return { left: `${left}%`, bottom: `${bottom}%`, height, tilt, delay, duration, index: idx } as const;
+  });
 
   if (prefersReducedMotion) {
     return (
       <div className="pointer-events-none absolute inset-0" aria-hidden>
-        {descriptors.slice(0, 8).map((s) => (
+        {fireflies.slice(0, 6).map((s) => (
           <span
             key={s.index}
             className="absolute rounded-full"
@@ -43,12 +56,25 @@ function SparkleOverlay({ count = 16 }: { count?: number }) {
               width: s.size,
               height: s.size,
               mixBlendMode: "screen",
-              background:
-                s.kind === "ember" ? "rgba(255,140,66,0.75)" : "rgba(34,211,238,0.8)",
-              boxShadow:
-                s.kind === "ember"
-                  ? "0 0 14px rgba(255,140,66,0.45)"
-                  : "0 0 16px rgba(34,211,238,0.45)",
+              background: s.isGreenFirst ? "rgba(90,255,140,0.8)" : "rgba(255,82,92,0.8)",
+              boxShadow: s.isGreenFirst
+                ? "0 0 14px rgba(90,255,140,0.45)"
+                : "0 0 14px rgba(255,82,92,0.45)",
+            }}
+          />
+        ))}
+        {embers.slice(0, 4).map((s) => (
+          <span
+            key={s.index}
+            className="absolute rounded-full"
+            style={{
+              left: s.left,
+              top: s.top,
+              width: s.size,
+              height: s.size,
+              mixBlendMode: "screen",
+              background: "rgba(255,140,66,0.75)",
+              boxShadow: "0 0 14px rgba(255,140,66,0.45)",
             }}
           />
         ))}
@@ -58,7 +84,8 @@ function SparkleOverlay({ count = 16 }: { count?: number }) {
 
   return (
     <div className="pointer-events-none absolute inset-0" aria-hidden>
-      {descriptors.map((s, i) => (
+      {/* Fireflies */}
+      {fireflies.map((s, i) => (
         <motion.span
           key={s.index}
           className="absolute rounded-full"
@@ -68,20 +95,81 @@ function SparkleOverlay({ count = 16 }: { count?: number }) {
             width: s.size,
             height: s.size,
             mixBlendMode: "screen",
-            background:
-              s.kind === "ember" ? "rgba(255,140,66,0.9)" : "rgba(34,211,238,0.9)",
-            boxShadow:
-              s.kind === "ember"
-                ? "0 0 18px rgba(255,140,66,0.55)"
-                : "0 0 18px rgba(34,211,238,0.5)",
+            background: s.isGreenFirst ? "rgba(90,255,140,0.9)" : "rgba(255,82,92,0.9)",
+            boxShadow: s.isGreenFirst
+              ? "0 0 18px rgba(90,255,140,0.55)"
+              : "0 0 18px rgba(255,82,92,0.5)",
           }}
           initial={{ opacity: 0, scale: 0.6 }}
           animate={{
             opacity: [0, 1, 0],
-            scale: [0.6, s.kind === "ember" ? 0.95 : 1.05, 0.6],
-            y: s.kind === "ember" ? [0, -3, 0] : [0, -6, 0],
+            scale: [0.6, 1.05, 0.6],
+            y: [0, -6, 0],
+            backgroundColor: s.isGreenFirst
+              ? ["rgba(90,255,140,0.9)", "rgba(255,82,92,0.85)", "rgba(90,255,140,0.9)"]
+              : ["rgba(255,82,92,0.9)", "rgba(90,255,140,0.85)", "rgba(255,82,92,0.9)"],
           }}
           transition={{ duration: 2 + i * 0.1, delay: i * 0.16, repeat: Infinity, ease: "easeInOut" }}
+        />
+      ))}
+      {/* Embers */}
+      {embers.map((s, i) => (
+        <motion.span
+          key={s.index}
+          className="absolute rounded-full"
+          style={{
+            left: s.left,
+            top: s.top,
+            width: s.size,
+            height: s.size,
+            mixBlendMode: "screen",
+            background: "rgba(255,140,66,0.9)",
+            boxShadow: "0 0 18px rgba(255,140,66,0.55)",
+          }}
+          initial={{ opacity: 0, scale: 0.7 }}
+          animate={{ opacity: [0, 1, 0], scale: [0.7, 0.95, 0.7], y: [0, -4, 0] }}
+          transition={{ duration: 2 + i * 0.12, delay: 0.2 + i * 0.14, repeat: Infinity, ease: "easeInOut" }}
+        />
+      ))}
+      {/* Sparks (streaks) */}
+      {sparks.map((s) => (
+        <motion.span
+          key={s.index}
+          className="absolute"
+          style={{
+            left: s.left,
+            bottom: s.bottom,
+            width: 2,
+            height: s.height,
+            borderRadius: 9999,
+            transform: `rotate(${s.tilt}deg)`,
+            background: "linear-gradient(to top, rgba(255,120,60,0.0), rgba(255,180,90,0.9))",
+            boxShadow: "0 0 10px rgba(255,150,80,0.5)",
+            mixBlendMode: "screen",
+            filter: "blur(0.2px)",
+          }}
+          initial={{ opacity: 0, y: 0 }}
+          animate={{ opacity: [0, 1, 0], y: [-10, -40, -60], x: [0, 2, 0] }}
+          transition={{ duration: s.duration, delay: s.delay, repeat: Infinity, ease: "easeOut" }}
+        />
+      ))}
+      {/* Smoke wisps */}
+      {[0, 1].map((n) => (
+        <motion.div
+          key={`sm-${n}`}
+          className="absolute"
+          style={{
+            right: n === 0 ? "8%" : "14%",
+            bottom: n === 0 ? "10%" : "16%",
+            width: n === 0 ? 180 : 140,
+            height: n === 0 ? 180 : 140,
+            background: "radial-gradient(40% 60% at 50% 50%, rgba(170,160,150,0.10), transparent 70%)",
+            filter: "blur(10px)",
+            mixBlendMode: "screen",
+          }}
+          initial={{ opacity: 0.0, y: 0, x: 0 }}
+          animate={{ opacity: [0.0, 0.18, 0.0], y: [-10, -40, -60], x: [0, -6, -10] }}
+          transition={{ duration: 6 + n * 1.2, delay: n * 1.2, repeat: Infinity, ease: "easeOut" }}
         />
       ))}
     </div>
@@ -118,8 +206,8 @@ export default function GameFiAI() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <Card premium className="h-full group relative overflow-hidden">
-          <CardContent className="p-0">
-            <div className="relative overflow-hidden rounded-md">
+          <CardContent>
+            <div className="-mx-6 -my-4 relative overflow-hidden rounded-md">
               <img
                 src="/images/TIGERHUNT_V2.jpg"
                 alt="TigerHuntV2 key art — Solar Tiger in neon jungle of Karnyx"
@@ -159,7 +247,8 @@ export default function GameFiAI() {
           </Card>
 
           <Card premium>
-            <CardContent className="flex items-center gap-4">
+            <CardContent>
+              <div className="flex items-center gap-4">
               <div className="rounded-md border border-charcoal bg-midnight/60 p-3 [box-shadow:inset_0_0_56px_rgba(212,175,55,0.08)]">
                 <img
                   src="/images/clipart/TIGERHUNT.png"
@@ -175,6 +264,7 @@ export default function GameFiAI() {
                   gatherers, and ritualists each play a role. The economy honors two paths — <span className="font-semibold">Power</span> and
                   <span className="font-semibold"> Prestige</span> — tracked distinctly to keep play fair while assets grow.
                 </p>
+              </div>
               </div>
             </CardContent>
           </Card>

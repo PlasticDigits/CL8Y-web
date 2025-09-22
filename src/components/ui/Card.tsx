@@ -21,8 +21,8 @@ export function CardHeader({ children }: PropsWithChildren) {
   return <div className="px-6 pt-5 pb-2">{children}</div>;
 }
 
-export function CardContent({ children }: PropsWithChildren) {
-  return <div className="px-6 py-4">{children}</div>;
+export function CardContent({ children, className = "" }: PropsWithChildren<{ className?: string }>) {
+  return <div className={`px-6 py-4 ${className}`}>{children}</div>;
 }
 
 export function CardFooter({ children }: PropsWithChildren) {
