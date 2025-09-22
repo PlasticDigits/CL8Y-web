@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import ScrollProgressBar from "../components/visuals/ScrollProgressBar";
 
 const Home = lazy(() => import("./Home"));
@@ -8,6 +8,13 @@ const Security = lazy(() => import("../features/security/Security"));
 const Tokenomics = lazy(() => import("../features/tokenomics/Tokenomics"));
 const Community = lazy(() => import("../features/community/Community"));
 const Institutional = lazy(() => import("../features/institutional/Institutional"));
+
+function WhitepaperRedirect() {
+  useEffect(() => {
+    window.location.replace("/pdfs/CL8Y_WHITEPAPER_V2.pdf");
+  }, []);
+  return null;
+}
 
 export function App() {
   return (
@@ -24,6 +31,7 @@ export function App() {
           <Route path="/tokenomics" element={<Tokenomics />} />
           <Route path="/community" element={<Community />} />
           <Route path="/institutional" element={<Institutional />} />
+          <Route path="/cl8y_whitepaper" element={<WhitepaperRedirect />} />
         </Routes>
       </Suspense>
     </BrowserRouter>

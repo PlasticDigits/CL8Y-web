@@ -1,2 +1,5 @@
 /* /index.html 200
 
+# 301 redirect for whitepaper vanity path
+/cl8y_whitepaper /pdfs/CL8Y_WHITEPAPER_V2.pdf 301
+
