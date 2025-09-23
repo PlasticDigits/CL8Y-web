@@ -53,7 +53,7 @@ export default function Hero() {
           aria-hidden
         />
         <img
-          src="/images/logo/CLAY-VECTOR-SMALL.svg"
+          src="/images/logo/CLAY-VECTOR-LARGE.svg"
           alt="CL8Y logo"
           className="mx-auto h-20 w-20 drop-shadow-[0_0_24px_rgba(255,215,0,0.35)]"
         />
