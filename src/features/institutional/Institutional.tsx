@@ -15,7 +15,7 @@ export default function Institutional() {
   ].filter((l) => l.icon.kind === "logo");
 
   return (
-    <section className="p-6">
+    <section className="py-6">
       <SectionHeading title="Institutional" subtitle="Whitepaper, audits, APIs, contact" />
 
       <div className="mt-6 grid gap-6 md:grid-cols-2 lg:grid-cols-3">

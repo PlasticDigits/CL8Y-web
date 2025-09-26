@@ -375,7 +375,19 @@ export default function Home() {
                 </div>
                 <div className="mt-3 h-px w-full bg-gradient-to-r from-amber-300/30 via-amber-200/15 to-amber-400/30" />
                 <p className="mt-3 text-[11px] leading-relaxed text-neutral-300">
-                  CL8Y is a memecoin and a purely speculative digital asset. It is not registered with or approved by any financial regulator and offers no legal, regulatory, or government protections. Participation involves significant risk, including the possible loss of all value. Always conduct your own research and never invest more than you can afford to lose.
+                  CL8Y is a memecoin and a purely speculative digital asset.
+                  It is not registered with or approved by any financial regulator and
+                  offers no legal, regulatory, or government protections. Participation
+                  involves significant risk, including the possible loss of all value.
+                  Always conduct your own research and never invest more than you can afford
+                  to lose. Information on this website is for entertainment purposes only
+                  and does not constitute financial advice. It may contain inaccuracies
+                  or example data not representative of the current state of the token.
+                  The CL8Y team and community does not guarantee the accuracy or completeness of the
+                  information on this website. Nothing on this website should be taken to imply
+                  the CL8Y team or community will perform any work for you or any CL8Y holders,
+                  traders, or investors. CL8Y is an expensive memecoin, similar to buying a fun expensive
+                  Pokemon card.
                 </p>
               </footer>
             </motion.div>

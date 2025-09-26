@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 
 export default function Security() {
   return (
-    <section className="p-6">
+    <section className="py-6">
       <SectionHeading title="Security" subtitle="Guardian Protocol + Bridge" />
       <div className="mt-4">
         <GuardianBridgeScene height={460} autoRotateSpeed={0.6} showLegend />

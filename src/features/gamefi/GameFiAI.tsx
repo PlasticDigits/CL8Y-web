@@ -179,7 +179,7 @@ function SparkleOverlay({ count = 22 }: { count?: number }) {
 export default function GameFiAI() {
   const prefersReducedMotion = useReducedMotion();
   return (
-    <section className="p-6">
+    <section className="py-6">
       <SectionHeading title="GameFi + AI" subtitle="Karnyx — Solar Tigers onchain" />
       <div className="relative mt-2 h-[2px] overflow-hidden rounded-full bg-[linear-gradient(to_right,transparent,rgba(212,175,55,0.25),transparent)]">
         {!prefersReducedMotion && (

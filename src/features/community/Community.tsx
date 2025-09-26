@@ -7,7 +7,7 @@ export default function Community() {
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
   const twitter = linksByCategory.social.find((l) => l.id === "twitter");
   return (
-    <section className="p-6">
+    <section className="py-6">
       <SectionHeading title="Community" subtitle="Telegram and X" />
       <p className="mt-4 text-sm md:text-base font-semibold tracking-wide text-transparent bg-clip-text bg-[linear-gradient(90deg,rgba(212,175,55,0.95),rgba(34,211,238,0.9))] drop-shadow-[0_0_8px_rgba(212,175,55,0.15)]">
         Stay in the loop.
