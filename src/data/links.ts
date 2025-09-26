@@ -264,7 +264,7 @@ export const links: LinkItem[] = [
   {
     id: "coingecko",
     label: "CoinGecko",
-    href: "https://blockspot.io/coin/ceramicliberty-com/", // Note: provided URL duplicates Blockspot
+    href: "https://www.coingecko.com/en/coins/ceramicliberty-com",
     category: "listings",
     icon: { kind: "logo", src: PARTNER.COINGECKO, alt: "CoinGecko" },
     isExternal: true,
