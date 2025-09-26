@@ -374,6 +374,8 @@ export default function Home() {
                   </div>
                 </div>
                 <div className="mt-3 h-px w-full bg-gradient-to-r from-amber-300/30 via-amber-200/15 to-amber-400/30" />
+                <br/>
+                <h2 className="text-sm font-semibold tracking-wide text-text/90">Disclaimer: Important Legal Notice</h2>
                 <p className="mt-3 text-[11px] leading-relaxed text-neutral-300">
                   CL8Y is a memecoin and a purely speculative digital asset.
                   It is not registered with or approved by any financial regulator and
@@ -386,10 +388,22 @@ export default function Home() {
                   The CL8Y team and community does not guarantee the accuracy or completeness of the
                   information on this website. Nothing on this website should be taken to imply
                   the CL8Y team or community will perform any work for you or any CL8Y holders,
-                  traders, or investors. CL8Y is an expensive memecoin, similar to buying a fun expensive
-                  Pokemon card.
+                  traders, or investors. CL8Y is an expensive memecoin, similar to a fun expensive
+                  Pokemon card or collectible Nike shoes.
+                </p>
+                <br/>
+                <h2 className="text-sm font-semibold tracking-wide text-text/90">Law Enforcement Requests</h2>
+                <p className="mt-3 text-[11px] leading-relaxed text-neutral-300">
+                  The operators of this website recognize the jurisdiction and laws
+                  of the United States of America. We will cooperate with legitimate law
+                  enforcement requests from US officers if required by law. Examples
+                  of activities we can assist with include but are not limited to:
+                  banning EVM wallets connected to illicit activities, locking
+                  transfers, and assisting in asset recovery efforts. Any law enforcement
+                  requests should be directed to the CL8Y team at contact@ceramicliberty.com.
                 </p>
               </footer>
+              <br/>
             </motion.div>
           </motion.div>
         </section>

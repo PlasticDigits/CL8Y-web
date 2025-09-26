@@ -134,13 +134,24 @@ export default function Institutional() {
                   href={p.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="group flex items-center justify-center rounded-md border border-charcoal bg-midnight/60 p-3 hover:scale-[1.01] hover:border-aqua/60 transition-transform"
+                  className="group relative overflow-hidden rounded-xl border border-white/10 bg-[linear-gradient(135deg,rgba(123,156,255,0.16),rgba(10,14,24,0.88))] p-5 shadow-[0_0_0_1px_rgba(255,255,255,0.04)] backdrop-blur-md transition-all duration-200 hover:-translate-y-[2px] hover:scale-[1.02] hover:border-aqua/40 hover:shadow-[0_10px_30px_-18px_rgba(82,186,181,0.6)]"
                 >
-                  {p.icon.kind === "logo" ? (
-                    <img src={p.icon.src} alt={p.icon.alt} loading="lazy" className="h-16 w-auto object-contain opacity-90 group-hover:opacity-100" />
-                  ) : (
-                    <span className="text-xs text-text/80">{p.label}</span>
-                  )}
+                  <div className="absolute inset-0 rounded-[inherit] opacity-0 group-hover:opacity-100 group-hover:[box-shadow:inset_0_1px_0_rgba(255,255,255,0.12)] transition-opacity duration-200" aria-hidden="true" />
+                  <div className="relative flex h-20 w-full items-center justify-center">
+                    {p.icon.kind === "logo" ? (
+                      <img
+                        src={p.icon.src}
+                        alt={p.icon.alt}
+                        loading="lazy"
+                        className="h-16 w-auto object-contain opacity-90 transition-all duration-200 group-hover:translate-y-[-6px] group-hover:opacity-60"
+                      />
+                    ) : (
+                      <span className="text-xs text-text/80">{p.label}</span>
+                    )}
+                  </div>
+                  <div className="pointer-events-none absolute inset-x-4 bottom-4 flex flex-col items-center rounded-lg border border-white/20 bg-[linear-gradient(160deg,rgba(10,16,28,0.95),rgba(23,38,69,0.9))] px-3 py-1.5 text-center opacity-0 backdrop-blur-sm transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-hover:[box-shadow:0_12px_32px_-18px_rgba(82,186,181,0.75)] group-hover:[transform:translateY(0)]">
+                    <span className="text-[0.7rem] font-semibold tracking-wide text-white">{p.label}</span>
+                  </div>
                 </a>
               ))}
             </div>
