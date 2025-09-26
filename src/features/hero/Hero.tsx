@@ -19,7 +19,7 @@ export default function Hero() {
   [priceUsd, circulatingSupply]);
 
   const tradingLinks = linksByCategory.trading.filter((l) =>
-    ["tidaldex-bsc", "pancakeswap-dex", "uniswap-dex"].includes(l.id),
+    ["tidaldex-bsc", "ascendex-cex", "pancakeswap-dex", "uniswap-dex", "gdex-coming-soon"].includes(l.id),
   );
   const socialLinks = linksByCategory.social.filter((l) => ["twitter", "telegram"].includes(l.id));
   const primaryTrading =

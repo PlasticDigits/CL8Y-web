@@ -249,7 +249,7 @@ export default function GameFiAI() {
           <Card premium>
             <CardContent>
               <div className="flex items-center gap-4">
-              <div className="rounded-md border border-charcoal bg-midnight/60 p-3 [box-shadow:inset_0_0_56px_rgba(212,175,55,0.08)]">
+              <div className="rounded-md border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] p-3 [box-shadow:inset_0_0_56px_rgba(212,175,55,0.08)]">
                 <img
                   src="/images/clipart/TIGERHUNT.png"
                   alt="TigerHunt clipart"

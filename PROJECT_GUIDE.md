@@ -6,6 +6,7 @@ This document outlines how to build the CL8Y website as a static React app: tool
 
 - ⚡⚡ **TRADING LIVE NOW!**
   - **TidalDex.com (BSC)**: https://tidaldex.com/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
+  - **AscendEX (CEX)**: https://ascendex.com/en-us/cashtrade-spottrading/usdt/cl8y
   - **Uniswap (DEX)**: https://app.uniswap.org/explore/tokens/bnb/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
   - **PancakeSwap (DEX)**: https://pancakeswap.finance/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
   - **GDEX (TerraClassic)**: https://garuda-defi.org/market/terra1kkrwna59jzpvsp7n4l3xdt72rmejcz5d2xaezxl29zvkssn7vvtqmtmemv

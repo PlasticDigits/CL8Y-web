@@ -24,7 +24,7 @@ export default function Institutional() {
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/LOGO_HALO_VARIANT.png" alt="CL8Y Whitepaper" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
               </div>
@@ -51,7 +51,7 @@ export default function Institutional() {
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/SECURITY.png" alt="Security Audit" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
               </div>
@@ -86,7 +86,7 @@ export default function Institutional() {
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/BRIDGE.png" alt="APIs" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
               </div>
@@ -112,22 +112,22 @@ export default function Institutional() {
         </Card>
 
         {/* Partners */}
-        <Card premium>
+        <Card premium className="md:col-span-2 lg:col-span-3">
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/CL8Y_BRIDGE.png" alt="Partners" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
               </div>
               <div>
                 <h3 className="text-lg font-semibold tracking-tight text-text">Partners</h3>
-                <p className="text-xs text-neutral-300">Trading, listings, and data providers</p>
+                <p className="text-xs text-neutral-300">Listings, data providers, and other services</p>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
               {partnerLinks.map((p) => (
                 <a
                   key={p.id}
@@ -137,7 +137,7 @@ export default function Institutional() {
                   className="group flex items-center justify-center rounded-md border border-charcoal bg-midnight/60 p-3 hover:scale-[1.01] hover:border-aqua/60 transition-transform"
                 >
                   {p.icon.kind === "logo" ? (
-                    <img src={p.icon.src} alt={p.icon.alt} loading="lazy" className="h-8 w-auto object-contain opacity-90 group-hover:opacity-100" />
+                    <img src={p.icon.src} alt={p.icon.alt} loading="lazy" className="h-16 w-auto object-contain opacity-90 group-hover:opacity-100" />
                   ) : (
                     <span className="text-xs text-text/80">{p.label}</span>
                   )}
@@ -152,7 +152,7 @@ export default function Institutional() {
           <CardHeader>
             <div className="flex items-center gap-3">
               <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/COMMUNITY.png" alt="Contact" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
               </div>

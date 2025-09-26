@@ -55,6 +55,10 @@ const PARTNER = {
   COINGECKO: "/images/partners/coingecko-5d1523.svg",
   BLOCKSPOT: "/images/partners/blockspot.png",
   DROPSTAB: "/images/partners/dropstab.png",
+  ASCENDEX: "/images/partners/ascendex.png",
+  CZODIAC: "/images/partners/czodiac.png",
+  BSC_PNG: "/images/partners/BSC.png",
+  COINPAPRIKA: "/images/partners/coinpaprika.png",
 } as const;
 
 export const links: LinkItem[] = [
@@ -66,6 +70,14 @@ export const links: LinkItem[] = [
     category: "trading",
     icon: { kind: "logo", src: PARTNER.TIDALDEX, alt: "TidalDex" },
     network: "BSC",
+    isExternal: true,
+  },
+  {
+    id: "ascendex-cex",
+    label: "Trade on AscendEX (CEX)",
+    href: "https://ascendex.com/en-us/cashtrade-spottrading/usdt/cl8y",
+    category: "trading",
+    icon: { kind: "logo", src: PARTNER.ASCENDEX, alt: "AscendEX" },
     isExternal: true,
   },
   {
@@ -148,6 +160,14 @@ export const links: LinkItem[] = [
 
   // Listings
   {
+    id: "czodiac",
+    label: "CZodiac",
+    href: "https://czodiac.com",
+    category: "listings",
+    icon: { kind: "logo", src: PARTNER.CZODIAC, alt: "CZodiac" },
+    isExternal: true,
+  },
+  {
     id: "blockspot",
     label: "Blockspot",
     href: "https://blockspot.io/coin/ceramicliberty-com/",
@@ -156,11 +176,35 @@ export const links: LinkItem[] = [
     isExternal: true,
   },
   {
+    id: "bscscan-token",
+    label: "BSC (BscScan)",
+    href: "https://bscscan.com/token/0x8f452a1fdd388a45e1080992eff051b4dd9048d2",
+    category: "listings",
+    icon: { kind: "logo", src: PARTNER.BSC_PNG, alt: "BSC" },
+    isExternal: true,
+  },
+  {
+    id: "luncscan-terraclassic",
+    label: "LUNCScan (TerraClassic)",
+    href: "https://luncscan.com/tokens/terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3",
+    category: "listings",
+    icon: { kind: "logo", src: PARTNER.TERRA_CLASSIC, alt: "TerraClassic" },
+    isExternal: true,
+  },
+  {
     id: "dropstab",
     label: "DropsTab",
     href: "https://dropstab.com/coins/ceramicliberty-com",
     category: "listings",
     icon: { kind: "logo", src: PARTNER.DROPSTAB, alt: "DropsTab" },
+    isExternal: true,
+  },
+  {
+    id: "coinpaprika",
+    label: "CoinPaprika",
+    href: "https://coinpaprika.com/coin/cl8y-ceramiclibertycom/",
+    category: "listings",
+    icon: { kind: "logo", src: PARTNER.COINPAPRIKA, alt: "CoinPaprika" },
     isExternal: true,
   },
   {

@@ -23,6 +23,7 @@ export default function Home() {
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
   const twitter = linksByCategory.social.find((l) => l.id === "twitter");
   const bscContract = linksByCategory.contracts.find((l) => l.id === "bsc-contract");
+  const luncscan = linksByCategory.listings.find((l) => l.id === "luncscan-terraclassic");
   const whitepaperV2Href = "/cl8y_whitepaper";
   const container = {
     hidden: { opacity: 0 },
@@ -95,7 +96,7 @@ export default function Home() {
                     <div className="mt-6 grid grid-cols-2 gap-4">
                       <div className="flex flex-col items-center justify-start">
                         <div className="rounded-full p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
-                          <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-midnight/60 transition-transform [box-shadow:inset_0_0_56px_rgba(212,175,55,0.10)] hover:scale-[1.02]">
+                          <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] transition-transform [box-shadow:inset_0_0_56px_rgba(212,175,55,0.10)] hover:scale-[1.02]">
                             <img
                               src="/images/clipart/CHART.png"
                               alt="Supply trend and price pressure"
@@ -108,7 +109,7 @@ export default function Home() {
                       </div>
                       <div className="flex flex-col items-center justify-start">
                         <div className="rounded-full p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
-                          <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-midnight/60 transition-transform [box-shadow:inset_0_0_56px_rgba(225,29,116,0.10)] hover:scale-[1.02]">
+                          <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] transition-transform [box-shadow:inset_0_0_56px_rgba(225,29,116,0.10)] hover:scale-[1.02]">
                             <img
                               src="/images/clipart/FIRE.png"
                               alt="Burn mechanism illustration"
@@ -183,17 +184,17 @@ export default function Home() {
                     <div className="grid gap-5">
                       <div className="flex flex-wrap items-center gap-4">
                         <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                             <img src="/images/clipart/SECURITY.png" alt="Security" loading="lazy" className="h-9 w-9 object-contain" />
                           </div>
                         </div>
                         <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                             <img src="/images/clipart/BRIDGE.png" alt="Bridge" loading="lazy" className="h-9 w-9 object-contain" />
                           </div>
                         </div>
                         <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-midnight/60 [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
+                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                             <img src="/images/clipart/LOGO_HALO_VARIANT.png" alt="Brand" loading="lazy" className="h-9 w-9 object-contain" />
                           </div>
                         </div>
@@ -348,6 +349,16 @@ export default function Home() {
                         className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-amber-100 hover:bg-black/50"
                       >
                         BSC Contract
+                      </a>
+                    )}
+                    {luncscan && (
+                      <a
+                        href={luncscan.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-amber-100 hover:bg-black/50"
+                      >
+                        TerraClassic Contract
                       </a>
                     )}
                     {tidaldex && (
