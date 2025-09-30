@@ -9,6 +9,7 @@ import GeckoTerminalChart from "../components/visuals/GeckoTerminalChart";
 const Hero = lazy(() => import("../features/hero/Hero"));
 const Engine = lazy(() => import("../features/engine/Engine"));
 const Security = lazy(() => import("../features/security/Security"));
+const LayeredSecurity = lazy(() => import("../features/security/LayeredSecurity"));
 const Tokenomics = lazy(() => import("../features/tokenomics/Tokenomics"));
 const Community = lazy(() => import("../features/community/Community"));
 const GameFiAI = lazy(() => import("../features/gamefi/GameFiAI"));
@@ -157,6 +158,19 @@ export default function Home() {
           >
             <motion.div variants={item}>
               <Security />
+            </motion.div>
+          </motion.div>
+        </section>
+
+        <section id="layered-security" className="container mx-auto max-w-5xl px-6">
+          <motion.div
+            variants={container}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, margin: "-80px" }}
+          >
+            <motion.div variants={item}>
+              <LayeredSecurity />
             </motion.div>
           </motion.div>
         </section>
