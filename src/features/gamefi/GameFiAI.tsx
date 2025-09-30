@@ -193,7 +193,7 @@ export default function GameFiAI() {
       </div>
 
       <div className="mt-4 flex flex-wrap items-center gap-2">
-        <span className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-amber-200">
+        <span className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-gold">
           <Sparkles className="h-3.5 w-3.5" aria-hidden /> Neon Lore
         </span>
         <span className="inline-flex items-center gap-2 rounded-full border border-cyan-300/40 bg-cyan-300/10 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide text-cyan-200">
@@ -235,7 +235,7 @@ export default function GameFiAI() {
               <div className="mt-4 h-px w-full bg-gradient-to-r from-cyan-400/20 via-amber-300/25 to-pink-500/20 shadow-[0_0_24px_rgba(212,175,55,0.25)_inset]" />
               <ul className="mt-4 grid gap-2 text-sm text-text/85">
                 <li className="flex items-start gap-2">
-                  <span className="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-amber-300 shadow-[0_0_12px_rgba(212,175,55,0.7)]" aria-hidden />
+                  <span className="mt-[6px] inline-block h-1.5 w-1.5 rounded-full bg-gold shadow-[0_0_12px_rgba(212,175,55,0.7)]" aria-hidden />
                   Neon jungles, relic shrines, and aqua-lit outposts — a mythic futurism frontier.
                 </li>
                 <li className="flex items-start gap-2">

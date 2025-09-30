@@ -23,13 +23,13 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const Comp = asChild ? Slot : "button";
     const base =
-      "relative inline-flex items-center justify-center h-12 px-6 rounded-[24px] font-semibold transition-transform duration-200 active:scale-[0.99] focus-visible:outline-none shadow-depth will-change-transform overflow-hidden";
+      "relative inline-flex items-center justify-center h-12 px-6 rounded-[24px] font-semibold transition-all duration-200 active:scale-[0.99] focus-visible:outline-none will-change-transform overflow-hidden";
     const variants = {
       primary:
-        "text-black bg-[linear-gradient(135deg,#FFD700_0%,#D4AF37_45%,#A9812F_100%)] hover:scale-[1.02] hover:shadow-glowGold focus-visible:shadow-focusAqua",
+        "text-black bg-[linear-gradient(135deg,#FFD700_0%,#D4AF37_45%,#A9812F_100%)] shadow-depth hover:scale-[1.02] hover:shadow-[0_0_30px_rgba(212,175,55,0.35),0_8px_30px_rgba(0,0,0,0.4)] focus-visible:shadow-focusAqua",
       secondary:
-        "text-neutral-100 bg-midnight border border-charcoal hover:border-aqua focus-visible:shadow-focusAqua",
-      tertiary: "text-aqua hover:underline bg-transparent",
+        "text-neutral-100 bg-midnight border border-charcoal shadow-[0_4px_12px_rgba(0,0,0,0.3)] hover:border-aqua hover:shadow-[0_0_20px_rgba(34,211,238,0.25),0_4px_12px_rgba(0,0,0,0.3)] hover:scale-[1.01] focus-visible:shadow-focusAqua",
+      tertiary: "text-aqua hover:underline bg-transparent hover:text-aqua/80",
     } as const;
     const rippleIdRef = useRef(0);
     const [ripples, setRipples] = useState<

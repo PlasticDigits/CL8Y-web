@@ -197,24 +197,24 @@ export default function Home() {
                   <CardContent>
                     <div className="grid gap-5">
                       <div className="flex flex-wrap items-center gap-4">
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+                        <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                           <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                             <img src="/images/clipart/SECURITY.png" alt="Security" loading="lazy" className="h-9 w-9 object-contain" />
                           </div>
                         </div>
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+                        <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                           <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                             <img src="/images/clipart/BRIDGE.png" alt="Bridge" loading="lazy" className="h-9 w-9 object-contain" />
                           </div>
                         </div>
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+                        <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                           <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                             <img src="/images/clipart/LOGO_HALO_VARIANT.png" alt="Brand" loading="lazy" className="h-9 w-9 object-contain" />
                           </div>
                         </div>
                       </div>
 
-                      <div className="h-px w-full bg-gradient-to-r from-amber-300/30 via-amber-200/15 to-amber-400/30" />
+                      <div className="h-px w-full bg-gradient-to-r from-gold/30 via-gold/15 to-gold/40" />
 
                       <div>
                         <h4 className="mb-2 text-sm font-semibold tracking-wide text-text/90">Contract Addresses</h4>
@@ -230,7 +230,7 @@ export default function Home() {
                                     href={link.href}
                                     target="_blank"
                                     rel="noreferrer"
-                                    className="mt-0.5 block truncate font-mono text-[11px] text-neutral-300 hover:text-amber-200/90"
+                                    className="mt-0.5 block truncate font-mono text-[11px] text-neutral-300 hover:text-gold/90"
                                     title={raw}
                                   >
                                     {addrShort}
@@ -240,7 +240,7 @@ export default function Home() {
                                   href={link.href}
                                   target="_blank"
                                   rel="noreferrer"
-                                  className="text-[11px] font-semibold uppercase tracking-wide text-amber-200/90 hover:text-amber-100"
+                                  className="text-[11px] font-semibold uppercase tracking-wide text-gold/90 hover:text-gold"
                                 >
                                   View
                                 </a>
@@ -251,7 +251,7 @@ export default function Home() {
                       </div>
 
                       <div className="grid gap-3 md:grid-cols-2">
-                        <div className="rounded-md border border-charcoal bg-midnight/60 p-4">
+                        <div className="grain rounded-md border border-charcoal bg-midnight/60 p-4">
                           <p className="text-xs font-semibold text-text/90">Liquidity</p>
                           <a
                             href={tidaldex?.href ?? "#"}
@@ -263,7 +263,7 @@ export default function Home() {
                             Locked on TidalDex
                           </a>
                         </div>
-                        <div className="rounded-md border border-charcoal bg-midnight/60 p-4">
+                        <div className="grain rounded-md border border-charcoal bg-midnight/60 p-4">
                           <p className="text-xs font-semibold text-text/90">Audit</p>
                           <div className="mt-1 flex flex-wrap gap-2">
                             {linksByCategory.audit.map((a) => (
@@ -272,9 +272,9 @@ export default function Home() {
                                 href={a.href}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-full border border-amber-300/40 bg-amber-300/10 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-amber-200 hover:bg-amber-300/15"
+                                className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-gold hover:bg-gold/15"
                               >
-                                <span className="inline-block h-1.5 w-1.5 rounded-full bg-amber-300" aria-hidden />
+                                <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" aria-hidden />
                                 {a.label}
                               </a>
                             ))}
@@ -326,11 +326,11 @@ export default function Home() {
               <Institutional />
             </motion.div>
             <motion.div variants={item} className="mt-8">
-              <footer className="rounded-md border border-charcoal bg-midnight/60 p-6">
+              <footer className="grain rounded-md border border-charcoal bg-midnight/60 p-6">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <a
                     href="mailto:contact@ceramicliberty.com"
-                    className="text-sm font-semibold text-amber-200 hover:text-amber-100"
+                    className="text-sm font-semibold text-gold hover:text-gold/80"
                   >
                     contact@ceramicliberty.com
                   </a>
@@ -340,7 +340,7 @@ export default function Home() {
                         href={telegram.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-amber-100 hover:bg-black/50"
+                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-gold hover:bg-black/50"
                       >
                         Telegram
                       </a>
@@ -350,7 +350,7 @@ export default function Home() {
                         href={twitter.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-amber-100 hover:bg-black/50"
+                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-gold hover:bg-black/50"
                       >
                         X
                       </a>
@@ -360,7 +360,7 @@ export default function Home() {
                         href={bscContract.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-amber-100 hover:bg-black/50"
+                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-gold hover:bg-black/50"
                       >
                         BSC Contract
                       </a>
@@ -370,7 +370,7 @@ export default function Home() {
                         href={luncscan.href}
                         target="_blank"
                         rel="noreferrer"
-                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-amber-100 hover:bg-black/50"
+                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-gold hover:bg-black/50"
                       >
                         TerraClassic Contract
                       </a>
@@ -387,7 +387,7 @@ export default function Home() {
                     )}
                   </div>
                 </div>
-                <div className="mt-3 h-px w-full bg-gradient-to-r from-amber-300/30 via-amber-200/15 to-amber-400/30" />
+                <div className="mt-3 h-px w-full bg-gradient-to-r from-gold/30 via-gold/15 to-gold/40" />
                 <br/>
                 <h2 className="text-sm font-semibold tracking-wide text-text/90">Disclaimer: Important Legal Notice</h2>
                 <p className="mt-3 text-[11px] leading-relaxed text-neutral-300">

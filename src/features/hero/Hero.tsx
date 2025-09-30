@@ -74,7 +74,7 @@ export default function Hero() {
       <div className="mt-10 grid grid-cols-1 gap-8 font-mono text-neutral-100">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
           {/* Price */}
-          <div className="rounded-lg border border-charcoal/60 bg-[rgba(26,31,43,0.5)] p-4">
+          <div className="grain rounded-lg border border-charcoal bg-[rgba(26,31,43,0.5)] p-4 shadow-[inset_0_0_30px_rgba(212,175,55,0.05)] transition-all hover:shadow-[inset_0_0_30px_rgba(212,175,55,0.08),0_0_20px_rgba(212,175,55,0.1)]">
             <div className="flex items-center justify-center gap-2 text-sm text-neutral-400">
               <span>Price</span>
               {direction ? (
@@ -100,7 +100,7 @@ export default function Hero() {
           </div>
 
           {/* Market Cap */}
-          <div className="rounded-lg border border-charcoal/60 bg-[rgba(26,31,43,0.5)] p-4">
+          <div className="grain rounded-lg border border-charcoal bg-[rgba(26,31,43,0.5)] p-4 shadow-[inset_0_0_30px_rgba(212,175,55,0.05)] transition-all hover:shadow-[inset_0_0_30px_rgba(212,175,55,0.08),0_0_20px_rgba(212,175,55,0.1)]">
             <div className="text-sm text-neutral-400">Market Cap</div>
             <div className="mt-1 text-3xl">
               <AnimatedNumber
@@ -113,7 +113,7 @@ export default function Hero() {
           </div>
 
           {/* Circulating Supply */}
-          <div className="rounded-lg border border-charcoal/60 bg-[rgba(26,31,43,0.5)] p-4">
+          <div className="grain rounded-lg border border-charcoal bg-[rgba(26,31,43,0.5)] p-4 shadow-[inset_0_0_30px_rgba(212,175,55,0.05)] transition-all hover:shadow-[inset_0_0_30px_rgba(212,175,55,0.08),0_0_20px_rgba(212,175,55,0.1)]">
             <div className="text-sm text-neutral-400">Circulating Supply</div>
             <div className="mt-1 text-3xl">
               <AnimatedNumber
@@ -126,7 +126,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div>
+        <div className="grain rounded-lg border border-charcoal bg-[rgba(26,31,43,0.5)] p-4 shadow-[inset_0_0_30px_rgba(34,211,238,0.05)] transition-all hover:shadow-[inset_0_0_30px_rgba(34,211,238,0.08),0_0_30px_rgba(34,211,238,0.15)]">
           <div className="text-sm text-neutral-400">CL8Y Burned</div>
           <div className="text-3xl text-aqua">
             <SmartBurnedNumber

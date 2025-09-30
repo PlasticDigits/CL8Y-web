@@ -23,7 +23,7 @@ export default function Institutional() {
         <Card premium>
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+              <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/LOGO_HALO_VARIANT.png" alt="CL8Y Whitepaper" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
@@ -50,7 +50,7 @@ export default function Institutional() {
         <Card premium>
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+              <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/SECURITY.png" alt="Security Audit" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
@@ -64,16 +64,16 @@ export default function Institutional() {
           <CardContent>
             <ul className="grid gap-2">
               {linksByCategory.audit.map((a) => (
-                <li key={a.id} className="flex items-center justify-between gap-3 rounded-md border border-charcoal bg-midnight/60 px-3 py-2">
+                <li key={a.id} className="grain flex items-center justify-between gap-3 rounded-md border border-charcoal bg-midnight/60 px-3 py-2">
                   <p className="text-sm text-text/90">{a.label}</p>
-                  <a href={a.href} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-wide text-amber-200/90 hover:text-amber-100">
+                  <a href={a.href} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-wide text-gold/90 hover:text-gold">
                     View
                   </a>
                 </li>
               ))}
-              <li className="flex items-center justify-between gap-3 rounded-md border border-charcoal bg-midnight/60 px-3 py-2">
+              <li className="grain flex items-center justify-between gap-3 rounded-md border border-charcoal bg-midnight/60 px-3 py-2">
                 <p className="text-sm text-text/90">Audit (Local PDF)</p>
-                <a href={localAuditPdf} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-wide text-amber-200/90 hover:text-amber-100">
+                <a href={localAuditPdf} target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-wide text-gold/90 hover:text-gold">
                   View
                 </a>
               </li>
@@ -85,7 +85,7 @@ export default function Institutional() {
         <Card premium>
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+              <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/BRIDGE.png" alt="APIs" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
@@ -99,13 +99,13 @@ export default function Institutional() {
           <CardContent>
             <div className="grid gap-2">
               <a
-                className="flex items-center justify-between gap-3 rounded-md border border-charcoal bg-midnight/60 px-3 py-2 hover:border-aqua/60"
+                className="grain flex items-center justify-between gap-3 rounded-md border border-charcoal bg-midnight/60 px-3 py-2 hover:border-aqua/60"
                 href={apiListingUrl}
                 target="_blank"
                 rel="noreferrer"
               >
                 <span className="text-sm text-text/90">api-listing.cl8y.com</span>
-                <span className="text-xs font-semibold uppercase tracking-wide text-amber-200/90">Open</span>
+                <span className="text-xs font-semibold uppercase tracking-wide text-gold/90">Open</span>
               </a>
             </div>
           </CardContent>
@@ -115,7 +115,7 @@ export default function Institutional() {
         <Card premium className="md:col-span-2 lg:col-span-3">
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+              <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/CL8Y_BRIDGE.png" alt="Partners" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>
@@ -162,7 +162,7 @@ export default function Institutional() {
         <Card premium>
           <CardHeader>
             <div className="flex items-center gap-3">
-              <div className="rounded-full p-[2px] bg-gradient-to-br from-amber-300/30 via-amber-200/20 to-amber-400/30">
+              <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
                 <div className="flex h-12 w-12 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_140%_at_50%_0%,rgba(16,21,33,0.96),rgba(2,4,8,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
                   <img src="/images/clipart/COMMUNITY.png" alt="Contact" loading="lazy" className="h-8 w-8 object-contain" />
                 </div>

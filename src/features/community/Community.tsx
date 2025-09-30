@@ -20,7 +20,7 @@ export default function Community() {
             className="group relative gap-3 rounded-[24px] border-transparent bg-midnight/60 px-6 py-3 hover:scale-[1.02] active:scale-[0.99] hover:shadow-glowGold focus-visible:ring-2 focus-visible:ring-amber-300/60"
           >
             <a href={twitter?.href} target="_blank" rel="noreferrer" aria-label="Follow on X">
-              <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full border border-charcoal bg-midnight/60 text-neutral-200 transition-colors group-hover:text-amber-200">
+              <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full border border-charcoal bg-midnight/60 text-neutral-200 transition-colors group-hover:text-gold">
                 <Twitter className="h-4.5 w-4.5" aria-hidden />
               </span>
               <span className="text-left leading-tight">
@@ -42,7 +42,7 @@ export default function Community() {
             className="group relative gap-3 rounded-[24px] border-transparent bg-midnight/60 px-6 py-3 hover:scale-[1.02] active:scale-[0.99] hover:shadow-glowGold focus-visible:ring-2 focus-visible:ring-amber-300/60"
           >
             <a href={telegram?.href} target="_blank" rel="noreferrer" aria-label="Chat on Telegram">
-              <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full border border-charcoal bg-midnight/60 text-neutral-200 transition-colors group-hover:text-amber-200">
+              <span className="relative inline-flex h-7 w-7 items-center justify-center rounded-full border border-charcoal bg-midnight/60 text-neutral-200 transition-colors group-hover:text-gold">
                 <MessageCircle className="h-4.5 w-4.5" aria-hidden />
               </span>
               <span className="text-left leading-tight">
