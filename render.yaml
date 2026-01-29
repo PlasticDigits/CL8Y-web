@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: CL8Y-web
+    runtime: static
+    buildCommand: corepack enable && yarn install && yarn build
+    staticPublishPath: ./dist
+    envVars:
+      - key: NODE_VERSION
+        value: "24"
