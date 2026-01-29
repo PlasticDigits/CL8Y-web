@@ -11,7 +11,7 @@ const Institutional = lazy(() => import("../features/institutional/Institutional
 
 function WhitepaperRedirect() {
   useEffect(() => {
-    window.location.replace("/pdfs/CL8Y_WHITEPAPER_V2.pdf");
+    window.location.replace("/pdfs/CL8Y_WHITEPAPER_V3.pdf");
   }, []);
   return null;
 }

@@ -4,8 +4,9 @@ import { Button } from "../../components/ui/Button";
 import { linksByCategory } from "../../data/links";
 
 export default function Institutional() {
-  const whitepaperPrimary = "/cl8y_whitepaper";
-  const whitepaperLegacy = "/pdfs/CL8Y-Whitepaper.pdf";
+  const whitepaperV3 = "/cl8y_whitepaper";
+  const whitepaperV2 = "/pdfs/CL8Y_WHITEPAPER_V2.pdf";
+  const whitepaperV1 = "/pdfs/CL8Y-Whitepaper.pdf";
   const localAuditPdf = "/pdfs/audit.pdf";
   const apiListingUrl = (import.meta as any).env?.VITE_CL8Y_API_LISTING_URL ?? "https://api-listing.cl8y.com";
 
@@ -36,10 +37,13 @@ export default function Institutional() {
           </CardHeader>
           <CardContent>
             <div className="flex flex-wrap gap-3">
-              <a href={whitepaperPrimary} target="_blank" rel="noreferrer">
-                <Button>Read V2</Button>
+              <a href={whitepaperV3} target="_blank" rel="noreferrer">
+                <Button>Read V3</Button>
               </a>
-              <a href={whitepaperLegacy} target="_blank" rel="noreferrer">
+              <a href={whitepaperV2} target="_blank" rel="noreferrer">
+                <Button variant="secondary">Legacy V2 (PDF)</Button>
+              </a>
+              <a href={whitepaperV2} target="_blank" rel="noreferrer">
                 <Button variant="secondary">Legacy V1 (PDF)</Button>
               </a>
             </div>
