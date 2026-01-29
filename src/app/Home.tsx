@@ -85,13 +85,14 @@ export default function Home() {
               <motion.div variants={item}>
                 <Card premium className="h-full">
                   <CardHeader>
-                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">Autopilot Scarcity Loop</h3>
+                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">UST1 Burn Economics</h3>
                   </CardHeader>
                   <CardContent>
                     <p className="max-w-[68ch] text-sm leading-relaxed text-text/85">
-                      Trading activity continuously funds automated buybacks, and purchased tokens are burned. This
-                      tight feedback loop <span className="font-semibold text-text">shrinks circulating supply</span> over time,
-                      reinforcing scarcity pressure on price while requiring no manual intervention.
+                      All DeFi activity across the CL8Y ecosystem burns fees as CL8Y, the Defi Ecosystem Token. 
+                      DEX trades, perpetual futures, lending fees, and GameFi transactions all contribute to{" "}
+                      <span className="font-semibold text-text">permanent CL8Y burns</span>, creating sustainable 
+                      deflationary pressure while incentivizing ecosystem participation.
                     </p>
                     <div className="mt-5 h-px w-full bg-gradient-to-r from-cyan-400/20 via-amber-300/20 to-pink-500/20" />
                     <div className="mt-6 grid grid-cols-2 gap-4">
@@ -100,26 +101,26 @@ export default function Home() {
                           <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] transition-transform [box-shadow:inset_0_0_56px_rgba(212,175,55,0.10)] hover:scale-[1.02]">
                             <img
                               src="/images/clipart/CHART.png"
-                              alt="Supply trend and price pressure"
+                              alt="DeFi ecosystem growth"
                               loading="lazy"
                               className="h-20 w-20 object-contain drop-shadow-md"
                             />
                           </div>
                         </div>
-                        <span className="mt-2 text-center text-xs text-text/70">Demand pressure</span>
+                        <span className="mt-2 text-center text-xs text-text/70">DeFi Activity</span>
                       </div>
                       <div className="flex flex-col items-center justify-start">
                         <div className="rounded-full p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
                           <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] transition-transform [box-shadow:inset_0_0_56px_rgba(225,29,116,0.10)] hover:scale-[1.02]">
                             <img
                               src="/images/clipart/FIRE.png"
-                              alt="Burn mechanism illustration"
+                              alt="CL8Y burn mechanism"
                               loading="lazy"
                               className="h-20 w-20 object-contain drop-shadow-md"
                             />
                           </div>
                         </div>
-                        <span className="mt-2 text-center text-xs text-text/70">Burns</span>
+                        <span className="mt-2 text-center text-xs text-text/70">CL8Y Burns</span>
                       </div>
                     </div>
                   </CardContent>
@@ -128,20 +129,20 @@ export default function Home() {
               <motion.div variants={item}>
                 <Card premium className="h-full group">
                   <CardHeader>
-                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">Autoscarcity Loop Diagram</h3>
+                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">Ecosystem Flow</h3>
                   </CardHeader>
                   <CardContent>
                     <div className="mx-auto w-fit rounded p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
                       <div className="rounded border border-charcoal bg-midnight/60 p-3 transition-transform group-hover:scale-[1.01] [box-shadow:inset_0_0_56px_rgba(212,175,55,0.06)]">
                         <img
                           src="/images/AUTOSCARCITY_LOOP.png"
-                          alt="CL8Y Autopilot Scarcity Loop diagram"
+                          alt="CL8Y Ecosystem Flow diagram"
                           loading="lazy"
                           className="mx-auto h-64 w-auto object-contain"
                         />
                       </div>
                     </div>
-                    <p className="mt-3 text-center text-xs text-text/70">Trade → Buyback → Burn → Supply Shrink</p>
+                    <p className="mt-3 text-center text-xs text-text/70">Bridge → Trade → Burn → Ecosystem Growth</p>
                   </CardContent>
                 </Card>
               </motion.div>
@@ -391,19 +392,19 @@ export default function Home() {
                 <br/>
                 <h2 className="text-sm font-semibold tracking-wide text-text/90">Disclaimer: Important Legal Notice</h2>
                 <p className="mt-3 text-[11px] leading-relaxed text-neutral-300">
-                  CL8Y is a memecoin and a purely speculative digital asset.
-                  It is not registered with or approved by any financial regulator and
-                  offers no legal, regulatory, or government protections. Participation
-                  involves significant risk, including the possible loss of all value.
-                  Always conduct your own research and never invest more than you can afford
-                  to lose. Information on this website is for entertainment purposes only
-                  and does not constitute financial advice. It may contain inaccuracies
-                  or example data not representative of the current state of the token.
-                  The CL8Y team and community does not guarantee the accuracy or completeness of the
-                  information on this website. Nothing on this website should be taken to imply
-                  the CL8Y team or community will perform any work for you or any CL8Y holders,
-                  traders, or investors. CL8Y is an expensive memecoin, similar to a fun expensive
-                  Pokemon card or collectible Nike shoes.
+                  CL8Y is a blockchain ecosystem providing cross-chain infrastructure, 
+                  decentralized finance products, and GameFi experiences. Digital assets 
+                  in this ecosystem (including CL8Y, USTR, and UST1) are not registered 
+                  with or approved by any financial regulator and offer no legal, regulatory, 
+                  or government protections. Participation involves significant risk, including 
+                  the possible loss of all value. Always conduct your own research and never 
+                  invest more than you can afford to lose. Information on this website is for 
+                  informational purposes only and does not constitute financial advice. It may 
+                  contain inaccuracies or example data not representative of the current state 
+                  of the ecosystem. The CL8Y team and community does not guarantee the accuracy 
+                  or completeness of the information on this website. Nothing on this website 
+                  should be taken to imply the CL8Y team or community will perform any work 
+                  for you or any token holders, traders, or investors.
                 </p>
                 <br/>
                 <h2 className="text-sm font-semibold tracking-wide text-text/90">Law Enforcement Requests</h2>

@@ -5,7 +5,7 @@ import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 export default function Security() {
   return (
     <section className="py-6">
-      <SectionHeading title="Security" subtitle="Guardian Protocol + Bridge" />
+      <SectionHeading title="CL8Y Bridge" subtitle="Cross-chain infrastructure with Canceler Network security" />
       <div className="mt-4">
         <GuardianBridgeScene height={460} autoRotateSpeed={0.6} showLegend />
       </div>
@@ -14,9 +14,9 @@ export default function Security() {
           <CardHeader>
             <div className="flex items-start justify-between">
               <div>
-                <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-0.5 text-[11px] tracking-wide uppercase text-text/70">Guardian Protocol</span>
+                <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-0.5 text-[11px] tracking-wide uppercase text-text/70">Canceler Network</span>
                 <h3 className="mt-2 text-xl md:text-2xl font-semibold tracking-tight bg-gradient-to-r from-amber-300 to-cyan-300 bg-clip-text text-transparent">
-                  Bridge Security
+                  Accountable Speed Design
                 </h3>
               </div>
             </div>
@@ -38,37 +38,34 @@ export default function Security() {
               </div>
               <div className="w-full md:w-1/2 text-sm leading-relaxed text-text/80">
                 <div className="mb-3 flex flex-wrap gap-2">
-                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">keccak256 hashing</span>
-                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">operator-only approvals</span>
-                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">nonce replay protection</span>
-                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">time‑delayed finality</span>
-                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">Guardian cancel & vote</span>
+                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">single operator speed</span>
+                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">opBNB cancelers</span>
+                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">5-min delay window</span>
+                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">Raspberry Pi nodes</span>
+                  <span className="inline-flex items-center rounded-full border border-charcoal bg-midnight/60 px-2.5 py-1 text-[11px] text-text/70">permissionless monitoring</span>
                 </div>
                 <p>
-                  CL8Y’s bridge defends withdrawals with a
+                  CL8Y Bridge uses an unconventional hybrid design: a
                   {" "}
-                  <span className="text-aqua font-medium">cross‑chain integrity check</span>
-                  : deposits on the source chain produce a
+                  <span className="text-aqua font-medium">single centralized operator</span>
                   {" "}
-                  <span className="text-aqua font-medium">keccak256‑derived hash</span>
+                  for fast transaction approval, secured by a
                   {" "}
-                  over the transfer parameters, making forged on‑chain hashes infeasible. Withdraw approvals can be submitted only by an
+                  <span className="text-aqua font-medium">decentralized network of cancelers</span>
                   {" "}
-                  <span className="text-aqua font-medium">approved bridge operator</span>
+                  on opBNB. Approvals enter a mandatory
                   {" "}
-                  (initially a controlled wallet, later CL8Y nodes), which deterministically recomputes the same hash; any mismatch is rejected and a
+                  <span className="text-aqua font-medium">5-minute delay window</span>
                   {" "}
-                  <span className="text-aqua font-medium">per‑transfer nonce</span>
+                  during which independent canceler nodes verify each approval against the source chain. Valid transfers execute after the delay; fraudulent ones are cancelled. Running on
                   {" "}
-                  prevents replays. Finalization is
+                  <span className="text-aqua font-medium">opBNB</span>
                   {" "}
-                  <span className="text-aqua font-medium">time‑delayed</span>
+                  means gas costs are fractions of a cent, and a
                   {" "}
-                  (e.g., a few minutes per chain) so network
+                  <span className="text-aqua font-medium">Raspberry Pi</span>
                   {" "}
-                  <span className="text-aqua font-medium">Guardians</span>
-                  {" "}
-                  can detect and cancel bad approvals, including from malicious actors or chain reorgs, with cancellations governed by on‑chain voting on opBNB.
+                  is sufficient to run a canceler node — only one honest canceler needs to catch a bad approval.
                 </p>
               </div>
             </div>

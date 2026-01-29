@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 export default function LayeredSecurity() {
   return (
     <section className="py-6">
-      <SectionHeading title="Layered Security" subtitle="Guardian Protocol monitoring and protection" />
+      <SectionHeading title="Progressive Decentralization" subtitle="Multi-layer security with DAO governance roadmap" />
 
       <div className="mt-6">
         <Card premium>

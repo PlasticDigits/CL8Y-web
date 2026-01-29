@@ -1,13 +1,13 @@
-### CL8Y Style Guide — “Memetic Elegance”
+### CL8Y Style Guide — “Institutional Elegance”
 
-This guide defines the visual language and interaction rules for CL8Y across product, web, and brand surfaces. It balances meme-native energy with institutional credibility.
+This guide defines the visual language and interaction rules for CL8Y across product, web, and brand surfaces. It balances cross-chain infrastructure credibility with innovative DeFi design.
 
-Tagline: The Expensive Memecoin.
+Tagline: Cross-Chain Bridge • DeFi • GameFi
 
 ## 1) Brand Pillars
 
-- **Scarcity-as-a-Feature**: 3M hard cap, automated burns, visible deflation.
-- **Luxury + Viral**: Sovereign gold elegance with kinetic, memetic spark.
+- **Cross-Chain Infrastructure**: Secure bridge connecting EVM chains with Terra Classic.
+- **Luxury + Innovation**: Sovereign gold elegance with clean, professional design.
 - **Credible-by-Design**: Clean typography, clear data, transparent mechanics.
 
 ## 2) Color System
@@ -154,7 +154,7 @@ Example anatomy:
 
 ### Tagline Lockup
 
-- "The Expensive Memecoin." set in Space Grotesk Bold, gold on black, with subtle aqua or ember highlight.
+- "Cross-Chain Bridge • DeFi • GameFi" set in Space Grotesk Bold, gold on black, with subtle aqua or ember highlight.
 
 ## 8) Imagery Direction
 
@@ -258,8 +258,8 @@ Expose tokens as CSS variables for frameworks like Tailwind or component librari
 
 Examples:
 
-- Headline: "The Expensive Memecoin."
-- Subhead: "Scarcity on autopilot. 3M cap. Zero tax. Automated burns. Guardian-secured bridge."
+- Headline: "CL8Y Ecosystem"
+- Subhead: "Cross-Chain Bridge • DeFi • GameFi — Secure. Transparent. Decentralized."
 
 ## 12) Section Cues (for designers/devs)
 

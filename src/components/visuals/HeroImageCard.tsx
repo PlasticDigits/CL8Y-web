@@ -9,8 +9,8 @@ type HeroImageCardProps = {
 
 export default function HeroImageCard({
   src = "/images/HERO.png",
-  alt = "CL8Y — The Expensive Memecoin",
-  caption = "The Expensive Memecoin.",
+  alt = "CL8Y — Cross-Chain Infrastructure and DeFi",
+  caption = "Building the Future of DeFi.",
 }: HeroImageCardProps) {
   const prefersReducedMotion = useReducedMotion();
   return (
@@ -44,12 +44,12 @@ export default function HeroImageCard({
             {caption}
           </h3>
           <p className="mt-1 text-base text-neutral-100">
-            Scarcity on autopilot — 3M cap • Zero tax • Automated burns
+            Cross-Chain Bridge • DeFi Suite • GameFi Platform
           </p>
           <p className="mt-1 text-sm leading-snug text-neutral-300/95">
-            Unlike many burning memecoins, CL8Y takes no trading tax. We route DeFi flows and
-            GameFi rewards through a guardian‑bridged treasury to lock LP and burn supply. This
-            deepens liquidity over time and reinforces price stability.
+            CL8Y is a comprehensive blockchain ecosystem connecting EVM chains with Terra Classic. 
+            All DeFi activity burns fees as CL8Y, the Defi Ecosystem Token, creating 
+            sustainable deflationary pressure while powering the DEX, perpetuals, and lending protocols.
           </p>
           <motion.div
             className="mt-3"

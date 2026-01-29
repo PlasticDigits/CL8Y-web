@@ -180,7 +180,7 @@ export default function GameFiAI() {
   const prefersReducedMotion = useReducedMotion();
   return (
     <section className="py-6">
-      <SectionHeading title="GameFi + AI" subtitle="Karnyx — Solar Tigers onchain" />
+      <SectionHeading title="PROTOCASS GameFi" subtitle="Karnyx — Solar Tigers onchain" />
       <div className="relative mt-2 h-[2px] overflow-hidden rounded-full bg-[linear-gradient(to_right,transparent,rgba(212,175,55,0.25),transparent)]">
         {!prefersReducedMotion && (
           <motion.span

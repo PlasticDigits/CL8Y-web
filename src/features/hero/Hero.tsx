@@ -19,7 +19,7 @@ export default function Hero() {
   [priceUsd, circulatingSupply]);
 
   const tradingLinks = linksByCategory.trading.filter((l) =>
-    ["tidaldex-bsc", "ascendex-cex", "pancakeswap-dex", "uniswap-dex", "gdex-coming-soon"].includes(l.id),
+    ["tidaldex-bsc", "pancakeswap-dex", "uniswap-dex", "gdex-coming-soon"].includes(l.id),
   );
   const socialLinks = linksByCategory.social.filter((l) => ["twitter", "telegram"].includes(l.id));
   const primaryTrading =
@@ -59,17 +59,20 @@ export default function Hero() {
         />
       </div>
       <motion.h1
-        className="bg-gradient-to-r from-[#FFD700] via-gold to-[#A9812F] bg-clip-text font-display text-6xl font-bold text-transparent"
+        className="bg-gradient-to-r from-[#FFD700] via-gold to-[#A9812F] bg-clip-text font-display text-5xl md:text-6xl font-bold text-transparent"
         animate={prefersReducedMotion ? undefined : { backgroundPositionX: ["0%", "100%", "0%"] }}
         transition={
           prefersReducedMotion ? undefined : { duration: 6, repeat: Infinity, ease: "linear" }
         }
         style={{ backgroundSize: "200% 100%" }}
       >
-        CL8Y. The Expensive Memecoin.
+        CL8Y Ecosystem
       </motion.h1>
-      <p className="mt-6 max-w-3xl text-lg text-neutral-300">
-        3M cap • Zero tax • Automated burns • Guardian-secured bridge
+      <p className="mt-4 text-xl md:text-2xl font-medium text-neutral-200">
+        Cross-Chain Bridge • DeFi • GameFi
+      </p>
+      <p className="mt-3 max-w-3xl text-base text-neutral-400 italic">
+        Secure. Transparent. Decentralized.
       </p>
       <div className="mt-10 grid grid-cols-1 gap-8 font-mono text-neutral-100">
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">

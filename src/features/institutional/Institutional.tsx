@@ -31,7 +31,7 @@ export default function Institutional() {
               </div>
               <div>
                 <h3 className="text-lg font-semibold tracking-tight text-text">Whitepaper</h3>
-                <p className="text-xs text-neutral-300">Strategic overview and token mechanics</p>
+                <p className="text-xs text-neutral-300">Cross-chain bridge, DeFi, and GameFi ecosystem</p>
               </div>
             </div>
           </CardHeader>
