@@ -65,6 +65,7 @@ const PARTNER = {
   COINBASE: "/images/partners/coinbase.png",
   DEXSCREENER: "/images/partners/dexscreener.png",
   COINCARP: "/images/partners/coincarp.png",
+  BATTLE_FORCE_CL8Y: "/images/partners/battle-force-cl8y.jpg",
 } as const;
 
 export const links: LinkItem[] = [
@@ -267,6 +268,14 @@ export const links: LinkItem[] = [
     href: "https://www.coingecko.com/en/coins/ceramicliberty-com",
     category: "listings",
     icon: { kind: "logo", src: PARTNER.COINGECKO, alt: "CoinGecko" },
+    isExternal: true,
+  },
+  {
+    id: "battle-force-cl8y",
+    label: "Battle Force CL8Y",
+    href: "https://x.com/BatteForceLunc",
+    category: "listings",
+    icon: { kind: "logo", src: PARTNER.BATTLE_FORCE_CL8Y, alt: "Battle Force CL8Y" },
     isExternal: true,
   },
 
