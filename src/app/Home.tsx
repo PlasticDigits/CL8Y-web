@@ -24,6 +24,7 @@ export default function Home() {
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
   const twitter = linksByCategory.social.find((l) => l.id === "twitter");
   const bscContract = linksByCategory.contracts.find((l) => l.id === "bsc-contract");
+  const megaethContract = linksByCategory.contracts.find((l) => l.id === "megaeth-contract");
   const luncscan = linksByCategory.listings.find((l) => l.id === "luncscan-terraclassic");
   const whitepaperV2Href = "/cl8y_whitepaper";
   const container = {
@@ -364,6 +365,16 @@ export default function Home() {
                         className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-gold hover:bg-black/50"
                       >
                         BSC Contract
+                      </a>
+                    )}
+                    {megaethContract && (
+                      <a
+                        href={megaethContract.href}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="inline-flex items-center rounded-md border border-charcoal bg-black/40 px-3 py-1.5 text-xs font-semibold text-neutral-200 hover:text-gold hover:bg-black/50"
+                      >
+                        MegaETH Contract
                       </a>
                     )}
                     {luncscan && (

@@ -9,7 +9,7 @@ export type LinkCategory =
   | "audit"
   | "comingSoon";
 
-export type SupportedNetwork = "BSC" | "TerraClassic";
+export type SupportedNetwork = "BSC" | "TerraClassic" | "MegaETH";
 
 export type LogoIcon = {
   kind: "logo";
@@ -135,6 +135,16 @@ export const links: LinkItem[] = [
     network: "BSC",
     isExternal: true,
     tags: ["0x8F452a1fdd388A45e1080992eFF051b4dd9048d2"],
+  },
+  {
+    id: "megaeth-contract",
+    label: "MegaETH Contract Address",
+    href: "https://mega.etherscan.io/token/0xfBAa45A537cF07dC768c469FfaC4e88208B0098D",
+    category: "contracts",
+    icon: { kind: "lucide", name: "ExternalLink" },
+    network: "MegaETH",
+    isExternal: true,
+    tags: ["0xfBAa45A537cF07dC768c469FfaC4e88208B0098D"],
   },
 
   // Chart
