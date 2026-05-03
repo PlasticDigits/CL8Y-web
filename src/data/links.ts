@@ -47,7 +47,6 @@ export interface LinkItem {
 // Helper constants for partner logo paths (served from /public)
 const PARTNER = {
   TIDALDEX: "/images/partners/TidalDex.svg",
-  UNISWAP: "/images/partners/Uniswap.png",
   PANCAKESWAP: "/images/partners/pancakeswap.png",
   GDEX: "/images/partners/GDEX-logo.png",
   TERRA_CLASSIC: "/images/partners/TerraClassic.png",
@@ -66,6 +65,7 @@ const PARTNER = {
   DEXSCREENER: "/images/partners/dexscreener.png",
   COINCARP: "/images/partners/coincarp.png",
   BATTLE_FORCE_CL8Y: "/images/partners/battle-force-cl8y.jpg",
+  KUMBAYA: "/images/partners/kumbaya.png",
 } as const;
 
 export const links: LinkItem[] = [
@@ -88,15 +88,6 @@ export const links: LinkItem[] = [
     isExternal: true,
   },
   {
-    id: "uniswap-dex",
-    label: "Trade on Uniswap (DEX)",
-    href: "https://app.uniswap.org/explore/tokens/bnb/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.UNISWAP, alt: "Uniswap" },
-    network: "BSC",
-    isExternal: true,
-  },
-  {
     id: "pancakeswap-dex",
     label: "Trade on PancakeSwap (DEX)",
     href: "https://pancakeswap.finance/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2",
@@ -112,6 +103,33 @@ export const links: LinkItem[] = [
     category: "trading",
     icon: { kind: "logo", src: PARTNER.GDEX, alt: "GDEX" },
     network: "TerraClassic",
+    isExternal: true,
+  },
+  {
+    id: "sir-long-2x-megaeth",
+    label: "SIR (Long 2x MegaETH)",
+    href: "https://app.sir.trading/leverage?chainid=4326&vault=17",
+    category: "trading",
+    icon: { kind: "lucide", name: "ExternalLink" },
+    network: "MegaETH",
+    isExternal: true,
+  },
+  {
+    id: "sir-short-2x-megaeth",
+    label: "SIR (Short 2x MegaETH)",
+    href: "https://app.sir.trading/leverage?chainid=4326&vault=18",
+    category: "trading",
+    icon: { kind: "lucide", name: "ExternalLink" },
+    network: "MegaETH",
+    isExternal: true,
+  },
+  {
+    id: "kumbaya-megaeth",
+    label: "Trade on Kumbaya (MegaETH)",
+    href: "https://www.kumbaya.xyz/#/swap?outputCurrency=0xfBAa45A537cF07dC768c469FfaC4e88208B0098D&confirmed=1",
+    category: "trading",
+    icon: { kind: "logo", src: PARTNER.KUMBAYA, alt: "Kumbaya" },
+    network: "MegaETH",
     isExternal: true,
   },
 
