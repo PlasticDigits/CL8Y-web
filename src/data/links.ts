@@ -64,8 +64,9 @@ const PARTNER = {
   COINBASE: "/images/partners/coinbase.png",
   DEXSCREENER: "/images/partners/dexscreener.png",
   COINCARP: "/images/partners/coincarp.png",
-  BATTLE_FORCE_CL8Y: "/images/partners/battle-force-cl8y.jpg",
+  BATTLE_FORCE_CL8Y: "/images/partners/battle-force-cl8y.png",
   KUMBAYA: "/images/partners/kumbaya.png",
+  SIR_TRADING: "/images/partners/sirtrading.png",
 } as const;
 
 export const links: LinkItem[] = [
@@ -120,6 +121,15 @@ export const links: LinkItem[] = [
     href: "https://app.sir.trading/leverage?chainid=4326&vault=18",
     category: "trading",
     icon: { kind: "lucide", name: "ExternalLink" },
+    network: "MegaETH",
+    isExternal: true,
+  },
+  {
+    id: "sir-liquidity-megaeth",
+    label: "Trade on SIR (perps DEX, MegaETH)",
+    href: "https://app.sir.trading/liquidity?chainid=4326&vault=17",
+    category: "trading",
+    icon: { kind: "logo", src: PARTNER.SIR_TRADING, alt: "SIR" },
     network: "MegaETH",
     isExternal: true,
   },

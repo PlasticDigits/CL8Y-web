@@ -24,6 +24,7 @@ export default function Hero() {
       "pancakeswap-dex",
       "gdex-coming-soon",
       "kumbaya-megaeth",
+      "sir-liquidity-megaeth",
       "sir-long-2x-megaeth",
       "sir-short-2x-megaeth",
     ].includes(l.id),
