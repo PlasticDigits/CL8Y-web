@@ -4,6 +4,33 @@ services:
     runtime: static
     buildCommand: yarn install --immutable && yarn build
     staticPublishPath: ./dist
+    # Serve prerendered directory indexes (see public/_redirects). Without these,
+    # /blog/:slug hits SPA /* fallback and crawlers see homepage OG tags only.
+    routes:
+      - type: rewrite
+        source: /blog/*
+        destination: /blog/*/index.html
+      - type: rewrite
+        source: /blog
+        destination: /blog/index.html
+      - type: rewrite
+        source: /engine
+        destination: /engine/index.html
+      - type: rewrite
+        source: /security
+        destination: /security/index.html
+      - type: rewrite
+        source: /tokenomics
+        destination: /tokenomics/index.html
+      - type: rewrite
+        source: /community
+        destination: /community/index.html
+      - type: rewrite
+        source: /institutional
+        destination: /institutional/index.html
+      - type: rewrite
+        source: /*
+        destination: /index.html
     envVars:
       # Install runs only via buildCommand (avoids duplicate install when false).
       - key: SKIP_INSTALL_DEPS

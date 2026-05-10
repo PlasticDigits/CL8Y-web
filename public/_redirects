@@ -1,5 +1,14 @@
+# Prerendered HTML must win over SPA fallback (order matters).
+/blog/* /blog/:splat/index.html 200
+/blog /blog/index.html 200
+/engine /engine/index.html 200
+/security /security/index.html 200
+/tokenomics /tokenomics/index.html 200
+/community /community/index.html 200
+/institutional /institutional/index.html 200
+
+# SPA fallback for client-only routes
 /* /index.html 200
 
 # 301 redirect for whitepaper vanity path
 /cl8y_whitepaper /pdfs/CL8Y_WHITEPAPER_V3.pdf 301
-

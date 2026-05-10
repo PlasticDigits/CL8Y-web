@@ -1,4 +1,5 @@
 import { Helmet } from "react-helmet-async";
+import { toAbsoluteUrl } from "../lib/siteOrigin";
 
 export type SEOProps = {
   title: string;
@@ -13,14 +14,6 @@ export type SEOProps = {
   noindex?: boolean;
 };
 
-function absoluteUrl(origin: string, assetPath: string): string {
-  if (assetPath.startsWith("http://") || assetPath.startsWith("https://")) {
-    return assetPath;
-  }
-  const pathPart = assetPath.startsWith("/") ? assetPath : `/${assetPath}`;
-  return origin ? `${origin}${pathPart}` : pathPart;
-}
-
 export function SEO({
   title,
   description,
@@ -32,13 +25,8 @@ export function SEO({
   articleAuthor,
   noindex,
 }: SEOProps) {
-  const configuredOrigin =
-    typeof import.meta.env.VITE_SITE_ORIGIN === "string"
-      ? import.meta.env.VITE_SITE_ORIGIN.replace(/\/$/, "")
-      : "";
-  const origin = configuredOrigin || (typeof window !== "undefined" ? window.location.origin : "");
-  const canonical = absoluteUrl(origin, canonicalPath);
-  const ogImageAbsolute = ogImage ? absoluteUrl(origin, ogImage) : undefined;
+  const canonical = toAbsoluteUrl(canonicalPath);
+  const ogImageAbsolute = ogImage ? toAbsoluteUrl(ogImage) : undefined;
 
   return (
     <Helmet defer={false} prioritizeSeoTags>
