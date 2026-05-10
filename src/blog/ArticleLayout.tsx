@@ -1,7 +1,12 @@
 import type { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 import { linksByCategory } from "../data/links";
-import { CL8Y_BRIDGE_URL, CL8Y_MARKETING_HOME, USTR_CMM_URL } from "../lib/siteUrls";
+import {
+  CL8Y_BRIDGE_URL,
+  CL8Y_MARKETING_HOME,
+  USTR_CMM_URL,
+  YIELDOMEGA_URL,
+} from "../lib/siteUrls";
 import type { BlogPostMeta } from "./blogIndex";
 import { BlogBreadcrumb } from "./BlogBreadcrumb";
 
@@ -173,6 +178,16 @@ export function ArticleLayout({
                       className="text-aqua decoration-aqua/40 hover:text-gold underline underline-offset-4 transition hover:decoration-gold/50"
                     >
                       CL8Y Bridge
+                    </a>
+                  </li>
+                  <li>
+                    <a
+                      href={YIELDOMEGA_URL}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-aqua decoration-aqua/40 hover:text-gold underline underline-offset-4 transition hover:decoration-gold/50"
+                    >
+                      yieldomega.com
                     </a>
                   </li>
                   <li>
