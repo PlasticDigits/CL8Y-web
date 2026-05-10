@@ -5,8 +5,12 @@ services:
     buildCommand: yarn install --immutable && yarn build
     staticPublishPath: ./dist
     envVars:
+      # Install runs only via buildCommand (avoids duplicate install when false).
       - key: SKIP_INSTALL_DEPS
         value: "true"
+      # Required for absolute og:url / og:image / canonical URLs in prerendered HTML.
+      - key: VITE_SITE_ORIGIN
+        value: https://cl8y.com
       - key: NODE_OPTIONS
         value: "--max-old-space-size=6144"
       - key: NODE_VERSION

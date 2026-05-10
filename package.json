@@ -7,7 +7,7 @@
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-rss.mjs",
+    "build": "vite build && node scripts/generate-rss.mjs && node scripts/verify-prerender-meta.mjs",
     "preview": "vite preview --port 5173",
     "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
     "format": "prettier --write .",
@@ -70,6 +70,10 @@
     "typescript": "^5.9.2",
     "vite": "^7.1.6",
     "vite-plugin-prerender": "^1.0.8"
+  },
+  "resolutions": {
+    "puppeteer": "^24.15.0",
+    "puppeteer-core": "^24.15.0"
   },
   "overrides": {
     "@prerenderer/renderer-puppeteer": {
