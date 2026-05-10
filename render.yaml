@@ -5,5 +5,7 @@ services:
     buildCommand: yarn install && yarn build
     staticPublishPath: ./dist
     envVars:
+      - key: SKIP_INSTALL_DEPS
+        value: "true"
       - key: NODE_VERSION
         value: "24"
