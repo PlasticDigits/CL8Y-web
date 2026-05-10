@@ -2,13 +2,12 @@ services:
   - type: web
     name: CL8Y-web
     runtime: static
-    buildCommand: yarn install && yarn build
+    buildCommand: yarn install --immutable && yarn build
     staticPublishPath: ./dist
     envVars:
       - key: SKIP_INSTALL_DEPS
         value: "true"
-      # Puppeteer/Chromium often exceeds Render static-build memory; yields exit 1 with little log output.
-      - key: SKIP_PRERENDER
-        value: "true"
+      - key: NODE_OPTIONS
+        value: "--max-old-space-size=6144"
       - key: NODE_VERSION
         value: "24"

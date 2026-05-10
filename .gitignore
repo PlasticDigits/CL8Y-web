@@ -1,6 +1,7 @@
 dist/
 out/
 node_modules/
+.yarn/install-state.gz
 .env
 .env.local
 .env.development.local

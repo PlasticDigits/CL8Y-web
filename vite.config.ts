@@ -49,15 +49,6 @@ function getBlogPrerenderRoutes(): string[] {
 
 const prerenderRoutes = [...STATIC_PRERENDER_ROUTES, ...getBlogPrerenderRoutes()];
 
-function envTruthy(name: string): boolean {
-  const v = process.env[name];
-  if (v == null || v === "") return false;
-  return ["1", "true", "yes", "on"].includes(v.toLowerCase());
-}
-
-/** Puppeteer + Chromium often OOMs or gets SIGKILL on small CI builders (empty logs, exit 1). */
-const skipPrerender = envTruthy("SKIP_PRERENDER");
-
 const blogPostMetaVirtualId = "virtual:blog-post-meta";
 const resolvedBlogPostMetaVirtualId = "\0virtual:blog-post-meta";
 
@@ -141,43 +132,31 @@ function rssDevPlugin(): Plugin {
   };
 }
 
-const basePlugins: Plugin[] = [
-  rssDevPlugin(),
-  blogPostMetaVirtualModule(),
-  react(),
-  mdx({
-    remarkPlugins: [remarkFrontmatter],
-  }),
-];
-
-if (skipPrerender) {
-  console.warn(
-    "[vite.config] SKIP_PRERENDER is set: skipping Puppeteer prerender (omit env or set false locally to re-enable).",
-  );
-}
-
 export default defineConfig({
-  plugins: skipPrerender
-    ? basePlugins
-    : [
-        ...basePlugins,
-        vitePrerender({
-          staticDir: path.join(__dirname, "dist"),
-          routes: prerenderRoutes,
-          renderer: new vitePrerender.PuppeteerRenderer({
-            headless: true,
-            args: [
-              "--no-sandbox",
-              "--disable-setuid-sandbox",
-              "--disable-dev-shm-usage",
-              "--disable-gpu",
-              "--mute-audio",
-            ],
-            navigationOptions: { waitUntil: "domcontentloaded", timeout: 120_000 },
-            renderAfterTime: 12_000,
-          }),
-        }),
-      ],
+  plugins: [
+    rssDevPlugin(),
+    blogPostMetaVirtualModule(),
+    react(),
+    mdx({
+      remarkPlugins: [remarkFrontmatter],
+    }),
+    vitePrerender({
+      staticDir: path.join(__dirname, "dist"),
+      routes: prerenderRoutes,
+      renderer: new vitePrerender.PuppeteerRenderer({
+        headless: true,
+        args: [
+          "--no-sandbox",
+          "--disable-setuid-sandbox",
+          "--disable-dev-shm-usage",
+          "--disable-gpu",
+          "--mute-audio",
+        ],
+        navigationOptions: { waitUntil: "domcontentloaded", timeout: 120_000 },
+        renderAfterTime: 12_000,
+      }),
+    }),
+  ],
   build: {
     outDir: "dist",
   },
