@@ -1,5 +1,8 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
+import BlogListPage from "../blog/BlogListPage";
+import BlogPostPage from "../blog/BlogPostPage";
+import { DefaultHead } from "./DefaultHead";
 import ScrollProgressBar from "../components/visuals/ScrollProgressBar";
 
 const Home = lazy(() => import("./Home"));
@@ -19,6 +22,7 @@ function WhitepaperRedirect() {
 export function App() {
   return (
     <BrowserRouter>
+      <DefaultHead />
       <a href="#main" className="skip-link">
         Skip to content
       </a>
@@ -31,6 +35,8 @@ export function App() {
           <Route path="/tokenomics" element={<Tokenomics />} />
           <Route path="/community" element={<Community />} />
           <Route path="/institutional" element={<Institutional />} />
+          <Route path="/blog" element={<BlogListPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/cl8y_whitepaper" element={<WhitepaperRedirect />} />
         </Routes>
       </Suspense>

@@ -7,17 +7,19 @@
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && node scripts/generate-rss.mjs",
     "preview": "vite preview --port 5173",
     "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
     "format": "prettier --write .",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "postinstall": "node scripts/fix-renderer-puppeteer-navigation.mjs"
   },
   "engines": {
     "node": ">=18"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
+    "@mdx-js/react": "^3.1.1",
     "@radix-ui/react-icons": "^1.3.2",
     "@radix-ui/react-slot": "^1.2.3",
     "@react-three/drei": "^10.7.6",
@@ -31,6 +33,7 @@
     "lucide-react": "^0.544.0",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-helmet-async": "^3.0.0",
     "react-hook-form": "^7.63.0",
     "react-router-dom": "^7.9.1",
     "recharts": "^3.2.1",
@@ -57,12 +60,21 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-unused-imports": "^4.2.0",
+    "gray-matter": "^4.0.3",
     "postcss": "^8.5.6",
     "prettier": "^3.6.2",
     "prettier-plugin-tailwindcss": "^0.6.14",
+    "remark-frontmatter": "^5.0.0",
     "rollup": "^4.52.0",
     "tailwindcss": "^3.4.14",
     "typescript": "^5.9.2",
-    "vite": "^7.1.6"
-  }
+    "vite": "^7.1.6",
+    "vite-plugin-prerender": "^1.0.8"
+  },
+  "overrides": {
+    "@prerenderer/renderer-puppeteer": {
+      "puppeteer": "^24.15.0"
+    }
+  },
+  "packageManager": "yarn@4.10.2+sha512.0b0e54ad5381f0a35184957bd3ea44e37f5a4fb1960b903b0fb9a3c7c2c009190455c41ef2a1977b1dbd3b72c5f152da696e9c52e2bc78a011b6adea8ee73ba3"
 }

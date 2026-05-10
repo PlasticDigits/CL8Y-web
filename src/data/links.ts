@@ -171,7 +171,7 @@ export const links: LinkItem[] = [
   {
     id: "telegram",
     label: "Telegram",
-    href: "https://t.me/ceramictoken",
+    href: "https://t.me/ceramicliberty",
     category: "social",
     icon: { kind: "lucide", name: "MessageCircle" },
     isExternal: true,

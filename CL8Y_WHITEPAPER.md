@@ -280,7 +280,7 @@ For tokens where liquidity exists on both CL8Y Bridge and Hyperlane:
 
 ### Overview
 
-The USTR Collateralized Monetary Market (CMM) introduces a transparent, over-collateralized stablecoin system designed specifically for the Terra Classic ecosystem. The system consists of two primary tokens:
+The USTR Collateralized Market Maker (CMM) introduces a transparent, over-collateralized stablecoin system designed specifically for the Terra Classic ecosystem. The system consists of two primary tokens:
 
 - **USTR (Repeg Token)**: Utility token acquired through USTC deposits (not a governance token)
 - **UST1 (Unstablecoin)**: Over-collateralized stablecoin backed by USTC and other assets

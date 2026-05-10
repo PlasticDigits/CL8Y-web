@@ -1,0 +1,127 @@
+---
+title: "The Updated CL8Y Roadmap for CMM Treasury, Bridge Liquidity, YieldOmega, and UST1"
+description: How the USTR swap, future CMM treasury, CL8Y Bridge, YieldOmega on MegaETH, CL8Y DEX, and UST1 money markets fit together for Terra Classic, USTC, USTR, LUNC, and cross chain DeFi.
+slug: cl8y-roadmap-cmm-bridge-yieldomega
+date: "2026-05-10"
+author: CL8Y Team
+image: /images/blog/cl8y-roadmap-cmm-bridge-yieldomega-hero.jpg
+tags:
+  - cl8y
+  - roadmap
+  - ust1
+  - ustr
+  - yieldomega
+  - terraclassic
+---
+
+## Why this roadmap matters
+
+CL8Y has grown into a set of connected infrastructure for moving value, attention, and liquidity across chains. Terra Classic is central to that path. The roadmap is about giving its users more routes, more venues, and more ways to put existing conviction to work.
+
+The order matters. First comes collateral and treasury formation onchain. Then come cheap asset routes and listings. After that we can push high frequency consumer products on faster chains, bring deeper liquidity back home, and only then open the riskiest DeFi primitives. We do not attach fixed dates to that sequence. Security risk and experimental infrastructure decide the pace, but the work itself is public. Code, issues, comments, and work in progress live on GitLab workboards in full view of the community.
+
+## The USTR swap closed and the treasury is already material
+
+The USTC to USTR swap window at [ust1cmm.com](https://ust1cmm.com) is now closed to USTR minting via USTC. The same site is also the public view into the future **Collateralized Market Maker** treasury for the USTR and UST1 design. The system has absorbed on the order of **41 million USTC** into the Terra Classic treasury. At a spot reference near **$0.0077 per USTC** (market prices move), that is **roughly three hundred thousand US dollars** of USTC in protocol custody.
+
+That number matters because USTC liquidity remains thin. Centralized venues and onchain books can both gap when flow leans one way. When tens of millions of USTC move from "available to sell immediately" into a timelocked treasury governed by the protocol, the marginal seller base shrinks. We are careful about assigning any single causal story to a price move. Still, **less float for the same attention** tends to tighten conditions in markets with thin liquidity.
+
+This is more than a front end. The Columbus 5 deployment includes the USTR token, treasury, USTC swap, referral, and airdrop contracts. During the closed **100 day** swap window, the rate moved from **1.5 USTC per USTR** at the start to **2.5 USTC per USTR** at the end, rewarding earlier participation without hiding the price path. All USTC from the swap flowed to treasury. Governance address changes on the treasury sit behind a **7 day timelock**, which matters because custody rules need to be slow enough for people to see changes before they land.
+
+For **Terra Classic** and **LUNC**, the closed swap is also a credibility bridge. The chain kept running after the depeg, and USTC holders had a transparent, contract based path into a new accounting stack without pretending the old peg was magically restored. **UST1** remains the forward collateralized unit in the design, with current CMM architecture, contract, deployment, and economics materials indexed in the [USTR CMM documentation](https://github.com/PlasticDigits/ustr-cmm/blob/master/docs/README.md).
+
+CMM is the system around architecture, contracts, deployment, and economics. The [economics material](https://github.com/PlasticDigits/ustr-cmm/blob/master/docs/ECONOMICS.md) is direct about the unstablecoin idea. UST1 targets a dollar accounting role while avoiding instant fixed redemption at one dollar. That is why UST1 belongs after treasury formation and DEX depth. It needs markets and collateral paths before it can be useful.
+
+## CL8Y Bridge volume and listings
+
+The [CL8Y Bridge](https://bridge.cl8y.com) has processed **over one hundred thousand dollars** in notional volume across its lifetime. That is modest by megacap bridge standards, but meaningful for the segments we serve. The bridge is built for smaller assets, Terra Classic native liquidity, and teams without million dollar integration budgets.
+
+The bridge today connects **Terra Classic**, **BNB Smart Chain**, **Solana**, and **MegaETH**, alongside the general **EVM** path where deployments apply. The UI surfaces Terra Classic, EVM, and Solana explicitly because that is how users show up in practice. They bring one Cosmos wallet habit, one EVM wallet habit, or one SVM wallet habit. The relayer and contracts do the reconciliation work underneath.
+
+The [bridge monorepo](https://github.com/PlasticDigits/cl8y-bridge-monorepo) includes deployments and chain specific code. It has Solidity contracts for EVM chains, CosmWasm contracts for Terra Classic, an Anchor program for Solana, a Rust operator, a canceler package, and a frontend. The bridge supports BSC, opBNB, MegaETH, Terra Classic, and Solana mainnet paths.
+
+Operationally, we run the bridge stack at about **fifty US dollars per month** in server costs at current load. New token routes are designed to stay **cheap to list** with **no marginal infra rent** per asset. You are not paying for a dedicated validator set per coin. That matters for **USTR**, ecosystem CW20s, **LUNC** utility flows, and teams that want **UST1** or game assets visible on BSC, Solana, or MegaETH.
+
+The security model remains the one described in the CL8Y materials. It uses a fast operator path with delay and canceler monitoring, oriented toward accountable speed rather than pretending a small multisig is decentralization. Progressive validation upgrades stay on the roadmap. For this article, the important point is simpler. **Liquidity follows cheap, honest pipes**, and the bridge is the pipe we already have in production.
+
+The bridge uses a watchtower model. The operator approves withdrawals, then a delay window begins. Cancelers watch the approval and compare it against the source chain deposit. If the deposit is missing or the parameters do not match, a canceler can block the withdrawal before execution. The default delay is **5 minutes**.
+
+That asymmetry is the point. Approving is the expensive path. Canceling is the cheap path. An attacker has to get past every honest canceler, while one honest canceler can stop a bad approval. The transfer hash includes source chain, destination chain, source account, destination account, destination token, net amount after fees, and nonce, which gives cancelers something exact to verify.
+
+## YieldOmega on MegaETH
+
+[YieldOmega](https://yieldomega.com) is the MegaETH native GameFi stack built around **TimeCurve**, **Rabbit Treasury**, and **Leprechaun** NFTs. Its ecosystem direction is tied to **CL8Y** governance rather than a fragmented token DAO. MegaETH's documentation describes very fast user experience through **mini blocks on the order of ten milliseconds**, which is the right host for auction timers, late ladder play, and dense event logs without asking users to model block time in their heads.
+
+[YieldOmega](https://github.com/PlasticDigits/yieldomega) is organized as a monorepo with **contracts**, **indexer**, and **frontend** packages. Stage 2 is complete in repo, while public testnet verification, soak, mainnet, and audit remain operator gates. The roadmap keeps that gap between built code and public launch visible.
+
+We are shipping in stages on purpose. That keeps the first launch narrow enough to audit and operate while leaving room for the larger wallet and identity model later.
+
+The first stage is the **TimeCurve** launchpad experience. TimeCurve is a token launch primitive with skill and timing in the participation loop, a rising minimum buy, capped purchase size, timer extensions, and explicit podium prize categories. Fee routing is part of the design from the start, with sinks for locked DOUB and CL8Y liquidity, CL8Y burns, podium rewards, and Rabbit Treasury. This stage still expects an **EVM wallet** on MegaETH.
+
+The second stage widens into the fuller **GameFi** surfaces. Rabbit Treasury is the clearest example. It is a reserve linked treasury game where users deposit reserve assets, CL8Y at launch, and receive DOUB through the Burrow. Events are designed so indexers can chart reserve ratios, repricing, fees, deposits, withdrawals, and epoch history.
+
+Leprechaun NFTs fill a different role as the collection, progression, identity, and agent layer. Metadata and traits need to be explicit enough for players, interfaces, and agents to read without secret offchain registries deciding the game state.
+
+The third stage is where **CL8Y Bridge upgrades** support a **cross chain wallet** model. Terra Classic users should be able to interact with YieldOmega style contracts **without abandoning their Cosmos native workflow** for every action. That change is substantial because it depends on the bridge, indexer, and wallet UX moving in lockstep. It belongs after the first TimeCurve launch, not on the same calendar line.
+
+For **USTC** and **USTR** holders, YieldOmega is downstream attention and downstream fee surface. For **CL8Y** holders, it is aligned expansion. Fees and expansion policy route through CL8Y's governance story rather than a parallel DAO. The point is to let a consumer economy create fees, identity, and participation that can flow back into the same governance and treasury story.
+
+## Why the CL8Y DEX comes before the next wave of GameFi
+
+After the TimeCurve launchpad is out, we **pause additional GameFi depth** until the **CL8Y DEX** ships. That sequencing call comes from the liquidity needs around the whole stack. If GameFi creates sinks and fees before Terra Classic has a strong home venue for routing, the ecosystem loses too much of the benefit to outside liquidity.
+
+TimeCurve can pull CL8Y and reserve assets into sinks, but the Terra Classic ecosystem still needs a home venue where **USTR**, **UST1**, wrapped bridge assets, and partner CW20s can trade with **programmable liquidity** and **locked LP incentives**. The CL8Y DEX is that venue.
+
+The [CL8Y DEX Terra Classic repo](https://github.com/PlasticDigits/cl8y-dex-terraclassic) implements a constant product AMM, FIFO onchain limit orders, and hybrid routing that can combine book fills with pool execution in one swap. The DEX keeps TerraSwap style messages, queries, and events so existing tooling can parse the system more easily, while adding governance, treasury, code ID whitelists, post swap hooks, and fee discounts.
+
+The DEX will include **liquidity programs** meant to reward **USTR donations** from projects and communities, with **locked liquidity** as part of the bargain. Exact parameters remain under design. The goal is honest bootstrapping instead of a one week farm and dump template. More USTR and ecosystem tokens in **sticky pools** improves price discovery for USTR itself, improves routing for bridge users, and gives **LUNC** fee markets something real to attach to when swaps settle onchain.
+
+This is also where **UST1** graduates from "documented future" to "market traded unit" in the CL8Y stack. That path stays consistent with burn oriented DEX economics without pretending UST1 is a risk free savings product.
+
+CL8Y holders have a direct role too. The fee discount registry checks CL8Y balances on each swap and applies tiered fee discounts. That keeps CL8Y utility tied to actual trading rather than only narrative.
+
+The DEX also has a hybrid path. A FIFO onchain limit book can combine with the AMM in one execution. The book leg is consumed first, then the pool leg handles the rest. This matters for USTR and UST1 because thin markets benefit from more than one liquidity shape. Pools are simple and always available. Resting orders let committed makers express price without constantly babysitting a wallet.
+
+## UST1 window with vFDUSD
+
+After the DEX is live, we intend to open the **UST1 window** for **vFDUSD** bridged from **BSC**. The goal is a **yield bearing stable** layer that backs UST1's long term convergence mechanics as designed in the CMM economics and treasury documentation.
+
+Read that carefully. **UST1 is an unstablecoin** in the CL8Y design language. It is meant to **move under market pressure** as collateral mixes, utilization, and risk premia change. It serves as an **accounting and trading medium for cross chain dapps** rather than a checking account or a promised savings rate. Users who want bank like stability should look elsewhere. Users who want **transparent collateral rules and programmatic DeFi** are the intended audience.
+
+**vFDUSD** matters because diversified, yield bearing BSC native stables are a different risk basis than raw USTC alone. Connecting them through the bridge plus DEX listing lets **BSC liquidity** and **Terra Classic accounting** meet without forcing every holder to bridge manually through opaque custodial paths.
+
+This is collateral diversification. USTC is the foundation collateral, which is correct for community alignment, but the mature design aims for a broader basket that includes other stables, blue chip crypto, onchain real world assets, and synthetic assets.
+
+This is why the bridge and DEX have to come first. A BSC based yield asset needs a path into the CL8Y stack and a Terra Classic venue where people can price it, pair it, and route through it. The roadmap joins those pieces before UST1 is asked to carry larger DeFi load.
+
+## Money markets with UST1 only after real depth
+
+**Money markets collateralized in UST1** wait until **UST1 liquidity on the CL8Y DEX crosses five hundred thousand dollars** in the liquidity metric we publish at launch. Below that threshold, lending without deep oracle support is fragile. Liquidations become gap risk. Bad debt becomes socialized politics. The protocol inherits the instability of the unstablecoin instead of managing it.
+
+Above that threshold, the money market design becomes a **stability tool** rather than a **leverage magnifier on empty books**. It uses bucket style, market driven lending inspired by Ajna style thinking. The ordering is deliberate. The closed **USTR swap** formed the initial treasury base. The **bridge** connects chains. **YieldOmega** pulls attention and fees into MegaETH. The **DEX** warehouses USTR and UST1 liquidity on Terra Classic. **UST1** windows diversify the backing. **Lending** comes last, once UST1 can fail gracefully.
+
+The threshold exists because liquidation paths need buyers, quotes, and depth when conditions are ugly. A money market should be able to sell collateral without turning one liquidation into the next liquidation trigger. UST1 is explicitly designed to move under pressure, so the lending layer has to respect that design.
+
+Once the DEX has real depth, UST1 lending can do useful work. It can help market participants borrow against a transparent accounting asset, give liquidity providers another reason to hold inventory, and turn UST1 from a treasury concept into a working unit for builders.
+
+## How each stakeholder should read the map
+
+For **CL8Y** holders, the roadmap is about governance and expansion policy across the bridge, DEX, treasury games, and fee sinks. For **USTC** holders, the path is practical rather than magical. The swap window moved USTC into treasury and reduced float where markets are thin. For **USTR**, the roadmap turns participation into something projects can use for rewards and credibility.
+
+For **Terra Classic** and **LUNC**, the benefit is native settlement that still reaches EVM and SVM users. Activity can move through infrastructure and come back with liquidity, fees, and attention. For **MegaETH**, YieldOmega is a consumer grade GameFi tenant that uses low latency instead of only marketing it.
+
+None of this removes risk. It replaces hand wavy "soon" with a published sequence. **The USTR swap is closed and the treasury is visible**. The **bridge is live and cheap**. **YieldOmega ships in stages**. The **DEX comes before deeper GameFi**. The **UST1 window opens with honest unstablecoin disclosure**. **Lending waits for depth**. If you are building on CL8Y, that is the rail map we are executing against.
+
+## Links and references
+
+- [USTR swap and future CMM treasury](https://ust1cmm.com)
+- [USTR CMM documentation](https://github.com/PlasticDigits/ustr-cmm/blob/master/docs/README.md)
+- [CL8Y Bridge](https://bridge.cl8y.com)
+- [CL8Y Bridge monorepo](https://github.com/PlasticDigits/cl8y-bridge-monorepo)
+- [YieldOmega](https://yieldomega.com)
+- [YieldOmega Telegram](https://t.me/yieldomega)
+- [YieldOmega X](https://x.com/yieldomega)
+- [YieldOmega GitHub](https://github.com/PlasticDigits/yieldomega)
+- [CL8Y DEX Terra Classic](https://github.com/PlasticDigits/cl8y-dex-terraclassic)
+- [USTR CMM contracts and economics](https://github.com/PlasticDigits/ustr-cmm)
+- [MegaETH documentation](https://docs.megaeth.com/) (architecture and mini blocks)
