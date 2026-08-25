@@ -1,5 +1,8 @@
 /* /index.html 200
 
-# 301 redirect for whitepaper vanity path
+# Historical whitepaper vanity path (labeled historical in the footer)
 /cl8y_whitepaper /pdfs/CL8Y_WHITEPAPER_V3.pdf 301
+
+# Retired section URLs are handled client-side (see src/app/index.tsx)
+# /engine /security /tokenomics /community /institutional → / or /#…
 

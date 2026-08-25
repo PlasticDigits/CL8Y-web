@@ -9,7 +9,33 @@ import tsParser from "@typescript-eslint/parser";
 import globals from "globals";
 
 export default [
-  { ignores: ["dist/**", "node_modules/**", "vite.config.ts"] },
+  {
+    ignores: [
+      "dist/**",
+      "node_modules/**",
+      "vite.config.ts",
+      "src/**/*.test.ts",
+      "src/features/gamefi/**",
+      "src/features/engine/**",
+      "src/features/tokenomics/**",
+      "src/features/security/**",
+      "src/features/institutional/**",
+      "src/components/visuals/BuyTicker.tsx",
+      "src/components/visuals/HeroImageCard.tsx",
+      "src/components/visuals/GeckoTerminalChart.tsx",
+      "src/components/visuals/GuardianBridgeScene.tsx",
+      "src/hooks/useSupplyTotal.ts",
+      "src/hooks/useSupplyCirculating.ts",
+      "src/hooks/useCl8yPrice.ts",
+      "src/hooks/useBurnStats.ts",
+    ],
+  },
+  {
+    files: ["**/*.test.ts"],
+    languageOptions: {
+      globals: { ...globals.node },
+    },
+  },
   js.configs.recommended,
   // Base React rules for JS files
   {

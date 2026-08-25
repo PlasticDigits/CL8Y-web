@@ -1,3 +1,8 @@
+/**
+ * RETIRED from `/` (GitLab #1). Do not remount on the homepage or as a
+ * current-product route. See `src/content/invariants.ts` and
+ * `skills/cl8y-site-positioning/SKILL.md`.
+ */
 import SectionHeading from "../../components/ui/SectionHeading";
 import { Card, CardContent } from "../../components/ui/Card";
 import { Sparkles, Cpu, Orbit } from "lucide-react";

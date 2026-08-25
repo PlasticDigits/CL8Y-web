@@ -1,3 +1,7 @@
+/**
+ * RETIRED from `/` (GitLab #1). Fake market activity must not return.
+ * See `src/content/invariants.ts` and `skills/cl8y-site-positioning/SKILL.md`.
+ */
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { create as createBlockie } from "blockies-ts";

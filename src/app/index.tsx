@@ -1,19 +1,22 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
 import ScrollProgressBar from "../components/visuals/ScrollProgressBar";
+import { SiteHeader } from "../components/chrome/SiteHeader";
+import { SiteFooter } from "../components/chrome/SiteFooter";
+import { LegacyRedirect } from "./LegacyRedirect";
+import { HISTORICAL_DOCS } from "../data/products";
 
 const Home = lazy(() => import("./Home"));
-const Engine = lazy(() => import("../features/engine/Engine"));
-const Security = lazy(() => import("../features/security/Security"));
-const Tokenomics = lazy(() => import("../features/tokenomics/Tokenomics"));
-const Community = lazy(() => import("../features/community/Community"));
-const Institutional = lazy(() => import("../features/institutional/Institutional"));
 
 function WhitepaperRedirect() {
   useEffect(() => {
-    window.location.replace("/pdfs/CL8Y_WHITEPAPER_V3.pdf");
+    window.location.replace(HISTORICAL_DOCS.whitepaperV3);
   }, []);
-  return null;
+  return (
+    <main id="main" className="px-6 py-16 text-sm text-neutral-300" tabIndex={-1}>
+      Opening historical whitepaper…
+    </main>
+  );
 }
 
 export function App() {
@@ -23,17 +26,19 @@ export function App() {
         Skip to content
       </a>
       <ScrollProgressBar />
+      <SiteHeader />
       <Suspense fallback={<div className="p-6 text-text">Loading…</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/engine" element={<Engine />} />
-          <Route path="/security" element={<Security />} />
-          <Route path="/tokenomics" element={<Tokenomics />} />
-          <Route path="/community" element={<Community />} />
-          <Route path="/institutional" element={<Institutional />} />
+          <Route path="/engine" element={<LegacyRedirect to="/" />} />
+          <Route path="/security" element={<LegacyRedirect to="/#trust" />} />
+          <Route path="/tokenomics" element={<LegacyRedirect to="/#utility" />} />
+          <Route path="/community" element={<LegacyRedirect to="/#community" />} />
+          <Route path="/institutional" element={<LegacyRedirect to="/#docs" />} />
           <Route path="/cl8y_whitepaper" element={<WhitepaperRedirect />} />
         </Routes>
       </Suspense>
+      <SiteFooter />
     </BrowserRouter>
   );
 }
