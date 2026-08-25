@@ -1,3 +1,7 @@
+/**
+ * RETIRED from `/` (GitLab #1). Do not remount on the homepage.
+ * See `src/content/invariants.ts` and `skills/cl8y-site-positioning/SKILL.md`.
+ */
 import React from "react";
 import { motion, useReducedMotion } from "framer-motion";
 
