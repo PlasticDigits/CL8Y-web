@@ -16,5 +16,19 @@
       "@/*": ["src/*"]
     }
   },
-  "include": ["src"]
+  "include": ["src"],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/features/gamefi/**",
+    "src/features/engine/**",
+    "src/features/tokenomics/**",
+    "src/features/security/**",
+    "src/features/institutional/**",
+    "src/components/visuals/BuyTicker.tsx",
+    "src/components/visuals/HeroImageCard.tsx",
+    "src/hooks/useSupplyTotal.ts",
+    "src/hooks/useSupplyCirculating.ts",
+    "src/hooks/useCl8yPrice.ts",
+    "src/hooks/useBurnStats.ts"
+  ]
 }

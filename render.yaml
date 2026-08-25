@@ -14,21 +14,6 @@ services:
         source: /blog
         destination: /blog/index.html
       - type: rewrite
-        source: /engine
-        destination: /engine/index.html
-      - type: rewrite
-        source: /security
-        destination: /security/index.html
-      - type: rewrite
-        source: /tokenomics
-        destination: /tokenomics/index.html
-      - type: rewrite
-        source: /community
-        destination: /community/index.html
-      - type: rewrite
-        source: /institutional
-        destination: /institutional/index.html
-      - type: rewrite
         source: /*
         destination: /index.html
     envVars:

@@ -19,14 +19,7 @@ const vitePrerender =
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-const STATIC_PRERENDER_ROUTES = [
-  "/",
-  "/engine",
-  "/security",
-  "/tokenomics",
-  "/community",
-  "/institutional",
-] as const;
+const STATIC_PRERENDER_ROUTES = ["/"] as const;
 
 function getBlogPrerenderRoutes(): string[] {
   const postsDir = path.join(__dirname, "src/blog/posts");

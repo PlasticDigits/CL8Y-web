@@ -1,3 +1,8 @@
+/**
+ * RETIRED from `/` (GitLab #1). Historical PDFs and contact live in the footer.
+ * Token venues belong to GitLab #2. Do not remount this partners grid.
+ * See `src/content/invariants.ts` and `skills/cl8y-site-positioning/SKILL.md`.
+ */
 import SectionHeading from "../../components/ui/SectionHeading";
 import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 import { Button } from "../../components/ui/Button";

@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { BlogBreadcrumb } from "./BlogBreadcrumb";
 import { blogPosts } from "./blogIndex";
 import { SEO } from "./SEO";
-import { MarketingFooter } from "../components/layout/MarketingFooter";
 
 function formatPostDate(date: string) {
   return Number.isNaN(Date.parse(date))
@@ -192,9 +191,6 @@ export default function BlogListPage() {
             </section>
           ) : null}
         </main>
-        <div className="container relative z-10 mx-auto max-w-5xl px-6 pb-16 pt-8">
-          <MarketingFooter />
-        </div>
       </div>
     </>
   );

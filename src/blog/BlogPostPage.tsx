@@ -1,6 +1,5 @@
 import { MDXProvider } from "@mdx-js/react";
 import { Link, useParams } from "react-router-dom";
-import { MarketingFooter } from "../components/layout/MarketingFooter";
 import { ArticleLayout } from "./ArticleLayout";
 import { BlogBreadcrumb } from "./BlogBreadcrumb";
 import { getPostBySlug } from "./blogIndex";
@@ -51,9 +50,6 @@ export default function BlogPostPage() {
               </Link>
             </div>
           </main>
-          <div className="container relative z-10 mx-auto max-w-5xl px-6 pb-16 pt-8">
-            <MarketingFooter />
-          </div>
         </div>
       </>
     );
@@ -87,9 +83,6 @@ export default function BlogPostPage() {
               <Component />
             </MDXProvider>
           </ArticleLayout>
-        </div>
-        <div className="container mx-auto max-w-5xl px-6 pb-16 pt-8">
-          <MarketingFooter />
         </div>
       </div>
     </>

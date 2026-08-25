@@ -1,3 +1,8 @@
+/**
+ * RETIRED from `/` (GitLab #1). Compressed facts live in
+ * `src/features/trust/Trust.tsx`. Do not remount this page as current IA.
+ * See `src/content/invariants.ts` and `skills/cl8y-site-positioning/SKILL.md`.
+ */
 import SectionHeading from "../../components/ui/SectionHeading";
 import GuardianBridgeScene from "../../components/visuals/GuardianBridgeScene";
 import { Card, CardContent, CardHeader } from "../../components/ui/Card";

@@ -1,331 +1,77 @@
 import { Suspense, lazy } from "react";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
-import { Card, CardContent, CardHeader } from "../components/ui/Card";
-import HeroImageCard from "../components/visuals/HeroImageCard";
-import { Button } from "../components/ui/Button";
-import { MarketingFooter } from "../components/layout/MarketingFooter";
-import { linksByCategory } from "../data/links";
-import GeckoTerminalChart from "../components/visuals/GeckoTerminalChart";
+import { motion, useReducedMotion } from "framer-motion";
+import { ANCHORS } from "../data/products";
 
 const Hero = lazy(() => import("../features/hero/Hero"));
-const Engine = lazy(() => import("../features/engine/Engine"));
-const Security = lazy(() => import("../features/security/Security"));
-const LayeredSecurity = lazy(() => import("../features/security/LayeredSecurity"));
-const Tokenomics = lazy(() => import("../features/tokenomics/Tokenomics"));
+const Products = lazy(() => import("../features/products/Products"));
+const Utility = lazy(() => import("../features/utility/Utility"));
+const Trust = lazy(() => import("../features/trust/Trust"));
+const TokenPlaceholder = lazy(() => import("../features/token/TokenPlaceholder"));
 const Community = lazy(() => import("../features/community/Community"));
-const GameFiAI = lazy(() => import("../features/gamefi/GameFiAI"));
-const Institutional = lazy(() => import("../features/institutional/Institutional"));
 
 export default function Home() {
   const prefersReducedMotion = useReducedMotion();
-  const { scrollY } = useScroll();
-  const parallaxSpeedRatio = prefersReducedMotion ? 0 : 0.4;
-  const bgY = useTransform(scrollY, (v) => v * parallaxSpeedRatio);
-  const tidaldex = linksByCategory.trading.find((l) => l.id === "tidaldex-bsc");
-  const whitepaperV2Href = "/cl8y_whitepaper";
   const container = {
     hidden: { opacity: 0 },
     show: { opacity: 1, transition: { staggerChildren: prefersReducedMotion ? 0 : 0.08 } },
   } as const;
   const item = {
-    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 20 },
+    hidden: { opacity: 0, y: prefersReducedMotion ? 0 : 16 },
     show: { opacity: 1, y: 0, transition: { duration: prefersReducedMotion ? 0 : 0.22 } },
   } as const;
+
   return (
     <div
-      id="main"
+      id={ANCHORS.main}
       role="main"
-      className="relative flex flex-col gap-24 bg-[radial-gradient(800px_400px_at_50%_-10%,rgba(212,175,55,0.08),transparent),radial-gradient(600px_300px_at_80%_20%,rgba(34,211,238,0.06),transparent)] overflow-hidden"
+      className="relative flex flex-col gap-20 overflow-hidden bg-[radial-gradient(800px_400px_at_50%_-10%,rgba(212,175,55,0.08),transparent),radial-gradient(600px_300px_at_80%_20%,rgba(34,211,238,0.06),transparent)]"
       tabIndex={-1}
     >
-      {/* Subtle CL8Y logo background with parallax */}
-      <motion.img
-        src="/images/logo/CLAY-VECTOR-LARGE.svg"
-        alt=""
-        aria-hidden
-        className="pointer-events-none select-none absolute -left-[10vw] top-[-12vh] md:top-[-18vh] w-[1000px] md:w-[1600px] max-w-none opacity-[0.025]"
-        style={{ y: bgY }}
-      />
       <Suspense fallback={<div className="p-6 text-text">Loading…</div>}>
-        <section id="hero">
+        <section id={ANCHORS.hero}>
           <motion.div variants={container} initial="hidden" animate="show">
             <motion.div variants={item}>
               <Hero />
             </motion.div>
-            <div className="container mx-auto mt-10 max-w-5xl px-6">
-              <motion.div variants={item}>
-                <HeroImageCard />
-              </motion.div>
-              <motion.div variants={item} className="mt-6 flex flex-wrap items-center justify-center gap-4">
-                <a href={tidaldex?.href ?? "#"} target="_blank" rel="noreferrer">
-                  <Button>Buy CL8Y</Button>
-                </a>
-                <a href={whitepaperV2Href} target="_blank" rel="noreferrer">
-                  <Button variant="secondary">Read Whitepaper</Button>
-                </a>
-              </motion.div>
-            </div>
           </motion.div>
         </section>
 
-        <section id="engine" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
+        <section id={ANCHORS.products} className="container mx-auto max-w-5xl scroll-mt-24 px-6">
+          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
             <motion.div variants={item}>
-              <Engine />
-            </motion.div>
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <motion.div variants={item}>
-                <Card premium className="h-full">
-                  <CardHeader>
-                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">UST1 Burn Economics</h3>
-                  </CardHeader>
-                  <CardContent>
-                    <p className="max-w-[68ch] text-sm leading-relaxed text-text/85">
-                      All DeFi activity across the CL8Y ecosystem burns fees as CL8Y, the Defi Ecosystem Token. 
-                      DEX trades, perpetual futures, lending fees, and GameFi transactions all contribute to{" "}
-                      <span className="font-semibold text-text">permanent CL8Y burns</span>, creating sustainable 
-                      deflationary pressure while incentivizing ecosystem participation.
-                    </p>
-                    <div className="mt-5 h-px w-full bg-gradient-to-r from-cyan-400/20 via-amber-300/20 to-pink-500/20" />
-                    <div className="mt-6 grid grid-cols-2 gap-4">
-                      <div className="flex flex-col items-center justify-start">
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
-                          <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] transition-transform [box-shadow:inset_0_0_56px_rgba(212,175,55,0.10)] hover:scale-[1.02]">
-                            <img
-                              src="/images/clipart/CHART.png"
-                              alt="DeFi ecosystem growth"
-                              loading="lazy"
-                              className="h-20 w-20 object-contain drop-shadow-md"
-                            />
-                          </div>
-                        </div>
-                        <span className="mt-2 text-center text-xs text-text/70">DeFi Activity</span>
-                      </div>
-                      <div className="flex flex-col items-center justify-start">
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
-                          <div className="flex h-28 w-28 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] transition-transform [box-shadow:inset_0_0_56px_rgba(225,29,116,0.10)] hover:scale-[1.02]">
-                            <img
-                              src="/images/clipart/FIRE.png"
-                              alt="CL8Y burn mechanism"
-                              loading="lazy"
-                              className="h-20 w-20 object-contain drop-shadow-md"
-                            />
-                          </div>
-                        </div>
-                        <span className="mt-2 text-center text-xs text-text/70">CL8Y Burns</span>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-              <motion.div variants={item}>
-                <Card premium className="h-full group">
-                  <CardHeader>
-                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">Ecosystem Flow</h3>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="mx-auto w-fit rounded p-[2px] bg-gradient-to-br from-cyan-400/20 via-amber-300/20 to-pink-500/20">
-                      <div className="rounded border border-charcoal bg-midnight/60 p-3 transition-transform group-hover:scale-[1.01] [box-shadow:inset_0_0_56px_rgba(212,175,55,0.06)]">
-                        <img
-                          src="/images/AUTOSCARCITY_LOOP.png"
-                          alt="CL8Y Ecosystem Flow diagram"
-                          loading="lazy"
-                          className="mx-auto h-64 w-auto object-contain"
-                        />
-                      </div>
-                    </div>
-                    <p className="mt-3 text-center text-xs text-text/70">Bridge → Trade → Burn → Ecosystem Growth</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
-          </motion.div>
-        </section>
-
-        <section id="security" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-            <motion.div variants={item}>
-              <Security />
+              <Products />
             </motion.div>
           </motion.div>
         </section>
 
-        <section id="layered-security" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
+        <section id={ANCHORS.utility} className="container mx-auto max-w-5xl scroll-mt-24 px-6">
+          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
             <motion.div variants={item}>
-              <LayeredSecurity />
+              <Utility />
             </motion.div>
           </motion.div>
         </section>
 
-        <section id="tokenomics" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
+        <section id={ANCHORS.trust} className="container mx-auto max-w-5xl scroll-mt-24 px-6">
+          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
             <motion.div variants={item}>
-              <Tokenomics />
+              <Trust />
             </motion.div>
-            <div className="mt-6 grid gap-6 md:grid-cols-2">
-              <motion.div variants={item}>
-                <GeckoTerminalChart />
-              </motion.div>
-              <motion.div variants={item}>
-                <Card premium className="h-full">
-                  <CardHeader>
-                    <h3 className="text-lg md:text-xl font-semibold tracking-tight text-text">Addresses & Locks</h3>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="grid gap-5">
-                      <div className="flex flex-wrap items-center gap-4">
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
-                            <img src="/images/clipart/SECURITY.png" alt="Security" loading="lazy" className="h-9 w-9 object-contain" />
-                          </div>
-                        </div>
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
-                            <img src="/images/clipart/BRIDGE.png" alt="Bridge" loading="lazy" className="h-9 w-9 object-contain" />
-                          </div>
-                        </div>
-                        <div className="rounded-full p-[2px] bg-gradient-to-br from-gold/30 via-gold/20 to-gold/40">
-                          <div className="flex h-14 w-14 items-center justify-center rounded-full border border-charcoal bg-[radial-gradient(120%_120%_at_50%_0%,rgba(16,21,33,0.98),rgba(6,8,14,0.98))] [box-shadow:inset_0_0_36px_rgba(212,175,55,0.15)]">
-                            <img src="/images/clipart/LOGO_HALO_VARIANT.png" alt="Brand" loading="lazy" className="h-9 w-9 object-contain" />
-                          </div>
-                        </div>
-                      </div>
-
-                      <div className="h-px w-full bg-gradient-to-r from-gold/30 via-gold/15 to-gold/40" />
-
-                      <div>
-                        <h4 className="mb-2 text-sm font-semibold tracking-wide text-text/90">Contract Addresses</h4>
-                        <ul className="divide-y divide-charcoal/80 rounded-md border border-charcoal">
-                          {linksByCategory.contracts.map((link) => {
-                            const raw = link.tags?.[0] ?? link.href.split("/").pop() ?? link.href;
-                            const addrShort = raw.length > 18 ? `${raw.slice(0, 10)}…${raw.slice(-8)}` : raw;
-                            return (
-                              <li key={link.id} className="flex items-center justify-between gap-3 px-4 py-3 bg-midnight/60">
-                                <div className="min-w-0">
-                                  <p className="text-xs font-medium text-text/90">{link.label}</p>
-                                  <a
-                                    href={link.href}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="mt-0.5 block truncate font-mono text-[11px] text-neutral-300 hover:text-gold/90"
-                                    title={raw}
-                                  >
-                                    {addrShort}
-                                  </a>
-                                </div>
-                                <a
-                                  href={link.href}
-                                  target="_blank"
-                                  rel="noreferrer"
-                                  className="text-[11px] font-semibold uppercase tracking-wide text-gold/90 hover:text-gold"
-                                >
-                                  View
-                                </a>
-                              </li>
-                            );
-                          })}
-                        </ul>
-                      </div>
-
-                      <div className="grid gap-3 md:grid-cols-2">
-                        <div className="grain rounded-md border border-charcoal bg-midnight/60 p-4">
-                          <p className="text-xs font-semibold text-text/90">Liquidity</p>
-                          <a
-                            href={tidaldex?.href ?? "#"}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="mt-1 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-emerald-300 hover:bg-emerald-500/15"
-                          >
-                            <span className="inline-block h-1.5 w-1.5 rounded-full bg-emerald-400" aria-hidden />
-                            Locked on TidalDex
-                          </a>
-                        </div>
-                        <div className="grain rounded-md border border-charcoal bg-midnight/60 p-4">
-                          <p className="text-xs font-semibold text-text/90">Audit</p>
-                          <div className="mt-1 flex flex-wrap gap-2">
-                            {linksByCategory.audit.map((a) => (
-                              <a
-                                key={a.id}
-                                href={a.href}
-                                target="_blank"
-                                rel="noreferrer"
-                                className="inline-flex items-center gap-2 rounded-full border border-gold/40 bg-gold/10 px-2.5 py-1 text-[11px] font-semibold tracking-wide text-gold hover:bg-gold/15"
-                              >
-                                <span className="inline-block h-1.5 w-1.5 rounded-full bg-gold" aria-hidden />
-                                {a.label}
-                              </a>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
-            </div>
           </motion.div>
         </section>
 
-        <section id="community" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
+        <section id={ANCHORS.token} className="container mx-auto max-w-5xl scroll-mt-24 px-6">
+          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
+            <motion.div variants={item}>
+              <TokenPlaceholder />
+            </motion.div>
+          </motion.div>
+        </section>
+
+        <section id={ANCHORS.community} className="container mx-auto max-w-5xl scroll-mt-24 px-6 pb-8">
+          <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
             <motion.div variants={item}>
               <Community />
-            </motion.div>
-          </motion.div>
-        </section>
-
-        <section id="gamefi-ai" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-            <motion.div variants={item}>
-              <GameFiAI />
-            </motion.div>
-          </motion.div>
-        </section>
-
-        <section id="institutional" className="container mx-auto max-w-5xl px-6">
-          <motion.div
-            variants={container}
-            initial="hidden"
-            whileInView="show"
-            viewport={{ once: true, margin: "-80px" }}
-          >
-            <motion.div variants={item}>
-              <Institutional />
-            </motion.div>
-            <motion.div variants={item} className="mt-8">
-              <MarketingFooter />
-              <br />
             </motion.div>
           </motion.div>
         </section>

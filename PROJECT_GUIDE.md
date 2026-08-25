@@ -4,40 +4,28 @@ This document outlines how to build the CL8Y website as a static React app: tool
 
 ## 0) Key Links
 
-- ⚡⚡ **TRADING LIVE NOW!**
-  - **TidalDex.com (BSC)**: https://tidaldex.com/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
-  - **AscendEX (CEX)**: https://ascendex.com/en-us/cashtrade-spottrading/usdt/cl8y
-  - **Uniswap (DEX)**: https://app.uniswap.org/explore/tokens/bnb/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
-  - **PancakeSwap (DEX)**: https://pancakeswap.finance/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
-  - **GDEX (TerraClassic)**: https://garuda-defi.org/market/terra1kkrwna59jzpvsp7n4l3xdt72rmejcz5d2xaezxl29zvkssn7vvtqmtmemv
+**Products (canonical — `src/data/products.ts`):**
 
-- **Contract Addresses**
-  - **TerraClassic**: https://finder.terra.money/classic/address/terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3 — `terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3`
-  - **BSC**: https://bscscan.com/token/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2 — `0x8F452a1fdd388A45e1080992eFF051b4dd9048d2`
+- **CL8Y Bridge**: https://bridge.cl8y.com
+- **CL8Y DEX**: https://dex.cl8y.com
 
-- **Chart**
-  - **GeckoTerminal**: https://www.geckoterminal.com/bsc/pools/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
+**Positioning:** CL8Y is a decentralized utility token for reduced fees on CL8Y DEX trading tiers. Do not invent tier numbers. See [`src/content/invariants.ts`](src/content/invariants.ts) and [`skills/cl8y-site-positioning/SKILL.md`](skills/cl8y-site-positioning/SKILL.md).
+
+**Token directory:** Official addresses, listings, and venues are GitLab **#2**. The homepage `#token` block is a placeholder until that ships. Social and audit links remain in `src/data/links.ts`.
 
 - **Social**
-  - **Telegram**: https://t.me/ceramicliberty
+  - **Telegram**: https://t.me/ceramictoken
   - **X (Twitter)**: https://x.com/ceramictoken
-
-- **Listings**
-  - **Blockspot**: https://blockspot.io/coin/ceramicliberty-com/
-  - **DropsTab**: https://dropstab.com/coins/ceramicliberty-com
-  - **CoinGecko**: https://blockspot.io/coin/ceramicliberty-com/
-
 - **Audit**
   - **SpyWolf**: https://spywolf.co/audits/CL8Y_0x999311589cc1Ed0065AD9eD9702cB593FFc62ddF.pdf
-
-Implementation note: these are also centralized in `src/data/links.ts` with icon metadata for UI usage.
+- **Contact**: contact@ceramicliberty.com
 
 ## 1) Principles
 
 - **Static-first**: Pre-render everything. No server-side rendering. Use client fetch for live data.
 - **Fast + Animated**: Lean bundle, GPU-accelerated effects, respectful motion.
-- **Data-driven UI**: All visuals wired to tokenized theme and live feeds.
-- **Dual-track UX**: Meme-native hype + institutional proof.
+- **Product-first UX**: Bridge and DEX are the primary exits. Token directory is secondary (#2).
+- **Tight copy**: One headline, one sentence, two product links. Footer holds the long explainer.
 
 ## 2) Tech Stack
 
@@ -60,7 +48,7 @@ Notes:
 ## 3) Node & Tooling
 
 - **Node**: Use `.nvmrc` and `nvm use` as per project standard.
-- **TypeScript**: Strict mode on.
+- **TypeScript**: Strict mode on. Retired homepage modules (see `RETIRED_HOMEPAGE_MODULES` in `src/content/invariants.ts`) are excluded from `tsconfig.json` so they cannot fail current-product typecheck. Do not remount them.
 - **Lint/Format**: ESLint (typescript, react-hooks), Prettier (no formatting conflicts with Tailwind plugin).
 - **Commit hooks**: lint-staged + husky (optional).
 
@@ -119,12 +107,12 @@ CL8Y-web/
       visuals/            # R3F scenes, canvas wrappers, shaders
       charts/             # Recharts wrappers with theme defaults
     features/
-      hero/
-      engine/             # Autopilot Scarcity loop
-      security/           # Guardian Protocol + Bridge viz
-      tokenomics/
+      hero/               # utility + Bridge / DEX CTAs
+      products/
+      utility/            # fee-tier copy (no invented table)
+      trust/              # compressed bridge canceler / delay window
+      token/              # placeholder for GitLab #2
       community/
-      institutional/
     providers/            # Theme, QueryClient, Wagmi config
     hooks/                # data hooks (useBurnStats, useBridgeStatus)
     lib/                  # utils (theming, formatting, constants)
@@ -137,6 +125,8 @@ CL8Y-web/
   index.html
   STYLE_GUIDE.md          # brand system
   PROJECT_GUIDE.md        # this file
+  AGENTS.md               # entry for third-party agents
+  skills/cl8y-site-positioning/  # agent skill + invariant detail
   .nvmrc
   package.json
   tsconfig.json
@@ -178,8 +168,9 @@ Tailwind `theme.extend` can mirror these via CSS variables.
 ## 7) Routing & Pages
 
 - SPA: use `react-router-dom` or `wouter` for lightweight routing.
-- Pages: `Hero`, `Engine`, `Security`, `Tokenomics`, `Community`, `Institutional`.
-- Add top-level anchors for one-page scroll and deep links.
+- Pages: one homepage (`/`) plus chrome. Legacy section routes redirect into `#` anchors.
+- Anchors: `#hero`, `#products`, `#utility`, `#trust`, `#token`, `#community`, `#docs`.
+- Historical whitepaper vanity path `/cl8y_whitepaper` still opens the v3 PDF.
 
 ## 8) Data Layer
 
@@ -201,8 +192,8 @@ function useBurnStats() {
 
 ## 9) Wallets
 
-- Configure wagmi with chains in scope (BSC, Terra Classic via EVM-compatible bridges if any, or document cross-chain approach).
-- Use WalletConnect for multi-wallet; hide advanced controls until needed.
+- The marketing page must not require wallet connect. Do not add a connect widget here.
+- Wagmi remains available for optional live metrics; do not let metrics outrank product CTAs.
 
 ## 10) Animations & Performance
 
@@ -248,14 +239,22 @@ VITE_WALLETCONNECT_PROJECT_ID=...
 
 Always read from env, never hardcode values.
 
-## 15) Component Checklist (MVP)
+## 15) Component Checklist (current IA)
 
-- Hero: headline, subhead, live metrics (circulating supply, market cap, 24h burns, price), CTAs.
-- Engine: animated scarcity loop with tooltips and live stats.
-- Security: Guardian Protocol diagram + live bridge dashboard.
-- Tokenomics: deflation timeline chart, addresses, liquidity lock.
-- Community: embeds for Telegram + X.
-- Institutional: whitepaper, audits, API endpoints, contact form.
+- Chrome: sticky header (Bridge, DEX, Token, Community) + footer explainer/legal.
+- Hero: utility headline, one-line subhead, Open Bridge + Open DEX.
+- Products: two short cards with labeled links.
+- Utility: fee-tier sentence + DEX link. No invented percentages.
+- Trust: canceler network, 5-minute delay, audit link.
+- Token: placeholder for the official directory (GitLab #2).
+- Community: Telegram + X from `src/data/links.ts`.
+
+## 15b) Production host headers
+
+This is a static SPA. Production should send `X-Frame-Options: DENY` or
+`Content-Security-Policy: frame-ancestors 'none'`. Do not introduce a frameable
+wallet/connect widget. Configure the header at the host (Render / CDN); the
+app cannot set it from static HTML alone.
 
 ## 16) QA
 

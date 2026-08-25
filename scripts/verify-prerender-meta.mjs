@@ -36,9 +36,7 @@ for (const file of htmlFiles) {
   const emptyRoot = hasEmptyRootShell(html);
 
   const isBlogPost = /^blog\/[^/]+\/index\.html$/.test(nrel);
-  const isMarketing =
-    nrel === "index.html" ||
-    ["engine", "security", "tokenomics", "community", "institutional"].some((r) => nrel === `${r}/index.html`);
+  const isMarketing = nrel === "index.html";
 
   if (isBlogPost || isMarketing) {
     if (!hasOgImage || emptyRoot) {

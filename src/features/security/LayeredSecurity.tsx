@@ -1,3 +1,8 @@
+/**
+ * RETIRED from `/` (GitLab #1). Bridge facts live in `src/features/trust/Trust.tsx`
+ * and the footer explainer. Do not remount this long-form block as current IA.
+ * See `src/content/invariants.ts` and `skills/cl8y-site-positioning/SKILL.md`.
+ */
 import SectionHeading from "../../components/ui/SectionHeading";
 import { Card, CardContent, CardHeader } from "../../components/ui/Card";
 

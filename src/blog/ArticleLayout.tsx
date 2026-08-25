@@ -151,7 +151,7 @@ export function ArticleLayout({
                 About CL8Y
               </p>
               <p className="text-text/68 mt-3 text-sm leading-relaxed">
-                CL8Y is Ceramic Liberty's platform token for xchain infrastructure. CL8Y supports bridging
+                CL8Y is Ceramic Liberty&apos;s platform token for xchain infrastructure. CL8Y supports bridging
                 assets, Terra Classic DeFi, gamified launches, and an open source ethos.
               </p>
 
