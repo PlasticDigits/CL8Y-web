@@ -1,37 +1,23 @@
-// Centralized key links and icon metadata for site-wide usage
+/**
+ * Social and audit links used by chrome and community.
+ *
+ * Official addresses, listings, and DEX venues live in
+ * `src/data/tokenDirectory.ts` (GitLab #2). Do not add CEX trade rows here.
+ *
+ * @see src/data/tokenDirectory.ts
+ * @see skills/cl8y-token-directory/SKILL.md
+ */
 
-export type LinkCategory =
-  | "trading"
-  | "contracts"
-  | "chart"
-  | "social"
-  | "listings"
-  | "audit"
-  | "comingSoon";
+export type LinkCategory = "social" | "audit";
 
-export type SupportedNetwork = "BSC" | "TerraClassic" | "MegaETH";
-
-export type LogoIcon = {
-  kind: "logo";
-  src: string; // e.g., "/images/partners/Uniswap.png"
-  alt: string;
-};
-
-// Keep names aligned with lucide-react icon names where possible
-export type LucideIconName =
-  | "ArrowLeftRight"
-  | "ExternalLink"
-  | "MessageCircle"
-  | "Twitter"
-  | "ShieldCheck"
-  | "ChartLine";
+export type LucideIconName = "MessageCircle" | "Twitter" | "ShieldCheck";
 
 export type LucideIcon = {
   kind: "lucide";
   name: LucideIconName;
 };
 
-export type LinkIcon = LogoIcon | LucideIcon;
+export type LinkIcon = LucideIcon;
 
 export interface LinkItem {
   id: string;
@@ -39,139 +25,14 @@ export interface LinkItem {
   href: string;
   category: LinkCategory;
   icon: LinkIcon;
-  network?: SupportedNetwork;
-  tags?: string[];
   isExternal?: boolean;
 }
 
-// Helper constants for partner logo paths (served from /public)
-const PARTNER = {
-  TIDALDEX: "/images/partners/TidalDex.svg",
-  PANCAKESWAP: "/images/partners/pancakeswap.png",
-  GDEX: "/images/partners/GDEX-logo.png",
-  TERRA_CLASSIC: "/images/partners/TerraClassic.png",
-  BSC: "/images/partners/Binance-Smart-Chain-Icon-1-2048x2048.png",
-  COINGECKO: "/images/partners/coingecko-5d1523.svg",
-  BLOCKSPOT: "/images/partners/blockspot.png",
-  DROPSTAB: "/images/partners/dropstab.png",
-  ASCENDEX: "/images/partners/ascendex.png",
-  CZODIAC: "/images/partners/czodiac.png",
-  BSC_PNG: "/images/partners/BSC.png",
-  COINPAPRIKA: "/images/partners/coinpaprika.png",
-  BEINCRYPTO: "/images/partners/beincrypto.png",
-  COINRANKING: "/images/partners/coinranking.png",
-  DEXTOOLS: "/images/partners/dextools.png",
-  COINBASE: "/images/partners/coinbase.png",
-  DEXSCREENER: "/images/partners/dexscreener.png",
-  COINCARP: "/images/partners/coincarp.png",
-  BATTLE_FORCE_CL8Y: "/images/partners/battle-force-cl8y.png",
-  KUMBAYA: "/images/partners/kumbaya.png",
-  SIR_TRADING: "/images/partners/sirtrading.png",
-} as const;
-
 export const links: LinkItem[] = [
-  // Trading
-  {
-    id: "tidaldex-bsc",
-    label: "Trade on TidalDex (BSC)",
-    href: "https://tidaldex.com/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.TIDALDEX, alt: "TidalDex" },
-    network: "BSC",
-    isExternal: true,
-  },
-  {
-    id: "ascendex-cex",
-    label: "Trade on AscendEX (CEX)",
-    href: "https://ascendex.com/en-us/cashtrade-spottrading/usdt/cl8y",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.ASCENDEX, alt: "AscendEX" },
-    isExternal: true,
-  },
-  {
-    id: "pancakeswap-dex",
-    label: "Trade on PancakeSwap (DEX)",
-    href: "https://pancakeswap.finance/swap?outputCurrency=0x8F452a1fdd388A45e1080992eFF051b4dd9048d2",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.PANCAKESWAP, alt: "PancakeSwap" },
-    network: "BSC",
-    isExternal: true,
-  },
-  {
-    id: "gdex-coming-soon",
-    label: "Trade on GDEX (TerraClassic)",
-    href: "https://garuda-defi.org/market/terra1kkrwna59jzpvsp7n4l3xdt72rmejcz5d2xaezxl29zvkssn7vvtqmtmemv",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.GDEX, alt: "GDEX" },
-    network: "TerraClassic",
-    isExternal: true,
-  },
-  {
-    id: "sir-liquidity-megaeth",
-    label: "Trade on SIR (perps DEX, MegaETH)",
-    href: "https://app.sir.trading/liquidity?chainid=4326&vault=17",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.SIR_TRADING, alt: "SIR" },
-    network: "MegaETH",
-    isExternal: true,
-  },
-  {
-    id: "kumbaya-megaeth",
-    label: "Trade on Kumbaya (MegaETH)",
-    href: "https://www.kumbaya.xyz/#/swap?outputCurrency=0xfBAa45A537cF07dC768c469FfaC4e88208B0098D&confirmed=1",
-    category: "trading",
-    icon: { kind: "logo", src: PARTNER.KUMBAYA, alt: "Kumbaya" },
-    network: "MegaETH",
-    isExternal: true,
-  },
-
-  // Contracts
-  {
-    id: "terra-classic-contract",
-    label: "TerraClassic Contract Address",
-    href: "https://finder.terra.money/classic/address/terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3",
-    category: "contracts",
-    icon: { kind: "logo", src: PARTNER.TERRA_CLASSIC, alt: "Terra Classic" },
-    network: "TerraClassic",
-    isExternal: true,
-    tags: ["terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3"],
-  },
-  {
-    id: "bsc-contract",
-    label: "BSC Contract Address",
-    href: "https://bscscan.com/token/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2",
-    category: "contracts",
-    icon: { kind: "logo", src: PARTNER.BSC, alt: "BSC" },
-    network: "BSC",
-    isExternal: true,
-    tags: ["0x8F452a1fdd388A45e1080992eFF051b4dd9048d2"],
-  },
-  {
-    id: "megaeth-contract",
-    label: "MegaETH Contract Address",
-    href: "https://mega.etherscan.io/token/0xfBAa45A537cF07dC768c469FfaC4e88208B0098D",
-    category: "contracts",
-    icon: { kind: "lucide", name: "ExternalLink" },
-    network: "MegaETH",
-    isExternal: true,
-    tags: ["0xfBAa45A537cF07dC768c469FfaC4e88208B0098D"],
-  },
-
-  // Chart
-  {
-    id: "geckoterminal-chart",
-    label: "Chart (GeckoTerminal)",
-    href: "https://www.geckoterminal.com/bsc/pools/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2",
-    category: "chart",
-    icon: { kind: "logo", src: PARTNER.COINGECKO, alt: "GeckoTerminal" },
-    isExternal: true,
-  },
-
-  // Social
   {
     id: "telegram",
     label: "Telegram",
-    href: "https://t.me/ceramicliberty",
+    href: "https://t.me/ceramictoken",
     category: "social",
     icon: { kind: "lucide", name: "MessageCircle" },
     isExternal: true,
@@ -184,122 +45,6 @@ export const links: LinkItem[] = [
     icon: { kind: "lucide", name: "Twitter" },
     isExternal: true,
   },
-
-  // Listings
-  {
-    id: "czodiac",
-    label: "CZodiac",
-    href: "https://czodiac.com",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.CZODIAC, alt: "CZodiac" },
-    isExternal: true,
-  },
-  {
-    id: "blockspot",
-    label: "Blockspot",
-    href: "https://blockspot.io/coin/ceramicliberty-com/",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.BLOCKSPOT, alt: "Blockspot" },
-    isExternal: true,
-  },
-  {
-    id: "beincrypto",
-    label: "BeInCrypto",
-    href: "https://beincrypto.com/price/ceramicliberty-com/",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.BEINCRYPTO, alt: "BeInCrypto" },
-    isExternal: true,
-  },
-  {
-    id: "coinbase",
-    label: "Coinbase",
-    href: "https://www.coinbase.com/price/ceramicliberty-com",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.COINBASE, alt: "Coinbase" },
-    isExternal: true,
-  },
-  {
-    id: "coincarp",
-    label: "CoinCarp",
-    href: "https://www.coincarp.com/currencies/ceramicliberty/",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.COINCARP, alt: "CoinCarp" },
-    isExternal: true,
-  },
-  {
-    id: "bscscan-token",
-    label: "BSC (BscScan)",
-    href: "https://bscscan.com/token/0x8f452a1fdd388a45e1080992eff051b4dd9048d2",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.BSC_PNG, alt: "BSC" },
-    isExternal: true,
-  },
-  {
-    id: "luncscan-terraclassic",
-    label: "LUNCScan (TerraClassic)",
-    href: "https://luncscan.com/tokens/terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.TERRA_CLASSIC, alt: "TerraClassic" },
-    isExternal: true,
-  },
-  {
-    id: "dropstab",
-    label: "DropsTab",
-    href: "https://dropstab.com/coins/ceramicliberty-com",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.DROPSTAB, alt: "DropsTab" },
-    isExternal: true,
-  },
-  {
-    id: "coinranking",
-    label: "Coinranking",
-    href: "https://coinranking.com/coin/XmAt7eSt8+ceramiclibertycom-cl8y/",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.COINRANKING, alt: "Coinranking" },
-    isExternal: true,
-  },
-  {
-    id: "dexscreener",
-    label: "DexScreener",
-    href: "https://dexscreener.com/bsc/0xbe9f06b76e301b49dc345948a7a5e3418264886a",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.DEXSCREENER, alt: "DexScreener" },
-    isExternal: true,
-  },
-  {
-    id: "dextools",
-    label: "DexTools",
-    href: "https://www.dextools.io/app/en/token/cl8y",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.DEXTOOLS, alt: "DexTools" },
-    isExternal: true,
-  },
-  {
-    id: "coinpaprika",
-    label: "CoinPaprika",
-    href: "https://coinpaprika.com/coin/cl8y-ceramiclibertycom/",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.COINPAPRIKA, alt: "CoinPaprika" },
-    isExternal: true,
-  },
-  {
-    id: "coingecko",
-    label: "CoinGecko",
-    href: "https://www.coingecko.com/en/coins/ceramicliberty-com",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.COINGECKO, alt: "CoinGecko" },
-    isExternal: true,
-  },
-  {
-    id: "battle-force-cl8y",
-    label: "Battle Force CL8Y",
-    href: "https://x.com/BatteForceLunc",
-    category: "listings",
-    icon: { kind: "logo", src: PARTNER.BATTLE_FORCE_CL8Y, alt: "Battle Force CL8Y" },
-    isExternal: true,
-  },
-
-  // Audit
   {
     id: "spywolf-audit",
     label: "Audit (SpyWolf)",
@@ -312,19 +57,10 @@ export const links: LinkItem[] = [
 
 export const linksByCategory: Record<LinkCategory, LinkItem[]> = links.reduce(
   (acc, link) => {
-    if (!acc[link.category]) acc[link.category] = [] as LinkItem[];
     acc[link.category].push(link);
     return acc;
   },
-  {
-    trading: [],
-    contracts: [],
-    chart: [],
-    social: [],
-    listings: [],
-    audit: [],
-    comingSoon: [],
-  } as Record<LinkCategory, LinkItem[]>,
+  { social: [], audit: [] } as Record<LinkCategory, LinkItem[]>,
 );
 
 export type { LinkItem as Cl8yLinkItem };

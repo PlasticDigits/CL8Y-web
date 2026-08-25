@@ -26,6 +26,7 @@
     "src/features/institutional/**",
     "src/components/visuals/BuyTicker.tsx",
     "src/components/visuals/HeroImageCard.tsx",
+    "src/components/layout/MarketingFooter.tsx",
     "src/hooks/useSupplyTotal.ts",
     "src/hooks/useSupplyCirculating.ts",
     "src/hooks/useCl8yPrice.ts",

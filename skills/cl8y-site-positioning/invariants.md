@@ -30,7 +30,7 @@ Prefer not to use “ecosystem” as the lead.
 3. Products — one sentence each
 4. Utility — fee tiers, no invented table
 5. Trust — canceler network + 5-minute delay + audit
-6. Token placeholder — GitLab #2
+6. Token directory — addresses, DEX venues, listings (`#token`, GitLab #2)
 7. Community — Telegram + X from `src/data/links.ts`
 8. Footer — explainer, docs, disclaimer, law enforcement
 
@@ -41,13 +41,15 @@ into the new page. `/cl8y_whitepaper` still opens the historical PDF.
 
 ## Host headers (production)
 
-This is a static SPA. Production should send `X-Frame-Options: DENY` or
+This is a static SPA. `render.yaml` declares `X-Frame-Options: DENY` and
 `Content-Security-Policy: frame-ancestors 'none'`. Do not add a frameable
-wallet widget. Documented in `PROJECT_GUIDE.md`.
+wallet widget. See [`../cl8y-host-headers/SKILL.md`](../cl8y-host-headers/SKILL.md)
+and `PROJECT_GUIDE.md` §15b.
 
 ## Out of scope (this issue)
 
-- Token address / listings / venue directory (GitLab #2)
+- Adding or removing token addresses / listings / venues (GitLab #2 —
+  [`../cl8y-token-directory/SKILL.md`](../cl8y-token-directory/SKILL.md))
 - Rewriting `CL8Y_WHITEPAPER.md`
 - Bridge or DEX application code
 - New CEX or broker integrations

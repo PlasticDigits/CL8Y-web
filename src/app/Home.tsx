@@ -6,7 +6,7 @@ const Hero = lazy(() => import("../features/hero/Hero"));
 const Products = lazy(() => import("../features/products/Products"));
 const Utility = lazy(() => import("../features/utility/Utility"));
 const Trust = lazy(() => import("../features/trust/Trust"));
-const TokenPlaceholder = lazy(() => import("../features/token/TokenPlaceholder"));
+const TokenDirectory = lazy(() => import("../features/token/TokenDirectory"));
 const Community = lazy(() => import("../features/community/Community"));
 
 export default function Home() {
@@ -63,7 +63,7 @@ export default function Home() {
         <section id={ANCHORS.token} className="container mx-auto max-w-5xl scroll-mt-24 px-6">
           <motion.div variants={container} initial="hidden" whileInView="show" viewport={{ once: true, margin: "-80px" }}>
             <motion.div variants={item}>
-              <TokenPlaceholder />
+              <TokenDirectory />
             </motion.div>
           </motion.div>
         </section>

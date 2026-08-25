@@ -7,6 +7,7 @@ import ScrollProgressBar from "../components/visuals/ScrollProgressBar";
 import { SiteHeader } from "../components/chrome/SiteHeader";
 import { SiteFooter } from "../components/chrome/SiteFooter";
 import { LegacyRedirect } from "./LegacyRedirect";
+import { HashScroll } from "./HashScroll";
 import { HISTORICAL_DOCS } from "../data/products";
 
 const Home = lazy(() => import("./Home"));
@@ -30,6 +31,7 @@ export function App() {
         Skip to content
       </a>
       <ScrollProgressBar />
+      <HashScroll />
       <SiteHeader />
       <Suspense fallback={<div className="p-6 text-text">Loading…</div>}>
         <Routes>

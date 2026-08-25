@@ -4,7 +4,7 @@ This guide defines the visual language and interaction rules for CL8Y across pro
 
 Tagline: CL8Y Bridge • CL8Y DEX • utility token
 
-Copy and IA rules for the marketing site are in [`src/content/invariants.ts`](src/content/invariants.ts) and [`skills/cl8y-site-positioning/SKILL.md`](skills/cl8y-site-positioning/SKILL.md) (GitLab #1).
+Copy and IA rules for the marketing site are in [`src/content/invariants.ts`](src/content/invariants.ts) and [`skills/cl8y-site-positioning/SKILL.md`](skills/cl8y-site-positioning/SKILL.md) (GitLab #1). Official addresses and DEX venues: [`src/data/tokenDirectory.ts`](src/data/tokenDirectory.ts) and [`skills/cl8y-token-directory/SKILL.md`](skills/cl8y-token-directory/SKILL.md).
 
 ## 1) Brand Pillars
 
@@ -269,5 +269,6 @@ Examples:
 - Products: two short cards, labeled links (not icon-only).
 - Utility: three to four lines on fee tiers; link to the DEX for the schedule.
 - Trust: compressed canceler + delay-window facts; audit link.
+- Token: three labeled groups — Addresses, Trade on DEX, Listings. Full checksummed addresses; copy from the typed constant.
 - Community: Telegram + X from `src/data/links.ts`.
 - Footer: the long explainer, then disclaimer and law-enforcement. Historical PDFs labeled historical.

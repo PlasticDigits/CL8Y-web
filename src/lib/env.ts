@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { BSC_CL8Y_ADDRESS, BSC_CL8Y_POOL_ADDRESS } from "../data/tokenDirectory";
 
 const EnvSchema = z.object({
   VITE_CL8Y_PRICE_API: z.string().optional(),
@@ -42,13 +43,10 @@ export const env = {
       : 2_876_179,
   bscRpcUrl: parsed.success ? parsed.data.VITE_BSC_RPC_URL : undefined,
   // Onchain addresses (BSC)
-  cl8yAddress:
-    (parsed.success && parsed.data.VITE_CL8Y_ADDRESS) ||
-    "0x8f452a1fdd388a45e1080992eff051b4dd9048d2",
+  cl8yAddress: (parsed.success && parsed.data.VITE_CL8Y_ADDRESS) || BSC_CL8Y_ADDRESS,
   czusdAddress:
     (parsed.success && parsed.data.VITE_CZUSD_ADDRESS) ||
     "0xE68b79e51bf826534Ff37AA9CeE71a3842ee9c70",
   cl8yCzusdPairAddress:
-    (parsed.success && parsed.data.VITE_CL8Y_CZUSD_PAIR_ADDRESS) ||
-    "0xBe9F06b76e301b49Dc345948a7a5E3418264886A",
+    (parsed.success && parsed.data.VITE_CL8Y_CZUSD_PAIR_ADDRESS) || BSC_CL8Y_POOL_ADDRESS,
 } as const;

@@ -1,15 +1,20 @@
 /**
- * Marketing-site positioning invariants (GitLab #1).
+ * Marketing-site positioning invariants (GitLab #1) and token-directory
+ * invariants (GitLab #2). Host clickjacking headers are GitLab #3.
  *
  * These rules are enforced by tests in `src/content/invariants.test.ts` and
- * documented for third-party agents in `skills/cl8y-site-positioning/SKILL.md`.
+ * `src/data/tokenDirectory.test.ts`, and documented for third-party agents in
+ * `skills/cl8y-site-positioning/SKILL.md` and
+ * `skills/cl8y-token-directory/SKILL.md`.
  * Do not weaken them to restore retired GameFi / burn / CEX narrative.
  *
  * Cross-links:
  * - `src/data/products.ts` — canonical Bridge / DEX URLs
+ * - `src/data/tokenDirectory.ts` — official addresses, listings, DEX venues
  * - `src/data/copy.ts` — current-product marketing strings
  * - `STYLE_GUIDE.md` — tagline, pillars, voice
- * - `PROJECT_GUIDE.md` — IA, host headers, token-directory split (#2)
+ * - `PROJECT_GUIDE.md` — IA, host headers, token directory
+ * - `render.yaml` — X-Frame-Options / frame-ancestors (#3)
  */
 
 /** Exact first-party product origins. No path, query, userinfo, or trailing slash. */
@@ -52,7 +57,12 @@ export const CURRENT_PRODUCT_SURFACES = [
   "src/features/utility/Utility.tsx",
   "src/features/trust/Trust.tsx",
   "src/features/community/Community.tsx",
-  "src/features/token/TokenPlaceholder.tsx",
+  "src/features/token/TokenDirectory.tsx",
+  "src/data/tokenDirectory.ts",
+  "src/data/links.ts",
+  "src/lib/copyText.ts",
+  "src/lib/scrollToAnchor.ts",
+  "src/app/HashScroll.tsx",
   "src/components/chrome/SiteHeader.tsx",
   "src/components/chrome/SiteFooter.tsx",
   "STYLE_GUIDE.md",
@@ -69,6 +79,20 @@ export const PAGE_ANCHORS = {
   community: "community",
   docs: "docs",
   footer: "site-footer",
+} as const;
+
+/** Hosts that must never appear as trade or listing hrefs in the directory. */
+export const BANNED_TRADE_HOSTS = [
+  "ascendex.com",
+  "binance.com",
+  "kraken.com",
+  "coinbase.com",
+] as const;
+
+/** Production clickjacking defenses (GitLab #3). Configure on the host, not in HTML. */
+export const CLICKJACKING_HEADERS = {
+  xFrameOptions: "DENY",
+  cspFrameAncestors: "frame-ancestors 'none'",
 } as const;
 
 export const RETIRED_HOMEPAGE_MODULES = [

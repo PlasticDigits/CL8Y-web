@@ -34,8 +34,9 @@ strings live in [`src/data/copy.ts`](../../src/data/copy.ts).
 4. **Do not lead with** retired narrative (lore titles, burn-scarcity sales,
    fake tickers, CEX “buy” energy). See
    [`invariants.md`](invariants.md) for the banned-term list.
-5. **Token directory is #2.** Leave `#token` as a labeled placeholder. Do not
-   ship addresses, listings, or venue tables in this skill’s scope.
+5. **Token directory is #2.** Official addresses, listings, and DEX venues
+   live in [`src/data/tokenDirectory.ts`](../../src/data/tokenDirectory.ts).
+   See [`../cl8y-token-directory/SKILL.md`](../cl8y-token-directory/SKILL.md).
 6. **Do not rewrite** `CL8Y_WHITEPAPER.md`. Historical PDFs may stay in the
    footer, labeled historical.
 7. **Links.** `target="_blank"` requires `rel="noopener noreferrer"`
@@ -66,8 +67,10 @@ call the work done. Brand docs must not contradict the live page.
 
 ## Cross-links
 
-- Issue: GitLab `#1` (companion token directory: `#2`)
+- Issue: GitLab `#1` (token directory `#2`, host headers `#3`)
 - [`invariants.md`](invariants.md) — banned terms, IA, host headers
+- [`../cl8y-token-directory/SKILL.md`](../cl8y-token-directory/SKILL.md)
+- [`../cl8y-host-headers/SKILL.md`](../cl8y-host-headers/SKILL.md)
 - [`PROJECT_GUIDE.md`](../../PROJECT_GUIDE.md)
 - [`STYLE_GUIDE.md`](../../STYLE_GUIDE.md)
 - [`AGENTS.md`](../../AGENTS.md)

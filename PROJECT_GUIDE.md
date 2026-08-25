@@ -11,8 +11,13 @@ This document outlines how to build the CL8Y website as a static React app: tool
 
 **Positioning:** CL8Y is a decentralized utility token for reduced fees on CL8Y DEX trading tiers. Do not invent tier numbers. See [`src/content/invariants.ts`](src/content/invariants.ts) and [`skills/cl8y-site-positioning/SKILL.md`](skills/cl8y-site-positioning/SKILL.md).
 
-**Token directory:** Official addresses, listings, and venues are GitLab **#2**. The homepage `#token` block is a placeholder until that ships. Social and audit links remain in `src/data/links.ts`.
+**Token directory (GitLab #2):** Official addresses, listings, and DEX venues live in [`src/data/tokenDirectory.ts`](src/data/tokenDirectory.ts). The homepage `#token` section renders them. Social and audit links remain in `src/data/links.ts`. Agent skill: [`skills/cl8y-token-directory/SKILL.md`](skills/cl8y-token-directory/SKILL.md).
 
+- **Addresses**
+  - **BNB Smart Chain (ERC-20)**: `0x8F452a1fdd388A45e1080992eFF051b4dd9048d2` — https://bscscan.com/token/0x8F452a1fdd388A45e1080992eFF051b4dd9048d2
+  - **Terra Classic (CW20)**: `terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3` — https://finder.terra.money/classic/address/terra16wtml2q66g82fdkx66tap0qjkahqwp4lwq3ngtygacg5q0kzycgqvhpax3
+  - **MegaETH (ERC-20)**: `0xfBAa45A537cF07dC768c469FfaC4e88208B0098D` — https://mega.etherscan.io/token/0xfBAa45A537cF07dC768c469FfaC4e88208B0098D
+- **Trade on DEX** (no CEX): https://dex.cl8y.com first, then TidalDex, PancakeSwap, Uniswap (BNB), GDEX, Kumbaya, SIR
 - **Social**
   - **Telegram**: https://t.me/ceramictoken
   - **X (Twitter)**: https://x.com/ceramictoken
@@ -24,7 +29,7 @@ This document outlines how to build the CL8Y website as a static React app: tool
 
 - **Static-first**: Pre-render everything. No server-side rendering. Use client fetch for live data.
 - **Fast + Animated**: Lean bundle, GPU-accelerated effects, respectful motion.
-- **Product-first UX**: Bridge and DEX are the primary exits. Token directory is secondary (#2).
+- **Product-first UX**: Bridge and DEX are the primary exits. Token directory (`#token`) is the official address / listing / DEX-venue list.
 - **Tight copy**: One headline, one sentence, two product links. Footer holds the long explainer.
 
 ## 2) Tech Stack
@@ -111,7 +116,7 @@ CL8Y-web/
       products/
       utility/            # fee-tier copy (no invented table)
       trust/              # compressed bridge canceler / delay window
-      token/              # placeholder for GitLab #2
+      token/              # official directory (GitLab #2)
       community/
     providers/            # Theme, QueryClient, Wagmi config
     hooks/                # data hooks (useBurnStats, useBridgeStatus)
@@ -126,7 +131,9 @@ CL8Y-web/
   STYLE_GUIDE.md          # brand system
   PROJECT_GUIDE.md        # this file
   AGENTS.md               # entry for third-party agents
-  skills/cl8y-site-positioning/  # agent skill + invariant detail
+  skills/cl8y-site-positioning/  # positioning skill
+  skills/cl8y-token-directory/   # address / venue skill (GitLab #2)
+  skills/cl8y-host-headers/      # Render clickjacking headers (#3)
   .nvmrc
   package.json
   tsconfig.json
@@ -246,15 +253,16 @@ Always read from env, never hardcode values.
 - Products: two short cards with labeled links.
 - Utility: fee-tier sentence + DEX link. No invented percentages.
 - Trust: canceler network, 5-minute delay, audit link.
-- Token: placeholder for the official directory (GitLab #2).
+- Token: official directory — addresses, DEX venues, listings (`#token`).
 - Community: Telegram + X from `src/data/links.ts`.
 
 ## 15b) Production host headers
 
-This is a static SPA. Production should send `X-Frame-Options: DENY` or
-`Content-Security-Policy: frame-ancestors 'none'`. Do not introduce a frameable
-wallet/connect widget. Configure the header at the host (Render / CDN); the
-app cannot set it from static HTML alone.
+This is a static SPA. `render.yaml` is the source of truth and declares
+`X-Frame-Options: DENY` and `Content-Security-Policy: frame-ancestors 'none'`
+on `/*`. Do not introduce a frameable wallet/connect widget. The app cannot
+set these headers from static HTML. After deploy, confirm with
+`curl -sI https://cl8y.com`. See [`skills/cl8y-host-headers/SKILL.md`](skills/cl8y-host-headers/SKILL.md).
 
 ## 16) QA
 

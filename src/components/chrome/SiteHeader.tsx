@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ExternalLink } from "../ui/ExternalLink";
 import { ANCHORS, PRODUCT_URLS } from "../../data/products";
 import { siteCopy } from "../../data/copy";
+import { scrollToAnchor } from "../../lib/scrollToAnchor";
 
 const navLinkClass =
   "rounded-md px-3 py-2 text-sm font-semibold text-neutral-200 hover:text-gold focus-visible:text-gold";
@@ -21,10 +22,18 @@ export function SiteHeader() {
           <ExternalLink href={PRODUCT_URLS.dex} className={navLinkClass}>
             {siteCopy.header.dex}
           </ExternalLink>
-          <a href={`/#${ANCHORS.token}`} className={navLinkClass}>
+          <a
+            href={`/#${ANCHORS.token}`}
+            className={navLinkClass}
+            onClick={() => scrollToAnchor(ANCHORS.token)}
+          >
             {siteCopy.header.token}
           </a>
-          <a href={`/#${ANCHORS.community}`} className={navLinkClass}>
+          <a
+            href={`/#${ANCHORS.community}`}
+            className={navLinkClass}
+            onClick={() => scrollToAnchor(ANCHORS.community)}
+          >
             {siteCopy.header.community}
           </a>
           <Link to="/blog" className={navLinkClass}>
