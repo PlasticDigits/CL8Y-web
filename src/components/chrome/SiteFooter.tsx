@@ -3,6 +3,7 @@ import { ExternalLink } from "../ui/ExternalLink";
 import { ANCHORS, CONTACT, HISTORICAL_DOCS, PRODUCT_URLS } from "../../data/products";
 import { siteCopy } from "../../data/copy";
 import { linksByCategory } from "../../data/links";
+import { scrollToAnchor } from "../../lib/scrollToAnchor";
 
 export function SiteFooter() {
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
@@ -37,7 +38,11 @@ export function SiteFooter() {
           >
             {siteCopy.header.dex}
           </ExternalLink>
-          <a href={`/#${ANCHORS.token}`} className="text-sm font-semibold text-neutral-200 hover:text-gold">
+          <a
+            href={`/#${ANCHORS.token}`}
+            className="text-sm font-semibold text-neutral-200 hover:text-gold"
+            onClick={() => scrollToAnchor(ANCHORS.token)}
+          >
             {siteCopy.header.token}
           </a>
           <Link to="/blog" className="text-sm font-semibold text-neutral-200 hover:text-gold">

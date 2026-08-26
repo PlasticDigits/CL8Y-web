@@ -7,7 +7,7 @@ type ExternalLinkProps = Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "href" | 
 
 /**
  * First-party and third-party exits. Always new-tab + noopener noreferrer.
- * Pass a constant href (see `PRODUCT_URLS` / `links.ts`); never a query param.
+ * Pass a constant href (see `PRODUCT_URLS` / `tokenDirectory.ts` / `links.ts`); never a query param.
  */
 export const ExternalLink = forwardRef<HTMLAnchorElement, ExternalLinkProps>(
   function ExternalLink({ href, children, className, ...rest }, ref) {

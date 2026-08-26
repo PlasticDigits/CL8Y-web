@@ -1,6 +1,8 @@
 import type { PropsWithChildren } from "react";
 import { Link } from "react-router-dom";
 import { linksByCategory } from "../data/links";
+import { TOKEN_ADDRESSES, TRADE_VENUES } from "../data/tokenDirectory";
+import { ANCHORS } from "../data/products";
 import {
   CL8Y_BRIDGE_URL,
   CL8Y_MARKETING_HOME,
@@ -37,12 +39,6 @@ export function ArticleLayout({
 }: ArticleLayoutProps) {
   const telegram = linksByCategory.social.find((l) => l.id === "telegram");
   const twitter = linksByCategory.social.find((l) => l.id === "twitter");
-  const tidaldex = linksByCategory.trading.find((l) => l.id === "tidaldex-bsc");
-  const pancakeswap = linksByCategory.trading.find((l) => l.id === "pancakeswap-dex");
-  const ascendex = linksByCategory.trading.find((l) => l.id === "ascendex-cex");
-  const bscContract = linksByCategory.contracts.find((l) => l.id === "bsc-contract");
-  const terraContract = linksByCategory.contracts.find((l) => l.id === "terra-classic-contract");
-  const megaethContract = linksByCategory.contracts.find((l) => l.id === "megaeth-contract");
 
   const readMinutes = wordCount / WORDS_PER_MINUTE;
   const formattedDate = Number.isNaN(Date.parse(date))
@@ -233,108 +229,52 @@ export function ArticleLayout({
                 </ul>
 
                 <p className="text-gold/75 mt-5 text-[11px] font-semibold uppercase tracking-[0.18em]">
-                  Buy CL8Y
+                  Trade on DEX
                 </p>
                 <ul className="mt-2 space-y-1.5 text-sm">
-                  {tidaldex ? (
-                    <li>
+                  {TRADE_VENUES.map((venue) => (
+                    <li key={venue.id}>
                       <a
-                        href={tidaldex.href}
+                        href={venue.href}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-aqua decoration-aqua/40 hover:text-gold underline underline-offset-4 transition hover:decoration-gold/50"
                       >
-                        TidalDex (BSC)
+                        {venue.label}
                       </a>
                     </li>
-                  ) : null}
-                  {pancakeswap ? (
-                    <li>
-                      <a
-                        href={pancakeswap.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-aqua decoration-aqua/40 hover:text-gold underline underline-offset-4 transition hover:decoration-gold/50"
-                      >
-                        PancakeSwap (BSC)
-                      </a>
-                    </li>
-                  ) : null}
-                  {ascendex ? (
-                    <li>
-                      <a
-                        href={ascendex.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-aqua decoration-aqua/40 hover:text-gold underline underline-offset-4 transition hover:decoration-gold/50"
-                      >
-                        AscendEX (CEX)
-                      </a>
-                    </li>
-                  ) : null}
+                  ))}
+                  <li>
+                    <Link
+                      to={`/#${ANCHORS.token}`}
+                      className="text-aqua decoration-aqua/40 hover:text-gold underline underline-offset-4 transition hover:decoration-gold/50"
+                    >
+                      Official directory
+                    </Link>
+                  </li>
                 </ul>
 
                 <p className="text-gold/75 mt-5 text-[11px] font-semibold uppercase tracking-[0.18em]">
                   CL8Y contracts
                 </p>
                 <ul className="mt-2 space-y-2 text-sm">
-                  {bscContract ? (
-                    <li>
+                  {TOKEN_ADDRESSES.map((row) => (
+                    <li key={row.id}>
                       <a
-                        href={bscContract.href}
+                        href={row.explorerUrl}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="group block"
                       >
                         <span className="text-text/55 block text-[11px] font-medium uppercase tracking-wide">
-                          BSC
-                        </span>
-                        <span className="text-aqua group-hover:text-gold font-mono text-[13px] underline decoration-aqua/35 underline-offset-2 transition group-hover:decoration-gold/45">
-                          {bscContract.tags?.[0]
-                            ? shortAddress(bscContract.tags[0])
-                            : "View on BscScan"}
-                        </span>
-                      </a>
-                    </li>
-                  ) : null}
-                  {terraContract ? (
-                    <li>
-                      <a
-                        href={terraContract.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group block"
-                      >
-                        <span className="text-text/55 block text-[11px] font-medium uppercase tracking-wide">
-                          Terra Classic
+                          {row.chain}
                         </span>
                         <span className="text-aqua group-hover:text-gold font-mono text-[13px] underline decoration-aqua/35 underline-offset-2 transition group-hover:decoration-gold/45 break-all">
-                          {terraContract.tags?.[0]
-                            ? shortAddress(terraContract.tags[0])
-                            : "View on finder"}
+                          {shortAddress(row.address)}
                         </span>
                       </a>
                     </li>
-                  ) : null}
-                  {megaethContract ? (
-                    <li>
-                      <a
-                        href={megaethContract.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="group block"
-                      >
-                        <span className="text-text/55 block text-[11px] font-medium uppercase tracking-wide">
-                          MegaETH
-                        </span>
-                        <span className="text-aqua group-hover:text-gold font-mono text-[13px] underline decoration-aqua/35 underline-offset-2 transition group-hover:decoration-gold/45">
-                          {megaethContract.tags?.[0]
-                            ? shortAddress(megaethContract.tags[0])
-                            : "View on explorer"}
-                        </span>
-                      </a>
-                    </li>
-                  ) : null}
+                  ))}
                 </ul>
               </nav>
 

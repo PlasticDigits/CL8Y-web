@@ -6,7 +6,10 @@ utility token. Built with Tailwind, Framer Motion, and modern Web3 tooling
 
 Positioning, copy, and CTA rules: [`src/content/invariants.ts`](src/content/invariants.ts),
 [`skills/cl8y-site-positioning/SKILL.md`](skills/cl8y-site-positioning/SKILL.md),
-[`AGENTS.md`](AGENTS.md). Token addresses and venues are a separate issue.
+[`AGENTS.md`](AGENTS.md). Official addresses and DEX venues:
+[`src/data/tokenDirectory.ts`](src/data/tokenDirectory.ts) and
+[`skills/cl8y-token-directory/SKILL.md`](skills/cl8y-token-directory/SKILL.md).
+Host clickjacking headers: [`skills/cl8y-host-headers/SKILL.md`](skills/cl8y-host-headers/SKILL.md).
 
 ## Quick start
 
@@ -52,7 +55,7 @@ src/
   components/     # UI + visuals
   features/       # homepage sections (hero, products, utility, trust, ...)
   content/        # positioning invariants
-skills/           # third-party agent skills
+skills/           # third-party agent skills (positioning, token directory, host headers)
   hooks/ lib/     # data & utils
   providers/      # theme, query, wagmi configs
   theme/          # CSS vars and tokens
@@ -84,7 +87,8 @@ Guidelines:
 - `yarn preview`: preview the production build
 - `yarn typecheck`: TypeScript check
 - `yarn lint`: ESLint with max-warnings=0
-- `yarn test`: positioning / copy invariant tests
+- `yarn test`: positioning, token-directory, and clipboard invariant tests
+- `yarn test:e2e`: Playwright directory checks (`yarn preview` first; `--workers=5`)
 - `yarn format`: Prettier format
 
 ## Deployment

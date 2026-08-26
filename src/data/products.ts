@@ -5,10 +5,12 @@
  * - Bridge and DEX hrefs are these exact strings — https, correct host, no `@`,
  *   no query redirectors, not read from `window.location` / search / hash.
  * - Primary CTAs must use `PRODUCT_URLS`, never a third-party “buy” venue.
- * - Token address / listings / venues directory is GitLab #2, not this file.
+ * - Token address / listings / venues directory is `tokenDirectory.ts` (GitLab #2).
  *
  * @see src/content/invariants.ts
+ * @see src/data/tokenDirectory.ts
  * @see skills/cl8y-site-positioning/SKILL.md
+ * @see skills/cl8y-token-directory/SKILL.md
  */
 
 import { CANONICAL_PRODUCT_URLS, CONTACT_EMAIL, PAGE_ANCHORS } from "../content/invariants";

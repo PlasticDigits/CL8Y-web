@@ -33,7 +33,12 @@ const CURRENT_PRODUCT_SURFACES = [
   "src/features/utility/Utility.tsx",
   "src/features/trust/Trust.tsx",
   "src/features/community/Community.tsx",
-  "src/features/token/TokenPlaceholder.tsx",
+  "src/features/token/TokenDirectory.tsx",
+  "src/data/tokenDirectory.ts",
+  "src/data/links.ts",
+  "src/lib/copyText.ts",
+  "src/lib/scrollToAnchor.ts",
+  "src/app/HashScroll.tsx",
   "src/components/chrome/SiteHeader.tsx",
   "src/components/chrome/SiteFooter.tsx",
   "STYLE_GUIDE.md",
@@ -148,5 +153,12 @@ describe("current-product surfaces", () => {
     assert.equal(home.includes("BuyTicker"), false);
     assert.equal(home.includes("GameFiAI"), false);
     assert.ok(app.includes("LegacyRedirect"));
+  });
+
+  it("mounts the token directory, not the placeholder", () => {
+    const home = readSurface("src/app/Home.tsx");
+    assert.ok(home.includes("TokenDirectory"));
+    assert.equal(home.includes("TokenPlaceholder"), false);
+    assert.ok(home.includes("ANCHORS.token"));
   });
 });

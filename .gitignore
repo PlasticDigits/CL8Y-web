@@ -9,3 +9,6 @@ node_modules/
 .env.production.local
 .vscode/
 blog_gen/.venv/
+test-results/
+playwright-report/
+blob-report/
