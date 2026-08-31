@@ -101,6 +101,14 @@ For Open Graph and social preview images, make the prompt title-led and bold:
 
 **Verified**. A smoke run produced a valid JPEG (JFIF, 1536x1024) via this script on Replicate `openai/gpt-image-2`.
 
+## Weekly worker (separate repo)
+
+Scheduled collection, Replicate text generation, editor passes, and vector search live in [`cl8y-research`](https://gitlab.com/PlasticDigits/cl8y-research) ([issue #1](https://gitlab.com/PlasticDigits/cl8y-research/-/issues/1), moved from CL8Y-web#4). This file remains the **canonical voice and art-direction contract**. The worker emits a human-reviewed MDX draft; it does not push `CL8Y-web` `main`.
+
+- Worker skill: [`skills/cl8y-research-worker/SKILL.md`](https://gitlab.com/PlasticDigits/cl8y-research/-/blob/main/skills/cl8y-research-worker/SKILL.md)
+- Search skill: [`skills/cl8y-research-search/SKILL.md`](https://gitlab.com/PlasticDigits/cl8y-research/-/blob/main/skills/cl8y-research-search/SKILL.md)
+- Invariants: [`docs/invariants.md`](https://gitlab.com/PlasticDigits/cl8y-research/-/blob/main/docs/invariants.md)
+
 ## Final pass
 
 Before publishing, do a final grammar pass paragraph by paragraph. Catch unfinished sentences, dangling comparisons, bad tense, missing subjects or objects, repeated sentence shapes, mechanical repetition, punctuation tics, list heavy stretches, dashed compounds, smart quotes, and fake one sentence paragraphs. The goal is an article that reads like a careful human edit. It should feel smooth, specific, and quietly authoritative.

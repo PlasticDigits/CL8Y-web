@@ -11,9 +11,11 @@ utility token. Read these before changing visitor-facing copy or IA:
 6. [`src/data/tokenDirectory.ts`](src/data/tokenDirectory.ts) — official token directory
 7. [`src/data/copy.ts`](src/data/copy.ts) — current marketing strings
 8. [`PROJECT_GUIDE.md`](PROJECT_GUIDE.md) and [`STYLE_GUIDE.md`](STYLE_GUIDE.md)
+9. Weekly blog drafts + vector search live in **[`cl8y-research`](https://gitlab.com/PlasticDigits/cl8y-research)** ([#1](https://gitlab.com/PlasticDigits/cl8y-research/-/issues/1), moved from this repo's #4). Skills: [`cl8y-research-worker`](https://gitlab.com/PlasticDigits/cl8y-research/-/blob/main/skills/cl8y-research-worker/SKILL.md), [`cl8y-research-search`](https://gitlab.com/PlasticDigits/cl8y-research/-/blob/main/skills/cl8y-research-search/SKILL.md). Voice remains [`blog_gen/SKILL.md`](blog_gen/SKILL.md).
 
 GitLab **#1** is the reposition. GitLab **#2** is the token directory
 (`#token`). GitLab **#3** is host clickjacking headers in `render.yaml`.
+The weekly worker is **not** in this SPA; see `cl8y-research`.
 
 Do not remount modules listed in `RETIRED_HOMEPAGE_MODULES`. Do not rewrite
 `CL8Y_WHITEPAPER.md` as part of #1. Do not add CEX trade links.
