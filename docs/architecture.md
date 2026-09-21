@@ -30,18 +30,23 @@ flowchart LR
 Catch-all `CODEOWNERS` (`.* @code/maintainers`) is **not** a merge gate.
 Official review requests must not be planted on every change.
 
-**Merge gate (host policy; do not weaken from this repo):**
+**Merge gate (host policy from [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48); do not weaken from this repo):**
 
-1. No direct push to `main`.
-2. Required status `ci/woodpecker/pr/woodpecker` when the host requires it.
+1. No direct push to `main` (`enable_push=false`).
+2. Required status `ci/woodpecker/pr/woodpecker`.
 3. Never `force_merge`.
+4. Keep `required_approvals=0`, `block_on_rejected_reviews=true`,
+   `block_on_official_review_requests=false` (already rolled on the host).
+   This ticket **deletes the planted-request file**; it does not PATCH protection.
 
 Decision, slices, tests, rollback: [ADR 0001](./adr/0001-remove-catchall-codeowners.md)
-([#14](https://git.cl8y.com/code/CL8Y-web/issues/14)). Host invariants:
-[cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48),
-[cl8y-forgejo `docs/INVARIANTS.md`](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/src/branch/main/docs/INVARIANTS.md).
-Deploy/spend/custody/policy expansion: [agent-control #297](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/297)
-— this ticket is none of those.
+([#14](https://git.cl8y.com/code/CL8Y-web/issues/14)). Host write-up:
+[cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48)
+and forgejo PR **#50** (`docs/INVARIANTS.md` + ADR 0003 item 8). A 404 on
+forgejo `main` for that file does not mean the policy is missing. Deploy /
+spend / custody / policy expansion: [agent-control #297](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/297)
+— this ticket is none of those. Sister CAC autoland predicates are **#429**,
+not this SPA.
 
 This repo had **no** `.woodpecker.yaml` on `main` when #14 was filed. Adding a
 pipeline is **not** ADR 0001. Missing CI statuses are a pre-existing host/CI
