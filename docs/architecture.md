@@ -30,27 +30,49 @@ flowchart LR
 Catch-all `CODEOWNERS` (`.* @code/maintainers`) is **not** a merge gate.
 Official review requests must not be planted on every change.
 
-**Merge gate (host policy from [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48); do not weaken from this repo):**
+**Four CODEOWNERS search paths.** Forgejo loads the first existing file among
+`CODEOWNERS`, `docs/CODEOWNERS`, `.gitea/CODEOWNERS`, and `.forgejo/CODEOWNERS`
+(Go-regexp, not GitHub globs; `.gitea/` remains in the walk; `.forgejo/` added
+in forgejo#8773). Host [INVARIANTS §8](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/src/branch/main/docs/INVARIANTS.md)
+(on forgejo `main` via [#50](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/pulls/50))
+still lists three; this SPA still names `.gitea/` because Forgejo will plant
+from it. After land, `test -f` fails on all four. Tracked basename
+`CODEOWNERS` is none — extra check, not a substitute for naming `.gitea/`.
 
-1. No direct push to `main` (`enable_push=false`).
-2. Required status `ci/woodpecker/pr/woodpecker`.
-3. Never `force_merge`.
-4. Keep `required_approvals=0`, `block_on_rejected_reviews=true`,
-   `block_on_official_review_requests=false` (already rolled on the host).
-   This ticket **deletes the planted-request file**; it does not PATCH protection.
+**Protection GET (do not PATCH from this repo).** Live
+`GET /api/v1/repos/code/CL8Y-web/branch_protections` for `rule_name == "main"`
+(`updated_at` **2026-09-21T07:28:21Z**; re-read 2026-09-21 still equal). A
+green scanner is not proof of these rows.
+
+| Flag | Required value |
+|------|----------------|
+| `enable_push` | `false` (no direct `main`) |
+| `enable_status_check` | `true` |
+| `status_check_contexts` | **equal** `["ci/woodpecker/pr/woodpecker"]` (not subset) |
+| `required_approvals` | `0` |
+| `block_on_official_review_requests` | `false` |
+| `block_on_rejected_reviews` | `true` |
+
+Never `force_merge`. Never fake commit statuses. This ticket **deletes the
+planted-request file**; it does not PATCH protection.
+
+**Merge/close of [#14](https://git.cl8y.com/code/CL8Y-web/issues/14).** Host
+already requires that Woodpecker context. This tree has no `.woodpecker.yaml`
+/ `.woodpecker/` (`de05ed0` statuses empty). File-delete + docs + tests may
+complete on the product-PR **branch**. They do **not** merge or close #14
+until `ci/woodpecker/pr/woodpecker` posts on that tip. Do not add a pipeline
+in the CODEOWNERS diff. No CL8Y-web Woodpecker iid exists as of 2026-09-21
+(issue 15 404); enablement is a named future CI issue. #14 stays open until
+that context greens.
 
 Decision, slices, tests, rollback: [ADR 0001](./adr/0001-remove-catchall-codeowners.md)
 ([#14](https://git.cl8y.com/code/CL8Y-web/issues/14)). Host write-up:
 [cl8y-forgejo#48](https://git.cl8y.com/PlasticDigits/cl8y-forgejo/issues/48)
-and forgejo PR **#50** (`docs/INVARIANTS.md` + ADR 0003 item 8). A 404 on
-forgejo `main` for that file does not mean the policy is missing. Deploy /
-spend / custody / policy expansion: [agent-control #297](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/297)
+and forgejo PR **#50** (`docs/INVARIANTS.md` on `main`). Deploy / spend /
+custody / policy expansion: [agent-control #297](https://git.cl8y.com/PlasticDigits/cl8y-agent-control/issues/297)
 — this ticket is none of those. Sister CAC autoland predicates are **#429**,
-not this SPA.
-
-This repo had **no** `.woodpecker.yaml` on `main` when #14 was filed. Adding a
-pipeline is **not** ADR 0001. Missing CI statuses are a pre-existing host/CI
-gap, not a reason to keep catch-all CODEOWNERS.
+not this SPA. Product PR #14 (or a successor) is the land vehicle;
+`cac-design-issue-14` is transport only.
 
 ## Directory (agents)
 
