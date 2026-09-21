@@ -2,7 +2,8 @@
 
 ## Status
 
-Proposed ([#14](https://git.cl8y.com/code/CL8Y-web/issues/14)). Design only.
+Accepted ([#14](https://git.cl8y.com/code/CL8Y-web/issues/14)). Slices 1–2
+on branch `issue/14`; merge/close still needs Woodpecker (CO14-7).
 Revises `48bad707e5aa9bfdac48f15baca3444670ebccb7`. This ADR does **not**
 approve itself, merge, deploy, or change Forgejo host protection. Keywords on
 the issue (“architecture”, “merge”, “CODEOWNERS”) are **not** architecture

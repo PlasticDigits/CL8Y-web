@@ -56,14 +56,14 @@ green scanner is not proof of these rows.
 Never `force_merge`. Never fake commit statuses. This ticket **deletes the
 planted-request file**; it does not PATCH protection.
 
-**Merge/close of [#14](https://git.cl8y.com/code/CL8Y-web/issues/14).** Host
+**Merge/close of [#14](https://git.cl8y.com/code/CL8Y-web/issues/14).** Root
+`CODEOWNERS` delete landed on `main` via merged PR #14 (`de05ed0`). Host
 already requires that Woodpecker context. This tree has no `.woodpecker.yaml`
-/ `.woodpecker/` (`de05ed0` statuses empty). File-delete + docs + tests may
-complete on the product-PR **branch**. They do **not** merge or close #14
-until `ci/woodpecker/pr/woodpecker` posts on that tip. Do not add a pipeline
-in the CODEOWNERS diff. No CL8Y-web Woodpecker iid exists as of 2026-09-21
-(issue 15 404); enablement is a named future CI issue. #14 stays open until
-that context greens.
+/ `.woodpecker/`. Docs, tests, and `package.json` argv ship on `issue/14`.
+Do not add a pipeline in the CODEOWNERS diff. No CL8Y-web Woodpecker iid
+exists as of 2026-09-21 (issue 15 404); enablement is a named future CI
+issue. CO14-7: green `ci/woodpecker/pr/woodpecker` on the product tip before
+treating integration complete.
 
 Decision, slices, tests, rollback: [ADR 0001](./adr/0001-remove-catchall-codeowners.md)
 ([#14](https://git.cl8y.com/code/CL8Y-web/issues/14)). Host write-up:

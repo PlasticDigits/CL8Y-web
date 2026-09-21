@@ -47,6 +47,9 @@ strings live in [`src/data/copy.ts`](../../src/data/copy.ts).
    `contact@ceramicliberty.com`. No return promises.
 10. **Stack.** Vite + React + Tailwind + Framer Motion static SPA. No SSR, no
     wallet-connect requirement on the marketing page.
+11. **Forgejo CODEOWNERS.** Do not add catch-all `CODEOWNERS` at repo root,
+    `docs/`, `.gitea/`, or `.forgejo/` (CO14-1/2). Merge gate is host CI, not
+    planted reviews — see [`docs/architecture.md`](../../docs/architecture.md#forgejo-merge-gate).
 
 ## Do not remount
 
@@ -74,3 +77,4 @@ call the work done. Brand docs must not contradict the live page.
 - [`PROJECT_GUIDE.md`](../../PROJECT_GUIDE.md)
 - [`STYLE_GUIDE.md`](../../STYLE_GUIDE.md)
 - [`AGENTS.md`](../../AGENTS.md)
+- [`docs/adr/0001-remove-catchall-codeowners.md`](../../docs/adr/0001-remove-catchall-codeowners.md) — #14 / CO14
