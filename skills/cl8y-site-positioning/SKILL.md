@@ -45,7 +45,14 @@ strings live in [`src/data/copy.ts`](../../src/data/copy.ts).
    activity. Do not remount `BuyTicker`.
 9. **Legal.** Keep disclaimer + law-enforcement text and
    `contact@ceramicliberty.com`. No return promises.
-10. **Stack.** Vite + React + Tailwind + Framer Motion static SPA. No SSR, no
+10. **Legal terms (no clickwrap).** `cl8y.com` is a documented exception in
+    cl8y-ecosystem-legal [#34](https://git.cl8y.com/code/cl8y-ecosystem-legal/issues/34):
+    do **not** add `@plasticdigits/cl8y-clickwrap`, `TermsGate`, or
+    `/api/v1/signatures/status` calls. Optional footer **Terms** link uses the
+    compile-time constant `LEGAL_TERMS_URL` (`https://terms.cl8y.com`) via
+    `ExternalLink` — not Privacy / cookies / opt-out (CL8Y-web #12). Do not
+    wire wagmi `useAccount` into clickwrap.
+11. **Stack.** Vite + React + Tailwind + Framer Motion static SPA. No SSR, no
     wallet-connect requirement on the marketing page.
 
 ## Do not remount

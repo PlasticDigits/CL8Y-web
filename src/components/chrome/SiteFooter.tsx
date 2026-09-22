@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { ExternalLink } from "../ui/ExternalLink";
-import { ANCHORS, CONTACT, HISTORICAL_DOCS, PRODUCT_URLS } from "../../data/products";
+import { ANCHORS, CONTACT, HISTORICAL_DOCS, LEGAL_TERMS_URL, PRODUCT_URLS } from "../../data/products";
 import { siteCopy } from "../../data/copy";
 import { linksByCategory } from "../../data/links";
 import { scrollToAnchor } from "../../lib/scrollToAnchor";
@@ -68,6 +68,11 @@ export function SiteFooter() {
             {siteCopy.footer.docsTitle}
           </h2>
           <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <li>
+              <ExternalLink href={LEGAL_TERMS_URL} className="text-neutral-300 hover:text-gold">
+                {siteCopy.footer.termsLink}
+              </ExternalLink>
+            </li>
             <li>
               <a href={HISTORICAL_DOCS.whitepaperV3} className="text-neutral-300 hover:text-gold">
                 {siteCopy.footer.historicalWhitepaper}

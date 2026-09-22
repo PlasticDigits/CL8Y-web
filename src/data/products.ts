@@ -13,9 +13,16 @@
  * @see skills/cl8y-token-directory/SKILL.md
  */
 
-import { CANONICAL_PRODUCT_URLS, CONTACT_EMAIL, PAGE_ANCHORS } from "../content/invariants";
+import {
+  CANONICAL_PRODUCT_URLS,
+  CONTACT_EMAIL,
+  LEGAL_TERMS_URL,
+  PAGE_ANCHORS,
+} from "../content/invariants";
 
 export const PRODUCT_URLS = CANONICAL_PRODUCT_URLS;
+
+export { LEGAL_TERMS_URL };
 
 export const CONTACT = {
   email: CONTACT_EMAIL,

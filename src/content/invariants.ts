@@ -23,6 +23,13 @@ export const CANONICAL_PRODUCT_URLS = {
   dex: "https://dex.cl8y.com",
 } as const;
 
+/**
+ * Hosted T&Cs portal (read-only link). Marketing site does not mount clickwrap or
+ * call the Legal status API — see cl8y-ecosystem-legal #34 /
+ * `skills/cl8y-site-positioning/SKILL.md` § Legal terms (no clickwrap).
+ */
+export const LEGAL_TERMS_URL = "https://terms.cl8y.com";
+
 export const CONTACT_EMAIL = "contact@ceramicliberty.com";
 
 /** Terms that must not appear on current-product surfaces (except historical labels). */

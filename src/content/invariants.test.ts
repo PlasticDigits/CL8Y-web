@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { resolve } from "node:path";
 import { describe, it } from "node:test";
 import assert from "node:assert/strict";
@@ -75,6 +75,44 @@ describe("product URL invariants", () => {
     assert.equal(invariants.includes("javascript:"), false);
     assert.doesNotMatch(invariants, /bridge\.cl8y\.com[/?#@]/);
     assert.doesNotMatch(invariants, /dex\.cl8y\.com[/?#@]/);
+  });
+
+  it("pins the hosted Terms portal URL for the marketing footer link", () => {
+    assert.ok(invariants.includes('LEGAL_TERMS_URL = "https://terms.cl8y.com"'));
+    const footer = readSurface("src/components/chrome/SiteFooter.tsx");
+    assert.ok(footer.includes("LEGAL_TERMS_URL"));
+    assert.ok(footer.includes("ExternalLink"));
+    assert.equal(footer.includes("TermsGate"), false);
+    assert.equal(footer.includes("Privacy"), false);
+  });
+});
+
+describe("marketing legal exception (no clickwrap)", () => {
+  it("does not depend on cl8y-clickwrap", () => {
+    const pkg = readSurface("package.json");
+    assert.equal(pkg.includes("cl8y-clickwrap"), false);
+  });
+
+  it("does not import TermsGate under src/", () => {
+    const srcRoot = resolve(root, "src");
+    const walk = (dir: string): string[] => {
+      const names: string[] = [];
+      for (const entry of readdirSync(dir, { withFileTypes: true })) {
+        const full = resolve(dir, entry.name);
+        if (entry.isDirectory()) names.push(...walk(full));
+        else if (/\.(ts|tsx)$/.test(entry.name) && !/\.test\.(ts|tsx)$/.test(entry.name)) {
+          names.push(full);
+        }
+      }
+      return names;
+    };
+    for (const file of walk(srcRoot)) {
+      const text = readFileSync(file, "utf8");
+      assert.doesNotMatch(text, /from\s+["']@plasticdigits\/cl8y-clickwrap/, file);
+      assert.doesNotMatch(text, /import\s+.*\bTermsGate\b/, file);
+      assert.doesNotMatch(text, /<TermsGate\b/, file);
+      assert.doesNotMatch(text, /\/api\/v1\/signatures\/status/, file);
+    }
   });
 });
 

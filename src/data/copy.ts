@@ -79,6 +79,7 @@ export const siteCopy = {
     explainerTitle: "What this is",
     explainer:
       "CL8Y Bridge moves tokens between supported chains. CL8Y DEX is the trading venue. CL8Y is a decentralized utility token: holding it can reduce CL8Y DEX trading fees by tier. This site does not promise a return, a listing, or a guaranteed fee amount. Use the token directory on this page for official addresses. Older whitepaper PDFs are historical documents and may not match the products on this page.",
+    termsLink: "Terms",
     docsTitle: "Documents",
     historicalWhitepaper: "Historical whitepaper (PDF)",
     historicalWhitepaperV2: "Historical whitepaper v2 (PDF)",
