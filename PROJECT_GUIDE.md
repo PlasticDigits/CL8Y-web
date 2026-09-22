@@ -223,7 +223,8 @@ function useBurnStats() {
 ## 13) Build & Deploy (Static)
 
 - Vite build outputs to `dist/`.
-- Ensure all routes work via SPA fallbacks on hosting (e.g., Netlify `_redirects`, Vercel SPA mode, S3 `index.html` fallback).
+- Ensure client-only routes work via SPA fallbacks on hosting (e.g., Netlify `_redirects`, Vercel SPA mode, S3 `index.html` fallback).
+- **Do not** SPA-fallback reserved legal-guess paths (`/privacy`, `/cookies`, `/opt-out`, and aliases in `src/lib/reservedLegalGuessPaths.ts`; GitLab #12). Host rules for those paths must appear **before** `/* → /index.html` in `public/_redirects` and `render.yaml`.
 
 Commands:
 
@@ -268,7 +269,7 @@ set these headers from static HTML. After deploy, confirm with
 
 - Validate contrast and focus across all pages.
 - Test on low-end devices with reduced motion enabled.
-- Verify SPA fallback works in production.
+- Verify SPA fallback works in production for real product routes; reserved legal-guess paths must 404 (see GitLab #12).
 
 ## 17) Future Extensions
 

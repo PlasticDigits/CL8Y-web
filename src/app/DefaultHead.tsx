@@ -2,6 +2,7 @@ import { Helmet } from "react-helmet-async";
 import { useLocation } from "react-router-dom";
 import { siteCopy } from "../data/copy";
 import { toAbsoluteUrl } from "../lib/siteOrigin";
+import { isReservedLegalGuessPath } from "../lib/reservedLegalGuessPaths";
 
 /**
  * Restores global marketing metadata for non-blog routes after stripping duplicates from index.html.
@@ -9,6 +10,9 @@ import { toAbsoluteUrl } from "../lib/siteOrigin";
 export function DefaultHead() {
   const { pathname } = useLocation();
   if (pathname === "/blog" || pathname.startsWith("/blog/")) {
+    return null;
+  }
+  if (isReservedLegalGuessPath(pathname)) {
     return null;
   }
 

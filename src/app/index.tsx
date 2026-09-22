@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Suspense, lazy, useEffect } from "react";
 import BlogListPage from "../blog/BlogListPage";
 import BlogPostPage from "../blog/BlogPostPage";
@@ -9,6 +9,8 @@ import { SiteFooter } from "../components/chrome/SiteFooter";
 import { LegacyRedirect } from "./LegacyRedirect";
 import { HashScroll } from "./HashScroll";
 import { HISTORICAL_DOCS } from "../data/products";
+import { isReservedLegalGuessPath } from "../lib/reservedLegalGuessPaths";
+import { ReservedLegalGuessNotFound } from "./ReservedLegalGuessNotFound";
 
 const Home = lazy(() => import("./Home"));
 
@@ -23,9 +25,14 @@ function WhitepaperRedirect() {
   );
 }
 
-export function App() {
+function MarketingShell() {
+  const { pathname } = useLocation();
+  if (isReservedLegalGuessPath(pathname)) {
+    return <ReservedLegalGuessNotFound />;
+  }
+
   return (
-    <BrowserRouter>
+    <>
       <DefaultHead />
       <a href="#main" className="skip-link">
         Skip to content
@@ -47,6 +54,14 @@ export function App() {
         </Routes>
       </Suspense>
       <SiteFooter />
+    </>
+  );
+}
+
+export function App() {
+  return (
+    <BrowserRouter>
+      <MarketingShell />
     </BrowserRouter>
   );
 }

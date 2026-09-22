@@ -27,8 +27,11 @@ summary of GitLab issue #3. The host source of truth is
    `render.yaml` under `headers` for `/*`.
 2. **Keep blog routes.** Do not delete the `/blog` rewrite rules or
    `VITE_SITE_ORIGIN` when touching headers.
-3. **No frameable wallet widget** on the marketing site.
-4. **Host-only.** The static SPA cannot set these headers from HTML.
+3. **Reserved legal paths (#12).** When editing `render.yaml` routes, keep
+   blog rewrites first, then reserved legal-guess rewrites (404 miss target),
+   then `/* → /index.html`. See `src/lib/reservedLegalGuessPaths.ts`.
+4. **No frameable wallet widget** on the marketing site.
+5. **Host-only.** The static SPA cannot set these headers from HTML.
 
 ## Checks
 

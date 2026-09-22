@@ -13,6 +13,97 @@ services:
       - type: rewrite
         source: /blog
         destination: /blog/index.html
+      # GitLab #12 — legal-guess paths must not rewrite to index.html (404 via miss target).
+      - type: rewrite
+        source: /privacy
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy-policy
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy-policy/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy_policy
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy_policy/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacypolicy
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacypolicy/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy-notice
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /privacy-notice/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookies
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookies/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookie
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookie/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookie-policy
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookie-policy/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookies-policy
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /cookies-policy/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /opt-out
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /opt-out/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /optout
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /optout/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /opt_out
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /opt_out/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /do-not-sell
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /do-not-sell/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /donotsell
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /donotsell/
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /ccpa
+        destination: /__cl8y_reserved_legal_guess_miss__
+      - type: rewrite
+        source: /ccpa/
+        destination: /__cl8y_reserved_legal_guess_miss__
       - type: rewrite
         source: /*
         destination: /index.html

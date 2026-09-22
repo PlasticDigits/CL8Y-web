@@ -7,6 +7,7 @@ import react from "@vitejs/plugin-react";
 import matter from "gray-matter";
 import remarkFrontmatter from "remark-frontmatter";
 import { defineConfig, type Plugin } from "vite";
+import { reservedLegalGuessHostPlugin } from "./src/lib/reservedLegalGuessHostPlugin";
 
 /** Package ESM entry incorrectly mixes `require`; load the CJS build instead. */
 const require = createRequire(import.meta.url);
@@ -127,6 +128,7 @@ function rssDevPlugin(): Plugin {
 
 export default defineConfig({
   plugins: [
+    reservedLegalGuessHostPlugin(),
     rssDevPlugin(),
     blogPostMetaVirtualModule(),
     react(),

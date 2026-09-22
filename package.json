@@ -7,12 +7,12 @@
   "license": "AGPL-3.0-only",
   "scripts": {
     "dev": "vite",
-    "build": "vite build && node scripts/generate-rss.mjs && node scripts/verify-prerender-meta.mjs",
+    "build": "vite build && node scripts/generate-rss.mjs && node scripts/verify-prerender-meta.mjs && node --experimental-strip-types scripts/verify-reserved-host-rules.mjs",
     "preview": "vite preview --port 5173",
     "lint": "eslint . --ext .ts,.tsx --max-warnings 0",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
-    "test": "node --experimental-strip-types --test src/content/invariants.test.ts src/data/tokenDirectory.test.ts src/lib/copyText.test.ts",
+    "test": "node --experimental-strip-types --test src/content/invariants.test.ts src/data/tokenDirectory.test.ts src/lib/copyText.test.ts src/lib/reservedLegalGuessPaths.test.ts",
     "test:e2e": "playwright test --workers=5",
     "postinstall": "node scripts/fix-renderer-puppeteer-navigation.mjs"
   },

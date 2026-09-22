@@ -1,6 +1,7 @@
 /**
  * Marketing-site positioning invariants (GitLab #1) and token-directory
  * invariants (GitLab #2). Host clickjacking headers are GitLab #3.
+ * Reserved legal-guess SPA paths are GitLab #12 (`src/lib/reservedLegalGuessPaths.ts`).
  *
  * These rules are enforced by tests in `src/content/invariants.test.ts` and
  * `src/data/tokenDirectory.test.ts`, and documented for third-party agents in

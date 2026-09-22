@@ -2,6 +2,38 @@
 /blog/* /blog/:splat/index.html 200
 /blog /blog/index.html 200
 
+# Reserved legal-guess paths (GitLab #12) — must not fall through to index.html.
+/privacy /404.html 404
+/privacy/ /404.html 404
+/privacy-policy /404.html 404
+/privacy-policy/ /404.html 404
+/privacy_policy /404.html 404
+/privacy_policy/ /404.html 404
+/privacypolicy /404.html 404
+/privacypolicy/ /404.html 404
+/privacy-notice /404.html 404
+/privacy-notice/ /404.html 404
+/cookies /404.html 404
+/cookies/ /404.html 404
+/cookie /404.html 404
+/cookie/ /404.html 404
+/cookie-policy /404.html 404
+/cookie-policy/ /404.html 404
+/cookies-policy /404.html 404
+/cookies-policy/ /404.html 404
+/opt-out /404.html 404
+/opt-out/ /404.html 404
+/optout /404.html 404
+/optout/ /404.html 404
+/opt_out /404.html 404
+/opt_out/ /404.html 404
+/do-not-sell /404.html 404
+/do-not-sell/ /404.html 404
+/donotsell /404.html 404
+/donotsell/ /404.html 404
+/ccpa /404.html 404
+/ccpa/ /404.html 404
+
 # SPA fallback for client-only routes
 /* /index.html 200
 
