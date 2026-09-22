@@ -225,6 +225,7 @@ function useBurnStats() {
 - Vite build outputs to `dist/`.
 - Ensure client-only routes work via SPA fallbacks on hosting (e.g., Netlify `_redirects`, Vercel SPA mode, S3 `index.html` fallback).
 - **Do not** SPA-fallback reserved legal-guess paths (`/privacy`, `/cookies`, `/opt-out`, and aliases in `src/lib/reservedLegalGuessPaths.ts`; GitLab #12). Host rules for those paths must appear **before** `/* → /index.html` in `public/_redirects` and `render.yaml`.
+- The matcher strips query/hash, applies `decodeURI` once (it does not decode `%2F` and it does not decode again), removes `.` / `..` segments, then ASCII case-folds. Host files list the lowercase spellings only. `render.yaml` rewrites those paths at a **missing** destination (`RESERVED_HOST_MISS_DESTINATION`) so the CDN can 404; do not publish that path as a file or the rewrite becomes a 200. `_redirects` uses `/404.html` with status 404 for hosts that honor that syntax. Mixed-case paths are denied by Vite and the client; a case-sensitive CDN can still return `index.html` for a non-lowercase spelling until the client strips product chrome and Open Graph.
 
 Commands:
 

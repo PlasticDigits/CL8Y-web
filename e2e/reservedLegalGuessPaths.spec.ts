@@ -2,7 +2,15 @@ import { expect, test } from "@playwright/test";
 
 const PRODUCT_HOME_TITLE = "CL8Y — Bridge, DEX, and utility token";
 
-const RESERVED_SAMPLES = ["/privacy", "/cookies", "/opt-out", "/PRIVACY", "/privacy-policy"];
+const RESERVED_SAMPLES = [
+  "/privacy",
+  "/cookies",
+  "/opt-out",
+  "/PRIVACY",
+  "/privacy-policy",
+  "/%70rivacy",
+  "/privacy/%2e%2e/privacy",
+];
 
 test.describe("reserved legal-guess paths (GitLab #12)", () => {
   for (const path of RESERVED_SAMPLES) {
@@ -11,6 +19,7 @@ test.describe("reserved legal-guess paths (GitLab #12)", () => {
       expect(response.status()).toBe(404);
       const body = await response.text();
       expect(body).not.toContain(PRODUCT_HOME_TITLE);
+      expect(body).not.toContain("og:title");
 
       await page.goto(path);
       await expect(page.getByRole("heading", { name: /open bridge|products|utility/i })).toHaveCount(0);
@@ -27,6 +36,17 @@ test.describe("reserved legal-guess paths (GitLab #12)", () => {
     expect((await request.get("/blog")).status()).toBe(200);
     await page.goto("/security");
     await expect(page).toHaveURL(/\/#trust$/);
+  });
+
+  test("a non-reserved prefix stays on the marketing SPA", async ({ request }) => {
+    const response = await request.get("/privacy-not-a-policy");
+    expect(response.status()).toBe(200);
+  });
+
+  test("POST /privacy does not return the marketing shell", async ({ request }) => {
+    const response = await request.post("/privacy", { maxRedirects: 0 });
+    expect([404, 405]).toContain(response.status());
+    expect(await response.text()).not.toContain(PRODUCT_HOME_TITLE);
   });
 
   test("query on reserved path does not redirect off-origin", async ({ request }) => {

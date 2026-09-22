@@ -13,7 +13,8 @@ services:
       - type: rewrite
         source: /blog
         destination: /blog/index.html
-      # GitLab #12 — legal-guess paths must not rewrite to index.html (404 via miss target).
+      # GitLab #12 — legal-guess paths must not rewrite to index.html.
+      # Destination is intentionally unpublished so the CDN 404s. Do not add that file.
       - type: rewrite
         source: /privacy
         destination: /__cl8y_reserved_legal_guess_miss__

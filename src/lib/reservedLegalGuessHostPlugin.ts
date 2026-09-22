@@ -4,22 +4,15 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import {
+  isReservedHostMissPath,
   isReservedLegalGuessPath,
-  RESERVED_HOST_MISS_DESTINATION,
 } from "../lib/reservedLegalGuessPaths";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const notFoundHtmlPath = path.join(__dirname, "../../public/404.html");
+const FALLBACK_NOT_FOUND_HTML = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Not found</title><meta name="robots" content="noindex"></head><body><p>Not found</p></body></html>`;
 
-function pathnameFromUrl(url: string | undefined): string {
-  return (url ?? "/").split("?")[0]?.split("#")[0] ?? "/";
-}
-
-function sendReservedPathNotFound(
-  req: IncomingMessage,
-  res: ServerResponse,
-  next: (err?: Error) => void,
-): void {
+function sendReservedPathNotFound(req: IncomingMessage, res: ServerResponse): void {
   if (req.method !== "GET" && req.method !== "HEAD") {
     res.statusCode = 405;
     res.setHeader("Allow", "GET, HEAD");
@@ -27,12 +20,11 @@ function sendReservedPathNotFound(
     return;
   }
 
-  let body: string;
+  let body = FALLBACK_NOT_FOUND_HTML;
   try {
     body = fs.readFileSync(notFoundHtmlPath, "utf8");
-  } catch (err) {
-    next(err instanceof Error ? err : new Error(String(err)));
-    return;
+  } catch {
+    body = FALLBACK_NOT_FOUND_HTML;
   }
 
   res.statusCode = 404;
@@ -47,18 +39,14 @@ function sendReservedPathNotFound(
 function reservedLegalGuessMiddleware(
   req: IncomingMessage,
   res: ServerResponse,
-  next: (err?: Error) => void,
+  next: () => void,
 ): void {
-  const pathname = pathnameFromUrl(req.url);
-  if (pathname === RESERVED_HOST_MISS_DESTINATION) {
-    sendReservedPathNotFound(req, res, next);
-    return;
-  }
-  if (!isReservedLegalGuessPath(pathname)) {
+  const raw = req.url ?? "/";
+  if (!isReservedLegalGuessPath(raw) && !isReservedHostMissPath(raw)) {
     next();
     return;
   }
-  sendReservedPathNotFound(req, res, next);
+  sendReservedPathNotFound(req, res);
 }
 
 /** Dev/preview: reserved legal-guess paths return HTTP 404 before SPA fallback. */

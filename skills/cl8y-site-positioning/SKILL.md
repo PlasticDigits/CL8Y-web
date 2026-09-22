@@ -44,7 +44,10 @@ strings live in [`src/data/copy.ts`](../../src/data/copy.ts).
 8. **Motion.** Respect `prefers-reduced-motion`. No autoplaying fake market
    activity. Do not remount `BuyTicker`.
 9. **Legal.** Keep disclaimer + law-enforcement text and
-   `contact@ceramicliberty.com`. No return promises.
+   `contact@ceramicliberty.com`. No return promises. Do not author a Privacy
+   Notice here. `/privacy`, `/cookies`, `/opt-out`, and the other paths in
+   `src/lib/reservedLegalGuessPaths.ts` must not render homepage chrome or
+   product Open Graph (GitLab #12).
 10. **Stack.** Vite + React + Tailwind + Framer Motion static SPA. No SSR, no
     wallet-connect requirement on the marketing page.
 

@@ -34,6 +34,14 @@ Prefer not to use “ecosystem” as the lead.
 7. Community — Telegram + X from `src/data/links.ts`
 8. Footer — explainer, docs, disclaimer, law enforcement
 
+## Legal-guess paths (GitLab #12)
+
+`/privacy`, `/cookies`, `/opt-out`, and the aliases in
+`src/lib/reservedLegalGuessPaths.ts` are not product routes and are not a
+Privacy Notice. Do not paint homepage chrome or product Open Graph on them.
+The matcher strips query/hash, decodes once with `decodeURI`, drops dot
+segments, and ASCII case-folds. Do not decode a second time.
+
 ## Legacy routes
 
 `/engine`, `/security`, `/tokenomics`, `/community`, `/institutional` redirect

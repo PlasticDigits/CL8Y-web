@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import {
@@ -8,13 +8,13 @@ import {
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
 
-function fail(message: string): never {
+function fail(message) {
   console.error(`[verify-reserved-host-rules] ${message}`);
   process.exit(1);
 }
 
 const distRedirects = resolve(root, "dist/_redirects");
-let redirects: string;
+let redirects;
 try {
   redirects = readFileSync(distRedirects, "utf8");
 } catch {
@@ -36,8 +36,11 @@ for (const path of RESERVED_LEGAL_GUESS_PATHS) {
   }
 }
 
-if (!redirects.includes(RESERVED_HOST_MISS_DESTINATION)) {
-  // Render miss target is render.yaml-only; dist need not include it.
+const missName = RESERVED_HOST_MISS_DESTINATION.replace(/^\//, "");
+for (const dir of ["public", "dist"]) {
+  if (existsSync(resolve(root, dir, missName))) {
+    fail(`${dir}/${missName} must not be a published file — Render would serve it as 200`);
+  }
 }
 
 console.log(

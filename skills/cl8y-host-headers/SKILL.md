@@ -30,6 +30,11 @@ summary of GitLab issue #3. The host source of truth is
 3. **Reserved legal paths (#12).** When editing `render.yaml` routes, keep
    blog rewrites first, then reserved legal-guess rewrites (404 miss target),
    then `/* → /index.html`. See `src/lib/reservedLegalGuessPaths.ts`.
+   The miss target must not be a file in `public/` or `dist/` (a real file is
+   served as 200 before rewrites). Match query-stripped paths with one
+   `decodeURI`, dot-segment removal, and ASCII case-fold. Do not double-decode.
+   Host rule text is the lowercase table; `_redirects` maps those paths to
+   `/404.html` with status 404.
 4. **No frameable wallet widget** on the marketing site.
 5. **Host-only.** The static SPA cannot set these headers from HTML.
 
